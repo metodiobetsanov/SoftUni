@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace _01.X
+﻿namespace _01.X
 {
-    class X
+    using System;
+
+    public class X
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             var number = int.Parse(Console.ReadLine());
             var loopSize = (number - 1) / 2;
@@ -13,24 +13,18 @@ namespace _01.X
 
             for (int i = 1; i <= loopSize; i++)
             {
-                Console.WriteLine("{0}x{1}x{0}",
-                    new string(' ', dashesOut),
-                    new string(' ', dashesIn));
+                Console.WriteLine("{0}x{1}x{0}", new string(' ', dashesOut), new string(' ', dashesIn));
                 dashesIn -= 2;
                 dashesOut++;
             }
 
-            Console.WriteLine("{0}x{0}",
-                new string(' ', dashesOut));
-
+            Console.WriteLine("{0}x{0}", new string(' ', dashesOut));
             dashesIn += 2;
             dashesOut--;
 
             for (int i = 1; i <= loopSize; i++)
             {
-                Console.WriteLine("{0}x{1}x{0}",
-                    new string(' ', dashesOut),
-                    new string(' ', dashesIn));
+                Console.WriteLine("{0}x{1}x{0}", new string(' ', dashesOut), new string(' ', dashesIn));
                 dashesIn += 2;
                 dashesOut--;
             }

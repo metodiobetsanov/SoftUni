@@ -1,22 +1,21 @@
-﻿using System;
-
-namespace _03.Megapixels
+﻿namespace _03.Megapixels
 {
-    class Megapixels
+    using System;
+
+    public class Megapixels
     {
-        static double MPConvert (double width, double height)
+        public static double MPConvert(double width, double height)
         {
-            var result = Math.Round((width * height)/ 1000000, 1);
+            var result = Math.Round((width * height) / 1000000, 1);
             return result;
         }
 
-        static void Main(string[] args)
+        public static void Main()
         {
             var width = int.Parse(Console.ReadLine());
             var height = int.Parse(Console.ReadLine());
             
-            Console.WriteLine("{0}x{1} => {2}MP",
-                width, height, MPConvert(width,height));
+            Console.WriteLine("{0}x{1} => {2}MP", width, height, MPConvert(width, height));
         }
     }
 }

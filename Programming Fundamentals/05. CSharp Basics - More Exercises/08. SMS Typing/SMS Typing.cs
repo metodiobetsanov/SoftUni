@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace _08.SMS_Typing
+﻿namespace _08.SMS_Typing
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             var number = int.Parse(Console.ReadLine());
             var counter = 1;
@@ -23,7 +23,12 @@ namespace _08.SMS_Typing
                 else
                 {
                     var offset = (mainDigit - 2) * 3;
-                    if (mainDigit == 8 || mainDigit == 9) offset++;
+
+                    if (mainDigit == 8 || mainDigit == 9)
+                    {
+                        offset++;
+                    }
+
                     var letterIndex = offset + numberOfDigits - 1;
                     sms += (char)(97 + letterIndex);
                 }

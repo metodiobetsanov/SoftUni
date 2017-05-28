@@ -1,36 +1,45 @@
-﻿using System;
-
-namespace _06.DNA_Sequences
+﻿namespace _06.DNA_Sequences
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static string Nucleotides(int code)
+        public static string Nucleotides(int code)
         {
             string nucleotide = null;
 
             switch (code)
             {
-                case 1: nucleotide = "A"; break;
-                case 2: nucleotide = "C"; break;
-                case 3: nucleotide = "G"; break;
-                case 4: nucleotide = "T"; break;
-                default: break;
+                case 1: nucleotide = "A";
+                    break;
+                case 2: nucleotide = "C";
+                    break;
+                case 3: nucleotide = "G";
+                    break;
+                case 4: nucleotide = "T";
+                    break;
             }
 
             return nucleotide;
         }
 
-        static string StartEnd(int i, int j, int k, int sum)
+        public static string StartEnd(int i, int j, int k, int sum)
         {
             string startEnd = null;
 
-            if (i + j + k >= sum) startEnd = "O";
-            else startEnd = "X";
+            if (i + j + k >= sum)
+            {
+                startEnd = "O";
+            }
+            else
+            {
+                startEnd = "X";
+            }
 
             return startEnd;
         }
 
-        static void Main(string[] args)
+        public static void Main()
         {
             var sum = int.Parse(Console.ReadLine());
             var counter = 0;
@@ -43,8 +52,9 @@ namespace _06.DNA_Sequences
                     {
                         counter++;
                         
-                        Console.Write("{0}{1}{2}{3}{0} ",
-                            StartEnd(i,j,k, sum),
+                        Console.Write(
+                            "{0}{1}{2}{3}{0} ",
+                            StartEnd(i, j, k, sum),
                             Nucleotides(i),
                             Nucleotides(j),
                             Nucleotides(k));
