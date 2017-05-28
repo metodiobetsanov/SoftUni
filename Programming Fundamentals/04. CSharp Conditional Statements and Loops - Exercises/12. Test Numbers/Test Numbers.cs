@@ -1,15 +1,17 @@
-﻿using System;
-namespace _12.Test_Numbers
+﻿namespace _12.Test_Numbers
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             var numberOne = int.Parse(Console.ReadLine());
             var numberTwo = int.Parse(Console.ReadLine());
             var maxSum = int.Parse(Console.ReadLine());
             var sum = 0;
             var counter = 0;
+
             for (int i = numberOne; i > 0; i--)
             {
                 for (int j = 1; j <= numberTwo; j++)
@@ -31,7 +33,6 @@ namespace _12.Test_Numbers
                 Console.WriteLine("{0} combinations", counter);
                 Console.WriteLine("Sum: {0}", sum);
             }
-            
         }
     }
 }

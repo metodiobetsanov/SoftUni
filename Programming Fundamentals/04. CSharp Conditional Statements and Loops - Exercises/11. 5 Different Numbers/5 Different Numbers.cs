@@ -1,15 +1,15 @@
-﻿using System;
-
-namespace _11._5_Different_Numbers
+﻿namespace _11._5_Different_Numbers
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             int numberOne = int.Parse(Console.ReadLine());
             int numberTwo = int.Parse(Console.ReadLine());
 
-            if ((Math.Max(numberOne, numberTwo) - Math.Min(numberOne,numberTwo)) < 5)
+            if ((Math.Max(numberOne, numberTwo) - Math.Min(numberOne, numberTwo)) < 5)
             {
                 Console.WriteLine("No");
             }
@@ -27,8 +27,7 @@ namespace _11._5_Different_Numbers
                                 {
                                     if (i < j && j < k && k < l && l < m)
                                     {
-                                        Console.WriteLine("{0} {1} {2} {3} {4}",
-                                            i,j,k,l,m);
+                                        Console.WriteLine("{0} {1} {2} {3} {4}", i, j, k, l, m);
                                     }
                                 }
                             }

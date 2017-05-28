@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace _15.Neighbour_Wars
+﻿namespace _15.Neighbour_Wars
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             var peshoDmg = int.Parse(Console.ReadLine());
             var goshoDmg = int.Parse(Console.ReadLine());
@@ -39,8 +39,7 @@ namespace _15.Neighbour_Wars
                 }
                 else
                 {
-                    Console.WriteLine("{0} used {1} and reduced {2} to {3} health.",
-                        attacker, attack, attacked, hp);
+                    Console.WriteLine("{0} used {1} and reduced {2} to {3} health.", attacker, attack, attacked, hp);
                 }
 
                 if (counter % 3 == 0)
@@ -50,10 +49,11 @@ namespace _15.Neighbour_Wars
                 }
             } 
 
-            if (peshoHP <=0)
+            if (peshoHP <= 0)
             {
                 Console.WriteLine("Gosho won in {0}th round.", counter);
             }
+
             if (goshoHP <= 0)
             {
                 Console.WriteLine("Pesho won in {0}th round.", counter);

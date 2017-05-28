@@ -1,22 +1,23 @@
-﻿using System;
-using System.Linq;
-
-namespace _01.Choose_a_Drink
+﻿namespace _01.Choose_a_Drink
 {
-    class Program
+    using System;
+    using System.Linq;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             var proffesion = Console.ReadLine().ToLower();
-            if (proffesion== "athlete")
+
+            if (proffesion == "athlete")
             {
                 Console.WriteLine("Water");
             }
-            else if (proffesion=="businessman" || proffesion== "businesswoman")
+            else if (proffesion == "businessman" || proffesion == "businesswoman")
             {
                 Console.WriteLine("Coffee");
             }
-            else if (proffesion== "softuni student")
+            else if (proffesion == "softuni student")
             {
                 Console.WriteLine("Beer");
             }

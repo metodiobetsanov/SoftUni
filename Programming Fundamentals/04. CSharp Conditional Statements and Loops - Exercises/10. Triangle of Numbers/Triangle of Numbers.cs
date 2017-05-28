@@ -1,9 +1,10 @@
-﻿using System;
-namespace _10.Triangle_of_Numbers
+﻿namespace _10.Triangle_of_Numbers
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             var number = int.Parse(Console.ReadLine());
 
@@ -11,8 +12,9 @@ namespace _10.Triangle_of_Numbers
             {
                 for (int j = 1; j <= i; j++)
                 {
-                    Console.Write("{0} ",i);
+                    Console.Write("{0} ", i);
                 }
+
                 Console.WriteLine();
             }
         }

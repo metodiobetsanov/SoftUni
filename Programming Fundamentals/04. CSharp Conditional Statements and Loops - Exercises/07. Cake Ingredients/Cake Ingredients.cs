@@ -1,12 +1,13 @@
-﻿using System;
-
-namespace _07.Cake_Ingredients
+﻿namespace _07.Cake_Ingredients
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             var count = 0;
+
             while (count <= 20)
             {
                 var ingredient = Console.ReadLine();
@@ -20,6 +21,7 @@ namespace _07.Cake_Ingredients
                     count++;
                 }
             }
+
             Console.WriteLine("Preparing cake with {0} ingredients.", count);
         }
     }

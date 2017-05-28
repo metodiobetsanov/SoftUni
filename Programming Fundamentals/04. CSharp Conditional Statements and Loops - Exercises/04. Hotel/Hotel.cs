@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace _04.Hotel
+﻿namespace _04.Hotel
 {
-    class Hotel
+    using System;
+
+    public class Hotel
     {
-        static void Main()
+        public static void Main()
         {
             var month = Console.ReadLine().ToLower();
             var nightCount = int.Parse(Console.ReadLine());
@@ -13,6 +13,7 @@ namespace _04.Hotel
             var nightCountStudio = nightCount;
             var nightCountDouble = nightCount;
             var nightCountSuite = nightCount;
+
             if (month == "may" || month == "october")
             {
                 studioR = 50;

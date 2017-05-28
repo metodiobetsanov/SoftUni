@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace _14.Magic_Letter
+﻿namespace _14.Magic_Letter
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             var start = Convert.ToChar(Console.ReadLine());
             var end = Convert.ToChar(Console.ReadLine());
@@ -18,7 +18,7 @@ namespace _14.Magic_Letter
                     {
                         if (i != ban && j != ban && k != ban)
                         {
-                            Console.Write("{0}{1}{2} ", i,j,k);
+                            Console.Write("{0}{1}{2} ", i, j, k);
                         }
                     }
                 }

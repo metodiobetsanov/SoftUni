@@ -1,14 +1,15 @@
-﻿using System;
-
-namespace _02.Choose_a_Drink_2._0
+﻿namespace _02.Choose_a_Drink_2._0
 {
-    class Program
+    using System;
+ 
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             var proffesion = Console.ReadLine();
             var quantity = int.Parse(Console.ReadLine());
             var drink = 0.0;
+
             switch (proffesion)
             {
                 case "Athlete": drink = 0.70;
@@ -23,9 +24,7 @@ namespace _02.Choose_a_Drink_2._0
                     break;
             }
             
-            Console.WriteLine("The {0} has to pay {1:f2}.", 
-                proffesion,
-                quantity*drink);
+            Console.WriteLine("The {0} has to pay {1:f2}.", proffesion, quantity * drink);
         }
     }
 }
