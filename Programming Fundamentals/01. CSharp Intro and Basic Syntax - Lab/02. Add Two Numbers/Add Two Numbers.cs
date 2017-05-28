@@ -9,10 +9,7 @@
             var firstNumber = int.Parse(Console.ReadLine());
             var secondNumber = int.Parse(Console.ReadLine());
             
-            Console.Write("{0} + {1} = {2}",
-                firstNumber,
-                secondNumber,
-                firstNumber + secondNumber);
+            Console.Write("{0} + {1} = {2}", firstNumber, secondNumber, firstNumber + secondNumber);
         }
     }
 }
