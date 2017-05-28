@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E9D9D8F7-3645-4F49-868D-B60CFACCB8AB}</ProjectGuid>
+    <ProjectGuid>{4A4F2D9B-F700-4804-8C6C-72157B627930}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_01.X</RootNamespace>
-    <AssemblyName>_01.X</AssemblyName>
+    <RootNamespace>_06.DNA_Sequences</RootNamespace>
+    <AssemblyName>_06.DNA_Sequences</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="X.cs" />
+    <Compile Include="DNA Sequences.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E9D9D8F7-3645-4F49-868D-B60CFACCB8AB}</ProjectGuid>
+    <ProjectGuid>{A0C6A9D5-F6CB-4D8A-90BA-5705022B3DD5}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_01.X</RootNamespace>
-    <AssemblyName>_01.X</AssemblyName>
+    <RootNamespace>_04.Photo_Gallery</RootNamespace>
+    <AssemblyName>_04.Photo_Gallery</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="X.cs" />
+    <Compile Include="Photo Gallery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

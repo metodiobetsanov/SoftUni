@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E9D9D8F7-3645-4F49-868D-B60CFACCB8AB}</ProjectGuid>
+    <ProjectGuid>{16BC7CD3-3B1D-4835-8037-F1150C86E34D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_01.X</RootNamespace>
-    <AssemblyName>_01.X</AssemblyName>
+    <RootNamespace>_08.SMS_Typing</RootNamespace>
+    <AssemblyName>_08.SMS_Typing</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="X.cs" />
+    <Compile Include="SMS Typing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
