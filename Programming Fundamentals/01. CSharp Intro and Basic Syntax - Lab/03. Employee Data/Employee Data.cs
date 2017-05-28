@@ -1,15 +1,16 @@
-﻿using System;
-
-namespace _03.Employee_Data
+﻿namespace _03.Employee_Data
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             var name = Console.ReadLine();
             var age = int.Parse(Console.ReadLine());
             var employeeId = int.Parse(Console.ReadLine());
             var salary = double.Parse(Console.ReadLine());
+
             Console.WriteLine("Name: {0}", name);
             Console.WriteLine("Age: {0}", age);
             Console.WriteLine("Employee ID: {0:D8}", employeeId);

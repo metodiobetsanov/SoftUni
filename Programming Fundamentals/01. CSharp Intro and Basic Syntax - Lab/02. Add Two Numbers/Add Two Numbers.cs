@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace _02.Add_Two_Numbers
+﻿namespace _02.Add_Two_Numbers
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             var firstNumber = int.Parse(Console.ReadLine());
             var secondNumber = int.Parse(Console.ReadLine());

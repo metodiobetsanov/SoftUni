@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace _01.Greeting
+﻿namespace _01.Greeting
 {
-    class Greeting
+    using System;
+
+    public class Greeting
     {
-        static void Main()
+        public static void Main()
         {
             var name = Console.ReadLine();
             Console.WriteLine("Hello, {0}!", name);
