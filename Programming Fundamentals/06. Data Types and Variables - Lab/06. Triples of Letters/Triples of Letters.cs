@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace _06.Triples_of_Letters
+﻿namespace _06.Triples_of_Letters
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             int n = int.Parse(Console.ReadLine());
 
@@ -14,12 +14,11 @@ namespace _06.Triples_of_Letters
                 {
                     for (int i3 = 0; i3 < n; i3++)
                     {
-                        char letter1 = (char) ('a' + i1);
-                        char letter2 = (char) ('a' + i2);
-                        char letter3 = (char) ('a' + i3);
+                        char letter1 = (char)('a' + i1);
+                        char letter2 = (char)('a' + i2);
+                        char letter3 = (char)('a' + i3);
 
-                        Console.WriteLine("{0}{1}{2}",
-                            letter1, letter2, letter3);
+                        Console.WriteLine("{0}{1}{2}", letter1, letter2, letter3);
                     }
                 }
             }

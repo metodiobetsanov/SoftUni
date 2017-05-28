@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace _02.Circle_Area__Precision_12_
+﻿namespace _02.Circle_Area__Precision_12_
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             double r = double.Parse(Console.ReadLine());
             Console.WriteLine("{0:f12}", Math.PI * r * r);

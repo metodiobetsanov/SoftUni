@@ -1,12 +1,13 @@
-﻿using System;
-
-namespace _05.Special_Numbers
+﻿namespace _05.Special_Numbers
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             int number = int.Parse(Console.ReadLine());
+
             for (int i = 1; i <= number; i++)
             {
                 int sumOfDigits = 0;

@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace _03.Exact_Sum_of_Real_Numbers
+﻿namespace _03.Exact_Sum_of_Real_Numbers
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             int n = int.Parse(Console.ReadLine());
             decimal sum = 0m;

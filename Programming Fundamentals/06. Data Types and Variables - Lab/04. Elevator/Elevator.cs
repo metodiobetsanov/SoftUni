@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace _04.Elevator
+﻿namespace _04.Elevator
 {
-    class Elevator
+    using System;
+
+    public class Elevator
     {
-        static void Main()
+        public static void Main()
         {
             int persons = int.Parse(Console.ReadLine());
             int limit = int.Parse(Console.ReadLine());

@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace _07.Greeting
+﻿namespace _07.Greeting
 {
-    class Greeting
+    using System;
+
+    public class Greeting
     {
-        static void Main()
+        public static void Main()
         {
             string firstName = Console.ReadLine();
             string lastName = Console.ReadLine();
