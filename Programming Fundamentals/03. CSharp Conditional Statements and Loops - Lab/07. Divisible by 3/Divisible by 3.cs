@@ -1,12 +1,12 @@
-﻿using System;
-
-namespace _07.Divisible_by_3
+﻿namespace _07.Divisible_by_3
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
-            for (int i = 3; i < 100; i+=3)
+            for (int i = 3; i < 100; i += 3)
             {
                 Console.WriteLine(i);
             }

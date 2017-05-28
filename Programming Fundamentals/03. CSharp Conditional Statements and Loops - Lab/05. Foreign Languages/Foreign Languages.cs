@@ -1,13 +1,14 @@
-﻿using System;
-
-namespace _05.Foreign_Languages
+﻿namespace _05.Foreign_Languages
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             var country = Console.ReadLine().ToLower();
-            if (country == "usa" || country=="england")
+
+            if (country == "usa" || country == "england")
             {
                 Console.WriteLine("English");
             }

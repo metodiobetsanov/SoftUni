@@ -1,15 +1,16 @@
-﻿using System;
-
-namespace _06.Theatre_Promotion
+﻿namespace _06.Theatre_Promotion
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             string day = Console.ReadLine().ToLower();
             var age = int.Parse(Console.ReadLine());
             var price = 0;
-            if (age>=0 && age <=18)
+
+            if (age >= 0 && age <= 18)
             {
                 switch (day)
                 {
@@ -20,7 +21,8 @@ namespace _06.Theatre_Promotion
                     case "holiday": price = 5;
                         break;
                 }
-                Console.WriteLine("{0}$",price);
+
+                Console.WriteLine("{0}$", price);
             }
             else if (age > 18 && age <= 64)
             {
@@ -36,6 +38,7 @@ namespace _06.Theatre_Promotion
                         price = 12;
                         break;
                 }
+
                 Console.WriteLine("{0}$", price);
             }
             else if (age > 64 && age <= 122)
@@ -52,6 +55,7 @@ namespace _06.Theatre_Promotion
                         price = 10;
                         break;
                 }
+
                 Console.WriteLine("{0}$", price);
             }
             else

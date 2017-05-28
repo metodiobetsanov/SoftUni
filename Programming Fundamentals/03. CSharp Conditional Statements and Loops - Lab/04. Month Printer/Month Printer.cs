@@ -1,16 +1,17 @@
-﻿using System;
-
-namespace _04.Month_Printer
+﻿namespace _04.Month_Printer
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             var selector = int.Parse(Console.ReadLine());
             string[] months = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
-            if (selector>0 && selector<=12)
+
+            if (selector > 0 && selector <= 12)
             {
-                Console.WriteLine("{0}", months[selector-1]);
+                Console.WriteLine("{0}", months[selector - 1]);
             }
             else
             {

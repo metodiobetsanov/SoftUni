@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace _10.Multiplication_Table_2._0
+﻿namespace _10.Multiplication_Table_2._0
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             var number = int.Parse(Console.ReadLine());
             var start = int.Parse(Console.ReadLine());
@@ -12,14 +12,12 @@ namespace _10.Multiplication_Table_2._0
             {
                 for (int i = start; i <= 10; i++)
                 {
-                    Console.WriteLine("{0} X {1} = {2}",
-                        number, i, number*i);
+                    Console.WriteLine("{0} X {1} = {2}", number, i, number * i);
                 }
             }
             else
             {
-                Console.WriteLine("{0} X {1} = {2}",
-                    number, start, number*start);
+                Console.WriteLine("{0} X {1} = {2}", number, start, number * start);
             }
         }
     }

@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace _12.Number_Checker
+﻿namespace _12.Number_Checker
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             try
             {

@@ -1,17 +1,17 @@
-﻿using System;
-
-namespace _09.Multiplication_Table
+﻿namespace _09.Multiplication_Table
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             var number = int.Parse(Console.ReadLine());
-            for (int i = 1; i <=10; i++)
+            for (int i = 1; i <= 10; i++)
             {
                 var result = number * i;
-                Console.WriteLine("{0} X {1} = {2}",
-                    number, i, result);
+
+                Console.WriteLine("{0} X {1} = {2}", number, i, result);
             }
         }
     }
