@@ -15,7 +15,7 @@
             double ms = distance / (((hours * 60) * 60) + (minutes * 60) + seconds);
             double mh = (distance / 1609) / (hours + (minutes / 60.0) + ((seconds / 60.0) / 60.0));
 
-            Console.WriteLine("{0}\n{1}\n{2}", Math.Round(ms,6), Math.Round(kmh, 6), Math.Round(mh, 6));
+            Console.WriteLine("{0}\n{1}\n{2}", Math.Round(ms, 6), Math.Round(kmh, 6), Math.Round(mh, 6));
         }
     }
 }

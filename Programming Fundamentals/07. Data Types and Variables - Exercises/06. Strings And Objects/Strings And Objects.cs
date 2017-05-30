@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace _06.Strings_And_Objects
+﻿namespace _06.Strings_And_Objects
 {
+    using System;
+
     public class Program
     {
         public static void Main()
