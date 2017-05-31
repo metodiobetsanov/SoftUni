@@ -13,8 +13,19 @@
             var personalID = Console.ReadLine();
             var employeeID = Console.ReadLine();
 
-            Console.WriteLine("First name: {0} \nLast name: {1} \nAge: {2} \nGender: {3} \nPersonal ID: {4} \nUnique Employee number: {5}",
-                firstName, lastName, age, gender, personalID, employeeID);
+            Console.WriteLine(
+                "First name: {0} \n" +
+                "Last name: {1} \n" +
+                "Age: {2} \n" +
+                "Gender: {3} \n" +
+                "Personal ID: {4} \n" +
+                "Unique Employee number: {5}",
+                firstName, 
+                lastName, 
+                age, 
+                gender, 
+                personalID, 
+                employeeID);
         }
     }
 }
