@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{65659728-40AA-4641-9387-D212C2529516}</ProjectGuid>
+    <ProjectGuid>{1438F079-5549-4189-9328-CE83B43C82DB}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_01.Blank_Receipt</RootNamespace>
-    <AssemblyName>_01.Blank_Receipt</AssemblyName>
+    <RootNamespace>_06.Math_Power</RootNamespace>
+    <AssemblyName>_06.Math_Power</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Blank Receipt.cs" />
+    <Compile Include="Math Power.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{65659728-40AA-4641-9387-D212C2529516}</ProjectGuid>
+    <ProjectGuid>{40DE15D0-5D94-471B-ACAF-AE7E8A465713}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_01.Blank_Receipt</RootNamespace>
-    <AssemblyName>_01.Blank_Receipt</AssemblyName>
+    <RootNamespace>_02.Sign_of_Integer_Number</RootNamespace>
+    <AssemblyName>_02.Sign_of_Integer_Number</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Blank Receipt.cs" />
+    <Compile Include="Sign of Integer Number.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

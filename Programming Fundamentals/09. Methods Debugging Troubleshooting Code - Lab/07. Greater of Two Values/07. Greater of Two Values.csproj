@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{65659728-40AA-4641-9387-D212C2529516}</ProjectGuid>
+    <ProjectGuid>{BA9236CA-8AFD-4A09-A3EF-DBD1ABE67934}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_01.Blank_Receipt</RootNamespace>
-    <AssemblyName>_01.Blank_Receipt</AssemblyName>
+    <RootNamespace>_07.Greater_of_Two_Values</RootNamespace>
+    <AssemblyName>_07.Greater_of_Two_Values</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Blank Receipt.cs" />
+    <Compile Include="Greater of Two Values.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
