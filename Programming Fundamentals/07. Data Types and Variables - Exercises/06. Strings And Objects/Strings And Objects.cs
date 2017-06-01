@@ -8,7 +8,7 @@
         {
             string one = "Hello";
             string two = "World";
-            string three = one + " " + two;
+            object three = one + " " + two;
             Console.WriteLine(three);
         }
     }

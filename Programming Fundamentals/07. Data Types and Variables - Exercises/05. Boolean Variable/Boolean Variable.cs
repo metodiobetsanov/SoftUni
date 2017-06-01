@@ -7,8 +7,8 @@
         public static void Main()
         {
             var input = Console.ReadLine().ToLower();
-
-            if (input == "true")
+            bool output = input == "true";
+            if (output)
             {
                 Console.WriteLine("Yes");
             }

@@ -6,18 +6,17 @@
     {
         public static void Main()
         {
-            //// to do
             var pictures = int.Parse(Console.ReadLine());
             var filterTimer = int.Parse(Console.ReadLine());
             var filterFactor = int.Parse(Console.ReadLine());
             var uploadTime = int.Parse(Console.ReadLine());
-            var pictureFilrerTime = pictures * filterTimer;
-            var pictureFiltered = (int)Math.Ceiling(pictures  * (filterFactor / 100.0));
+            var pictureFilrerTime = (long)pictures * filterTimer;
+            var pictureFiltered = (long)Math.Ceiling(pictures  * (filterFactor / 100d));
             var pictureUploadTime = pictureFiltered * uploadTime;
             var totalTime = pictureUploadTime + pictureFilrerTime;
             TimeSpan time = TimeSpan.FromSeconds(totalTime);
 
-            Console.WriteLine("{0}", time.ToString(@"d\:hh\:mm\:ss"));
+            Console.WriteLine(time.ToString(@"d\:hh\:mm\:ss"));
         }
     }
 }
