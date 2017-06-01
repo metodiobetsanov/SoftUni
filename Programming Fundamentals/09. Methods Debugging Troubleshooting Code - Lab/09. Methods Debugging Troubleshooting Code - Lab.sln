@@ -19,9 +19,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07. Greater of Two Values",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08. Multiply Evens by Odds", "08. Multiply Evens by Odds\08. Multiply Evens by Odds.csproj", "{72537003-A6F5-45FF-AAA3-240855AAA223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09. Holidays Between Two Dates", "Holidays Between Two Dates\09. Holidays Between Two Dates.csproj", "{DBD3F813-0295-4085-8571-94EA65C37360}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10. Price Change Alert", "10. Price Change Alert\10. Price Change Alert.csproj", "{7C28E696-AA06-4DDC-B8FD-8DE642155839}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09. Holidays Between Two Dates", "09. Holidays Between Two Dates\09. Holidays Between Two Dates.csproj", "{DBD3F813-0295-4085-8571-94EA65C37360}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,14 +61,14 @@ Global
 		{72537003-A6F5-45FF-AAA3-240855AAA223}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72537003-A6F5-45FF-AAA3-240855AAA223}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72537003-A6F5-45FF-AAA3-240855AAA223}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DBD3F813-0295-4085-8571-94EA65C37360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBD3F813-0295-4085-8571-94EA65C37360}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DBD3F813-0295-4085-8571-94EA65C37360}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBD3F813-0295-4085-8571-94EA65C37360}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7C28E696-AA06-4DDC-B8FD-8DE642155839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7C28E696-AA06-4DDC-B8FD-8DE642155839}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C28E696-AA06-4DDC-B8FD-8DE642155839}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C28E696-AA06-4DDC-B8FD-8DE642155839}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBD3F813-0295-4085-8571-94EA65C37360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBD3F813-0295-4085-8571-94EA65C37360}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBD3F813-0295-4085-8571-94EA65C37360}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBD3F813-0295-4085-8571-94EA65C37360}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
