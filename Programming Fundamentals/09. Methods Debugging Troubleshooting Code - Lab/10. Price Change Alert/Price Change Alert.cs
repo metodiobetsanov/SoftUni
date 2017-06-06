@@ -1,66 +1,61 @@
-﻿namespace _10.Price_Change_Alert
-{
-    using System;
+﻿using System;
 
+namespace _10.Price_Change_Alert
+{
     public class Program
     {
-        private static string Get(double prices, double lastPrice, double diff, bool TrueOrFalse)
+        private static void Main()
         {
-            string text = "";
+            var lines = int.Parse(Console.ReadLine());
+            var limitPrice = double.Parse(Console.ReadLine());
+            var lastPrice = double.Parse(Console.ReadLine());
 
-            if (diff == 0)
+            for (var i = 0; i < lines - 1; i++)
             {
-                text = string.Format("NO CHANGE: {0}", prices);
+                var currentPrice = double.Parse(Console.ReadLine());
+                var difference = Proc(lastPrice, currentPrice);
+                var isSignificantDifference = isThereDIff(difference, limitPrice);
+                var message = GetDiff(currentPrice, lastPrice, difference, isSignificantDifference);
+                Console.WriteLine(message);
+                lastPrice = currentPrice;
             }
-
-            else if (!TrueOrFalse)
-            {
-                text = string.Format("MINOR CHANGE: {0} to {1} ({2:F2}%)", lastPrice, prices, diff * 100);
-            }
-
-            else if (TrueOrFalse && (diff > 0))
-            {
-                text = string.Format("PRICE UP: {0} to {1} ({2:F2}%)", lastPrice, prices, diff * 100);
-            }
-
-            else if (TrueOrFalse && (diff < 0))
-            {
-                text = string.Format("PRICE DOWN: {0} to {1} ({2:F2}%)", lastPrice, prices, diff * 100);
-            }
-
-            return text;
         }
 
-        private static bool IsThereDiff(double border, double isDiff)
+        private static string GetDiff(double currentPrice, double lastPrice, double difference, bool etherTrueOrFalse)
         {
-            if (Math.Abs(border) >= isDiff)
+            var message = "";
+            if (difference == 0)
+            {
+                message = string.Format("NO CHANGE: {0}", currentPrice);
+            }
+            else if (!etherTrueOrFalse)
+            {
+                message = string.Format("MINOR CHANGE: {0} to {1} ({2:F2}%)", lastPrice, currentPrice, difference * 100);
+            }
+            else if (etherTrueOrFalse && difference > 0)
+            {
+                message = string.Format("PRICE UP: {0} to {1} ({2:F2}%)", lastPrice, currentPrice, difference * 100);
+            }
+            else if (etherTrueOrFalse && difference < 0)
+            {
+                message = string.Format("PRICE DOWN: {0} to {1} ({2:F2}%)", lastPrice, currentPrice, difference * 100);
+            }
+            return message;
+        }
+
+        private static bool isThereDIff(double limitPrice, double isDiff)
+        {
+            if (Math.Abs(limitPrice) >= isDiff)
             {
                 return true;
             }
             return false;
         }
 
-        private static double Proc(double diff, double border)
+        private static double Proc(double lastPrice, double currentPrice)
         {
-            double result = (border - diff) / diff;
+            var result = (currentPrice - lastPrice) / lastPrice;
             return result;
-        }
-
-        public static void Main()
-        {
-            int number = int.Parse(Console.ReadLine());
-            double border = double.Parse(Console.ReadLine());
-            double lastPrice = double.Parse(Console.ReadLine());
-
-            for (int i = 0; i < number - 1; i++)
-            {
-                double prices = double.Parse(Console.ReadLine());
-                double diff = Proc(lastPrice, prices);
-                bool isSignificantDifference = IsThereDiff(border, diff);
-                string message = Get(prices, lastPrice, diff, isSignificantDifference);
-                Console.WriteLine(message);
-                lastPrice = prices;
-            }
         }
     }
 }

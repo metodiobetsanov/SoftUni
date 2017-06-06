@@ -31,7 +31,7 @@
 
         public static void Main()
         {
-            System.Console.OutputEncoding = System.Text.Encoding.Unicode;
+           
             PrintReceipt();
         }
     }
