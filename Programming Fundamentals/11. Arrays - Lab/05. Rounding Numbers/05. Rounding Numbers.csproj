@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{59C448EE-5E47-4A5D-B2FF-B0DEC74FB905}</ProjectGuid>
+    <ProjectGuid>{D89F88AB-B8E2-4089-BE89-67E9F5814B67}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_01.Day_of_Week</RootNamespace>
-    <AssemblyName>_01.Day_of_Week</AssemblyName>
+    <RootNamespace>_05.Rounding_Numbers</RootNamespace>
+    <AssemblyName>_05.Rounding_Numbers</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Day of Week.cs" />
+    <Compile Include="Rounding Numbers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

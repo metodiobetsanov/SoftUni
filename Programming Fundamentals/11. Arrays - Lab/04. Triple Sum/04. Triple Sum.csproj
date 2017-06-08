@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{59C448EE-5E47-4A5D-B2FF-B0DEC74FB905}</ProjectGuid>
+    <ProjectGuid>{F3683EAF-0498-414C-B311-309B9AF41DB4}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_01.Day_of_Week</RootNamespace>
-    <AssemblyName>_01.Day_of_Week</AssemblyName>
+    <RootNamespace>_04.Triple_Sum</RootNamespace>
+    <AssemblyName>_04.Triple_Sum</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Day of Week.cs" />
+    <Compile Include="Triple Sum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

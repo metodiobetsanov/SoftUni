@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{59C448EE-5E47-4A5D-B2FF-B0DEC74FB905}</ProjectGuid>
+    <ProjectGuid>{8AAEC49D-A0B8-4F17-BDFC-3C84B8EB76CC}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_01.Day_of_Week</RootNamespace>
-    <AssemblyName>_01.Day_of_Week</AssemblyName>
+    <RootNamespace>_03.Last_K_Numbers_Sums</RootNamespace>
+    <AssemblyName>_03.Last_K_Numbers_Sums</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Day of Week.cs" />
+    <Compile Include="Last K Numbers Sums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

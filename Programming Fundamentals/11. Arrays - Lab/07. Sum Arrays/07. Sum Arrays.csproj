@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{59C448EE-5E47-4A5D-B2FF-B0DEC74FB905}</ProjectGuid>
+    <ProjectGuid>{158AD5BE-1D54-4D6D-BF56-832F8B693427}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_01.Day_of_Week</RootNamespace>
-    <AssemblyName>_01.Day_of_Week</AssemblyName>
+    <RootNamespace>_07.Sum_Arrays</RootNamespace>
+    <AssemblyName>_07.Sum_Arrays</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Day of Week.cs" />
+    <Compile Include="Sum Arrays.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
