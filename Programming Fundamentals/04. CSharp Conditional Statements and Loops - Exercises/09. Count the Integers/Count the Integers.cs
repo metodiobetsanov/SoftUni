@@ -12,7 +12,7 @@
             {
                 do
                 {
-                    var number = int.Parse(Console.ReadLine());
+                    int.Parse(Console.ReadLine());
                     counter++;
                 }
                 while (counter >= 0);

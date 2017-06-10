@@ -50,7 +50,6 @@
             }
             catch (Exception)
             {
-                var ravenClient = new RavenClient("https://c8a0abd5ce85406296f4ecd47b18d658:fc01f9e212f74b85adee67cc8e3b99fa@sentry.io/175068");
                 Console.WriteLine("{0} can't fit in any type", number);
             }
         }

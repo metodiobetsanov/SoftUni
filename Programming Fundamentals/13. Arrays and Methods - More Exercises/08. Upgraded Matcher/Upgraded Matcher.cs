@@ -1,7 +1,6 @@
 ﻿namespace _08.Upgraded_Matcher
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
 
     public static class Program
@@ -12,8 +11,6 @@
             var names = Console.ReadLine().Split(' ').ToArray();
             var quantities = Console.ReadLine().Split(' ').Select(long.Parse).ToArray();
             var prices = Console.ReadLine().Split(' ').Select(decimal.Parse).ToArray();
-            List<string> myGoods = new List<string>();
-            List<long> myQuantities = new List<long>();
 
             while (true)
             {

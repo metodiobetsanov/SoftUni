@@ -8,7 +8,7 @@
         {
             try
             {
-                var number = int.Parse(Console.ReadLine());
+                int.Parse(Console.ReadLine());
                 Console.WriteLine("It is a number.");
             }
             catch (Exception)

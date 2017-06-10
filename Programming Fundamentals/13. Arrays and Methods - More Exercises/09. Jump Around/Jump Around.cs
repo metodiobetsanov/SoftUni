@@ -14,7 +14,6 @@
 
             while (true)
             {
-                var tempIndex = curIndex;
                 curValue = numbers[curIndex];
                 sum += curValue;
                 
