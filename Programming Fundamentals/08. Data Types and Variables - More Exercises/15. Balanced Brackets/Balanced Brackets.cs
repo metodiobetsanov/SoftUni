@@ -24,6 +24,7 @@
                         case ")":
                             balanced -= 1;
                             break;
+                        default: break;
                     }
 
                     if (!(balanced == 0 ||
