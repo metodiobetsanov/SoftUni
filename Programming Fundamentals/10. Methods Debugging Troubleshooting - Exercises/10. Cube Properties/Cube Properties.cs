@@ -21,6 +21,7 @@ namespace _10.Cube_Properties
                     break;
                 case "area": CubeArea(cubeSide);
                     break;
+                default: break;
             }
         }
 

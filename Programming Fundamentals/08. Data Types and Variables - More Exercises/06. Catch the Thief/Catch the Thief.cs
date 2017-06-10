@@ -21,6 +21,7 @@
                 case "long":
                     maxValue = long.MaxValue;
                     break;
+                default: break;
             }
 
             for (int i = 0; i < idCounts; i++)

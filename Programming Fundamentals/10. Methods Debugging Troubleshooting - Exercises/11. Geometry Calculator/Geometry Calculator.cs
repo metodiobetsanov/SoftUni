@@ -22,6 +22,7 @@
                 case "circle":
                     CircleArea();
                     break;
+                default: break;
             }
         }
 

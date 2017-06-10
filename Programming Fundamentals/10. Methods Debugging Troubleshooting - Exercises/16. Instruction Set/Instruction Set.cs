@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class Program
+    public static class Program
     {
         public static void Main()
         {
@@ -44,6 +44,8 @@
                             result = operandOne * operandTwo;
                             break;
                         }
+
+                    default: break;
                 }
 
                 Console.WriteLine(result);

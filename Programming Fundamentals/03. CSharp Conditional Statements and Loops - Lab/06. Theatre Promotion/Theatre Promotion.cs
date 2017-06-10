@@ -20,6 +20,8 @@
                         break;
                     case "holiday": price = 5;
                         break;
+                    default:
+                        break;
                 }
 
                 Console.WriteLine("{0}$", price);
@@ -37,6 +39,8 @@
                     case "holiday":
                         price = 12;
                         break;
+                    default:
+                        break;
                 }
 
                 Console.WriteLine("{0}$", price);
@@ -53,6 +57,8 @@
                         break;
                     case "holiday":
                         price = 10;
+                        break;
+                    default:
                         break;
                 }
 

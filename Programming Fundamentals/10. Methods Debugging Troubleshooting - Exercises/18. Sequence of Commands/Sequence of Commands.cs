@@ -10,7 +10,7 @@
 
         public static void Main()
         {
-            var sizeOfArray = int.Parse(Console.ReadLine());
+            int.Parse(Console.ReadLine());
 
             long[] array = Console.ReadLine()
                 .Split(ArgumentsDelimiter)
@@ -88,6 +88,7 @@
                 case "rshift":
                     ArrayShiftRight(array);
                     break;
+                default: break;
             }
         }
 

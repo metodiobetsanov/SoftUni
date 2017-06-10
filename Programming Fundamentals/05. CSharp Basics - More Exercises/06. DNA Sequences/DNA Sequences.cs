@@ -18,6 +18,7 @@
                     break;
                 case 4: nucleotide = "T";
                     break;
+                default: break;
             }
 
             return nucleotide;

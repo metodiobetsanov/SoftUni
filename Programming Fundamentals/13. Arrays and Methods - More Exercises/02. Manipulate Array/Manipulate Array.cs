@@ -23,6 +23,7 @@
                     case "Distinct":
                         array = array.Distinct().ToArray();
                         break;
+                    default: break;
                 }
             }
 
