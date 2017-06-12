@@ -1,30 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _02.Append_Lists
+﻿namespace _02.Append_Lists
 {
-    class Program
+    using System;
+    using System.Linq;
+    using System.Collections.Generic;
+
+    public static class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var input = Console.ReadLine().Trim().Split('|').ToArray();
-            List<int> myList = new List<int>();
+            List<string> myList = new List<string>();
 
             for (int i = input.Length - 1; i >= 0; i--)
             {
-                var temp = input[i].Trim().Split(' ').Select(int.Parse).ToArray();
+                var temp = input[i].Trim().Split(' ').ToArray();
+                for (int j = 0; j < temp.Length; j++)
                 {
-                    for (int j = 0; j < temp.Length; j++)
-                    {
-                        if (temp[j] != ' ')
-                        {
-                            myList.Add(temp[j]);
-                        }
-                    }
+                    myList.Add(temp[j]);
                 }
+
             }
 
             Console.WriteLine(string.Join(" ", myList));
