@@ -8,115 +8,67 @@
     {
         public static void Main()
         {
-            var results = new Dictionary<string, int>();
+            var playerCards = new Dictionary<string, List<int>>();
+
             while (true)
             {
-                var token = Console.ReadLine().Split(' ', ',').ToArray();
-                var score = 0;
-
+                var token = Console.ReadLine().Split(':').ToList();
+                
                 if (token[0] == "JOKER")
                 {
                     break;
                 }
 
-                token = token.Distinct().ToArray();
+                var player = token[0];
+                var card = token[1]
+                    .Split(", ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+                    .Select(GetScore)
+                    .ToList();
 
-                for (int i = 1; i < token.Length; i++)
+                if (!playerCards.ContainsKey(player))
                 {
-                    var power = 0;
-                    var multiplier = 0;
-                    
-                    if (token[i]. StartsWith("1"))
-                    { 
-                        power = 1;
-                    }
-                    else if (token[i].StartsWith("2"))
-                    {
-                        power = 2;
-                    }
-                    else if (token[i].StartsWith("3"))
-                    {
-                        power = 3;
-                    }
-                    else if (token[i].StartsWith("4"))
-                    {
-                        power = 4;
-                    }
-                    else if (token[i].StartsWith("5"))
-                    {
-                        power = 5;
-                    }
-                    else if (token[i].StartsWith("6"))
-                    {
-                        power = 6;
-                    }
-                    else if (token[i].StartsWith("7"))
-                    {
-                        power = 7;
-                    }
-                    else if (token[i].StartsWith("8"))
-                    {
-                        power = 8;
-                    }
-                    else if (token[i].StartsWith("9"))
-                    {
-                        power = 9;
-                    }
-                    else if (token[i].StartsWith("10"))
-                    {
-                        power = 10;
-                    }
-                    else if (token[i].StartsWith("J"))
-                    {
-                        power = 11;
-                    }
-                    else if (token[i].StartsWith("Q"))
-                    {
-                        power = 12;
-                    }
-                    else if (token[i].StartsWith("K"))
-                    {
-                        power = 13;
-                    }
-                    else if (token[i].StartsWith("A"))
-                    {
-                        power = 14;
-                    }
-
-                    if (token[i].EndsWith("S"))
-                    {
-                        multiplier = 4;
-                    }
-                    else if(token[i].EndsWith("H"))
-                    {
-                        multiplier = 3;
-                    }
-                    else if (token[i].EndsWith("D"))
-                    {
-                        multiplier = 2;
-                    }
-                    else if (token[i].EndsWith("C"))
-                    {
-                        multiplier = 1;
-                    }
-
-                    score += power * multiplier;
+                    playerCards[player] = new List<int>();
                 }
 
-                if (results.ContainsKey(token[0]))
-                {
-                    results[token[0]] += score;
-                }
-                else
-                {
-                    results.Add(token[0], score);
-                }
+                playerCards[player].AddRange(card);
+
             }
 
-            foreach (var key in results.Keys)
+            foreach (var ncp in playerCards)
             {
-                Console.WriteLine("{0} {1}", key, results[key]);
+                var name = ncp.Key;
+                var cards = ncp.Value;
+                var score = cards.Distinct().Sum();
+
+                Console.WriteLine($"{name}: {score}");
             }
+        }
+
+        public static int GetScore(string token)
+        {
+            var cardPowers = new Dictionary<string, int>();
+            cardPowers["J"] = 11;
+            cardPowers["Q"] = 12;
+            cardPowers["K"] = 13;
+            cardPowers["A"] = 14;
+
+            for (int i = 2; i <= 10; i++)
+            {
+                cardPowers[i.ToString()] = i;
+            }
+
+            var cardTypes = new Dictionary<string, int>();
+            cardTypes["S"] = 4;
+            cardTypes["H"] = 3;
+            cardTypes["D"] = 2;
+            cardTypes["C"] = 1;
+
+            var power = token.Substring(0, token.Length - 1);
+            var type = token.Last().ToString();
+
+            var score = cardPowers[power] * cardTypes[type];
+
+            return score;
         }
     }
 }
