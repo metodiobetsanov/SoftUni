@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Sort Times", "01. Sort Times\01. Sort Times.csproj", "{8DD523A2-0317-4AFC-B387-D67B2B340E87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Odd Filter", "02. Odd Filter\02. Odd Filter.csproj", "{5E88AE80-8B87-4451-89EA-3265BBB6A202}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Immune System", "03. Immune System\03. Immune System.csproj", "{47CC4685-6AE3-4BF7-A585-A3C58689A603}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8DD523A2-0317-4AFC-B387-D67B2B340E87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DD523A2-0317-4AFC-B387-D67B2B340E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DD523A2-0317-4AFC-B387-D67B2B340E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DD523A2-0317-4AFC-B387-D67B2B340E87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E88AE80-8B87-4451-89EA-3265BBB6A202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E88AE80-8B87-4451-89EA-3265BBB6A202}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E88AE80-8B87-4451-89EA-3265BBB6A202}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E88AE80-8B87-4451-89EA-3265BBB6A202}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47CC4685-6AE3-4BF7-A585-A3C58689A603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47CC4685-6AE3-4BF7-A585-A3C58689A603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47CC4685-6AE3-4BF7-A585-A3C58689A603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47CC4685-6AE3-4BF7-A585-A3C58689A603}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
