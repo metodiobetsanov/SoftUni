@@ -36,9 +36,11 @@
             {
                 Console.WriteLine("{0}:", user.Key);
 
-                foreach (var pair in user.Value)
+                foreach (var log in user.Value)
                 {
-                    Console.Write(string.Join(" => ", pair.Key, pair.Value) + ", ");
+                    var thing = log.Key;
+                    if (log.Key != user.Value.Keys.Last()) Console.Write($"{log.Key} => {log.Value}, ");
+                    else Console.WriteLine($"{log.Key} => {log.Value}.");
                 }
             }
         }
