@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Count Working Days", "01. Count Working Days\01. Count Working Days.csproj", "{94FC9BAE-F62D-40A7-9FB1-84FDAB7A8A0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Advertisement Message", "02. Advertisement Message\02. Advertisement Message.csproj", "{AEB3E567-8E17-47FD-BB00-B9E9ACCEE87A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Circles Intersection", "03. Circles Intersection\03. Circles Intersection.csproj", "{79D043B7-B926-49C1-9239-5FD2B5395A3F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94FC9BAE-F62D-40A7-9FB1-84FDAB7A8A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94FC9BAE-F62D-40A7-9FB1-84FDAB7A8A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94FC9BAE-F62D-40A7-9FB1-84FDAB7A8A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94FC9BAE-F62D-40A7-9FB1-84FDAB7A8A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEB3E567-8E17-47FD-BB00-B9E9ACCEE87A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEB3E567-8E17-47FD-BB00-B9E9ACCEE87A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEB3E567-8E17-47FD-BB00-B9E9ACCEE87A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEB3E567-8E17-47FD-BB00-B9E9ACCEE87A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79D043B7-B926-49C1-9239-5FD2B5395A3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79D043B7-B926-49C1-9239-5FD2B5395A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79D043B7-B926-49C1-9239-5FD2B5395A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79D043B7-B926-49C1-9239-5FD2B5395A3F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
