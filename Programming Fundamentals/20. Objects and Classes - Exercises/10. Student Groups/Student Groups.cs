@@ -19,32 +19,37 @@ namespace _10.Student_Groups
 
             GetRegistrations(regex, townList, lastTown);
 
+            MakeGroups(townList, groups);
+
+            PrintGroups(groups, townList);
+        }
+
+        private static void PrintGroups(List<Group> groups, List<Town> townList)
+        {
+            Console.WriteLine($"Created {groups.Count} groups in {townList.Count} towns:");
+
+            foreach (var town in groups.OrderBy(x => x.Town.Name))
+            {
+                Console.WriteLine($"{town.Town.Name}=> {string.Join(", ", town.Students.Select(x => x.Email))} ");
+            }
+        }
+
+        private static void MakeGroups(List<Town> townList, List<Group> groups)
+        {
             foreach (var town in townList)
             {
-                List<Student> students = town.Students
-                    .OrderBy(s => s.RegDate)
-                    .ThenBy(s => s.Name)
-                    .ThenBy(s => s.Email)
+                List<Student> students = town.Students.OrderBy(s => s.RegDate).ThenBy(s => s.Name).ThenBy(s => s.Email)
                     .ToList();
 
                 while (students.Any())
                 {
                     var group = new Group();
-                    group.Town = town;
-                    group.Students = students.Take(group.Town.Seats).ToList();
-                    students = students.Skip(group.Town.Seats).ToList();
-                    groups.Add(group);
-
+                    @group.Town = town;
+                    @group.Students = students.Take(@group.Town.Seats).ToList();
+                    students = students.Skip(@group.Town.Seats).ToList();
+                    groups.Add(@group);
                 }
             }
-
-            Console.WriteLine($"Created {groups.Count} groups in {townList.Count} towns:");
-
-            foreach (var group in groups)
-            {
-                Console.WriteLine($"{group.Town.ToString()} =>");
-            }
-            
         }
 
         private static void GetRegistrations(Regex regex, List<Town> townList, string lastTown)
