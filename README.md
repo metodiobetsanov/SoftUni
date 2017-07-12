@@ -3,8 +3,8 @@
 ### Here you can find all my solutions
 1. Entry Module
 2. Tech Module
-  *
-  * Software technology
-  
+      * 1.
+      * 2. Software technology
+        
   
 ### Author: *Metodi Obetsanov*
