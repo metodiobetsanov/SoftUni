@@ -1,11 +1,11 @@
-# Tech Module - C#
-
-Това са моите решения на задачите от II-ви модул в SoftUni.
-
-В папка Exams можете да намерите моите решения на задачите от миналите изпити.
-
-These are my solutions to the tasks from 2nd module in SoftUni.
-
-In the Exams folder you can find my solutions to the tasks from past exams.
-
-https://softuni.bg/trainings/1619/programming-fundamentals-may-2017
+![SoftUni Logo](http://codeweekeu.s3.amazonaws.com/event_picture/SoftUni-Logo-Flat.png)
+# Welcome to my SoftUni repository
+### Here you can find all my solutions
+1. Entry Module
+    * Programming Basics [link](https://github.com/metodiobetsanov/SoftUni/tree/master/1.%20Entry%20Module)
+2. Tech Module
+    * Programming Fundamentals [link](https://github.com/metodiobetsanov/SoftUni/tree/master/2.%20Tech%20Module/1.%20Programming%20Fundamentals)
+    * Software Technologies
+        
+  
+### Author: *Metodi Obetsanov*
