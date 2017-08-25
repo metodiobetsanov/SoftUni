@@ -15,8 +15,6 @@
 
             var junkQuantity = new Dictionary<string, int>();
 
-            var keyMaterials = new List<string>() { "shards", "fragments", "motes" };
-
             bool loop = true;
 
             var legendary = string.Empty;

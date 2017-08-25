@@ -23,9 +23,6 @@
 
             for (int i = 0; i < takeList.Count; i++)
             {
-                var skip = skipList[i];
-                var take = takeList[i];
-
                 var tmp = charList.Skip(skipTotal).Take(takeList[i]);
                 message.AddRange(tmp);
 

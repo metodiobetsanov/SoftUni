@@ -38,7 +38,6 @@
 
                 foreach (var log in user.Value)
                 {
-                    var thing = log.Key;
                     if (log.Key != user.Value.Keys.Last()) Console.Write($"{log.Key} => {log.Value}, ");
                     else Console.WriteLine($"{log.Key} => {log.Value}.");
                 }

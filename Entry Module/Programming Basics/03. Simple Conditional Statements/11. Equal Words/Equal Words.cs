@@ -6,7 +6,7 @@ namespace _11.Equal_Words
     {
         static void Main()
         {
-            var wordOme = Console.ReadLine().ToLower();
+            var wordOne = Console.ReadLine().ToLower();
             var wordTwo = Console.ReadLine().ToLower();
 
             if (wordOne == wordTwo)

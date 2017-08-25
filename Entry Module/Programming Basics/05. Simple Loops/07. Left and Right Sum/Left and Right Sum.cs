@@ -9,7 +9,6 @@ namespace _07.Left_and_Right_Sum
             var qty = int.Parse(Console.ReadLine());
             var leftSum = 0;
             var rightSum = 0;
-            var equal = -1;
             for (int i = 1; i <= qty; i++)
             {
                 var num = int.Parse(Console.ReadLine());

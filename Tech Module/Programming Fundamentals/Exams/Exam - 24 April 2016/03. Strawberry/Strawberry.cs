@@ -44,7 +44,7 @@ namespace _03.Strawberry
                     new string('.', midBot));
 
                 leftRight += 1;
-                midBot = Math.Max(midBot - 1, 0); ;
+                midBot = Math.Max(midBot - 1, 0);
             }
         }
     }
