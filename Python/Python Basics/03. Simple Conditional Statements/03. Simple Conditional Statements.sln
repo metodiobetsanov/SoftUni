@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "01. Excellent Result", "01. Excellent Result\01. Excellent Result.pyproj", "{97546122-6473-48B3-812F-FC73CD12F78A}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "02. Excellent or Not", "02. Excellent or Not\02. Excellent or Not.pyproj", "{ADCBD38C-9F76-469E-A5CA-A42E6D766070}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "03. What's the grade", "03. What's the grade\03. What's the grade.pyproj", "{F81683C2-5491-41CA-84D5-FA4A7AA86757}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "03. Even or Odd", "03. Even or Odd\03. Even or Odd.pyproj", "{8CA24DB4-67AC-4EFF-80F4-D41ABA764886}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "04. Greater Number", "04. Greater Number\04. Greater Number.pyproj", "{CC7991C1-9B14-4650-9A08-70F94110FEED}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "05. Numbers 0 to 10 to Text", "05. Numbers 0 to 10 to Text\05. Numbers 0 to 10 to Text.pyproj", "{A10C1123-EB6B-4643-9CD9-7669E18FA391}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "06. Bonus Score", "06. Bonus Score\06. Bonus Score.pyproj", "{96683F82-5166-42A2-BCF6-FA11CD57BB2C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97546122-6473-48B3-812F-FC73CD12F78A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97546122-6473-48B3-812F-FC73CD12F78A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADCBD38C-9F76-469E-A5CA-A42E6D766070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADCBD38C-9F76-469E-A5CA-A42E6D766070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F81683C2-5491-41CA-84D5-FA4A7AA86757}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F81683C2-5491-41CA-84D5-FA4A7AA86757}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CA24DB4-67AC-4EFF-80F4-D41ABA764886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CA24DB4-67AC-4EFF-80F4-D41ABA764886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC7991C1-9B14-4650-9A08-70F94110FEED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC7991C1-9B14-4650-9A08-70F94110FEED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A10C1123-EB6B-4643-9CD9-7669E18FA391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A10C1123-EB6B-4643-9CD9-7669E18FA391}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96683F82-5166-42A2-BCF6-FA11CD57BB2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96683F82-5166-42A2-BCF6-FA11CD57BB2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F816B36-04D1-4939-9A2E-2409D7DFD2B6}
+	EndGlobalSection
+EndGlobal

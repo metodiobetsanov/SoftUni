@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "01. Square Area", "01. Square Area\01. Square Area.pyproj", "{EF86D7ED-8A65-4104-9A3A-53E63536337E}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "02. Inches to Centimeters", "02. Inches to Centimeters\02. Inches to Centimeters.pyproj", "{731B4EEB-4DDD-45F9-82B5-94AF63D25918}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "03. Greeting by Name", "03. Greeting by Name\03. Greeting by Name.pyproj", "{5E1719B9-4726-4255-82FE-40D04BADD352}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "04. Concatenate Data", "04. Concatenate Data\04. Concatenate Data.pyproj", "{2D0B32EA-BE13-4BDF-9046-980B7B7808E7}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "05. Trapeziod Area", "05. Trapeziod Area\05. Trapeziod Area.pyproj", "{27744F84-F490-4B8A-B4B5-186D23D916FB}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "06. Circle Area and Perimeter", "06. Circle Area and Perimeter\06. Circle Area and Perimeter.pyproj", "{D8B6387E-99EE-439D-93CD-C4B733539416}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "07. 2D Rectangle Area", "07. 2D Rectangle Area\07. 2D Rectangle Area.pyproj", "{95E0EDDA-B6DC-467A-BC37-3DD55A974600}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "08. Triangle Area", "08. Triangle Area\08. Triangle Area.pyproj", "{EDE9E115-8B11-47DC-983E-4317417E898A}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "09. Celsius to Fahrenheit", "09. Celsius to Fahrenheit\09. Celsius to Fahrenheit.pyproj", "{91FFC229-B7BC-4D71-ACA1-DBF51EC9B599}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "10. Radians to Degrees", "10. Radians to Degrees\10. Radians to Degrees.pyproj", "{3C94DD41-FE80-43F1-8F1F-76CCD794BD61}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "11. USD to BGN", "11. USD to BGN\11. USD to BGN.pyproj", "{C7565A33-406B-4E97-AA1F-F62394FAAFC9}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "12. Currency Converter", "12. Currency Converter\12. Currency Converter.pyproj", "{65E16FB5-E091-42E5-B063-9CED6E6C62AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF86D7ED-8A65-4104-9A3A-53E63536337E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF86D7ED-8A65-4104-9A3A-53E63536337E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{731B4EEB-4DDD-45F9-82B5-94AF63D25918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{731B4EEB-4DDD-45F9-82B5-94AF63D25918}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E1719B9-4726-4255-82FE-40D04BADD352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E1719B9-4726-4255-82FE-40D04BADD352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D0B32EA-BE13-4BDF-9046-980B7B7808E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D0B32EA-BE13-4BDF-9046-980B7B7808E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27744F84-F490-4B8A-B4B5-186D23D916FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27744F84-F490-4B8A-B4B5-186D23D916FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8B6387E-99EE-439D-93CD-C4B733539416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8B6387E-99EE-439D-93CD-C4B733539416}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95E0EDDA-B6DC-467A-BC37-3DD55A974600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95E0EDDA-B6DC-467A-BC37-3DD55A974600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDE9E115-8B11-47DC-983E-4317417E898A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDE9E115-8B11-47DC-983E-4317417E898A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91FFC229-B7BC-4D71-ACA1-DBF51EC9B599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91FFC229-B7BC-4D71-ACA1-DBF51EC9B599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C94DD41-FE80-43F1-8F1F-76CCD794BD61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C94DD41-FE80-43F1-8F1F-76CCD794BD61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7565A33-406B-4E97-AA1F-F62394FAAFC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7565A33-406B-4E97-AA1F-F62394FAAFC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65E16FB5-E091-42E5-B063-9CED6E6C62AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65E16FB5-E091-42E5-B063-9CED6E6C62AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC2E4F10-7A51-4D88-A5C5-32D04EB446A9}
+	EndGlobalSection
+EndGlobal
