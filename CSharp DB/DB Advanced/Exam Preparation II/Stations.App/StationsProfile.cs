@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using AutoMapper;
+using Stations.Models;
+using Stations.DataProcessor.Dto.Import;
 
 namespace Stations.App
 {
@@ -8,6 +10,8 @@ namespace Stations.App
 		// Configure your AutoMapper here if you wish to use it. If not, DO NOT DELETE THIS CLASS
 		public StationsProfile()
 		{
+		    CreateMap<StationDto, Station>();
+		    CreateMap<SeatingClassDto, SeatingClass>();
 		}
 	}
 }

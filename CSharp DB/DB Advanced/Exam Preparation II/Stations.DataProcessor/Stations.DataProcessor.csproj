@@ -14,8 +14,4 @@
     <ProjectReference Include="..\Stations.Models\Stations.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dto\" />
-  </ItemGroup>
-
 </Project>

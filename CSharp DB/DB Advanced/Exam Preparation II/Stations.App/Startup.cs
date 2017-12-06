@@ -14,10 +14,10 @@ namespace Stations.App
 
 			Console.WriteLine("Database Reset.");
 
-			//Mapper.Initialize(cfg => cfg.AddProfile<StationsProfile>());
+			Mapper.Initialize(cfg => cfg.AddProfile<StationsProfile>());
 
-			//ImportEntities(context);
-			//ExportEntities(context);
+			ImportEntities(context);
+			ExportEntities(context);
 		}
 
 		private static void ImportEntities(StationsDbContext context, string baseDir = @"..\Datasets\")

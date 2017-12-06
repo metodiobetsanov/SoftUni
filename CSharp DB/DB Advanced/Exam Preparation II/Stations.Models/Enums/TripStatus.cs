@@ -1,4 +1,5 @@
-﻿namespace Stations.Models
+﻿
+namespace Stations.Models.Enums
 {
     public enum TripStatus
     {

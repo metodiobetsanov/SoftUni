@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Stations.Data.EntityConfiguration;
 using Stations.Models;
 
 namespace Stations.Data
@@ -29,16 +28,30 @@ namespace Stations.Data
         public DbSet<TrainSeat> TrainSeats { get; set; }
         public DbSet<Trip> Trips { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
-        public DbSet<CustomerCard> CustomerCards { get; set; }
+        public DbSet<CustomerCard> Cards { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new SeatingClassConfig());
-            modelBuilder.ApplyConfiguration(new StationConfig());
-            modelBuilder.ApplyConfiguration(new TicketConfig());
-            modelBuilder.ApplyConfiguration(new TrainConfig());
-            modelBuilder.ApplyConfiguration(new TrainSeatConfig());
-            modelBuilder.ApplyConfiguration(new TripConfig());
+            modelBuilder.Entity<Station>()
+                .HasAlternateKey(k => k.Name);
+
+            modelBuilder.Entity<Train>()
+                .HasAlternateKey(k => k.TrainNumber);
+
+            modelBuilder.Entity<SeatingClass>()
+                .HasAlternateKey(k => new { k.Name, k.Abbreviation});
+
+            modelBuilder.Entity<Station>()
+                .HasMany(m => m.TripsTo)
+                .WithOne(o => o.DestinationStation)
+                .HasForeignKey(k => k.DestinationStationId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Station>()
+                .HasMany(m => m.TripsFrom)
+                .WithOne(o => o.OriginStation)
+                .HasForeignKey(k => k.OriginStationId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
