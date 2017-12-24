@@ -1,12 +1,10 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace Stations.Models
+namespace Stations.DataProcessor.Dto.Import
 {
-    public class SeatingClass
+    public class SeatingClassDto
     {
-        public int Id { get; set; }
-
         [Required]
         [MaxLength(30)]
         public string Name { get; set; }
