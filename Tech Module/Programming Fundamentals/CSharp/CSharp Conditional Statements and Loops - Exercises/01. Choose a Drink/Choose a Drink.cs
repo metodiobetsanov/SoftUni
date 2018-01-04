@@ -7,7 +7,7 @@
     {
         public static void Main()
         {
-            var proffesion = Console.ReadLine();
+            var proffesion = Console.ReadLine().ToLower();
 
             if (proffesion == "athlete")
             {
