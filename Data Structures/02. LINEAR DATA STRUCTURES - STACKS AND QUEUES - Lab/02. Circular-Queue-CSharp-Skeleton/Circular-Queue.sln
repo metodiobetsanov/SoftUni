@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoublyLinkedList", "DoublyLinkedList\DoublyLinkedList.csproj", "{2CB50F92-35AF-47E5-BA6F-02446AACD536}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircularQueue", "CircularQueue\CircularQueue.csproj", "{2CB50F92-35AF-47E5-BA6F-02446AACD536}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoublyLinkedList.Tests", "DoublyLinkedList.Tests\DoublyLinkedList.Tests.csproj", "{D852AD35-E7FC-499B-A913-11479BB76674}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircularQueue.Tests", "CircularQueue.Tests\CircularQueue.Tests.csproj", "{D852AD35-E7FC-499B-A913-11479BB76674}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,8 +6,8 @@
     <ProjectGuid>{D852AD35-E7FC-499B-A913-11479BB76674}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DoublyLinkedList.Tests</RootNamespace>
-    <AssemblyName>DoublyLinkedList.Tests</AssemblyName>
+    <RootNamespace>CircularQueue.Tests</RootNamespace>
+    <AssemblyName>CircularQueue.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,16 +50,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTestsDoublyLinkedList.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DoublyLinkedList\DoublyLinkedList.csproj">
-      <Project>{2cb50f92-35af-47e5-ba6f-02446aacd536}</Project>
-      <Name>DoublyLinkedList</Name>
-    </ProjectReference>
+    <Compile Include="UnitTestsCircularQueue.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CircularQueue\CircularQueue.csproj">
+      <Project>{2cb50f92-35af-47e5-ba6f-02446aacd536}</Project>
+      <Name>CircularQueue</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
