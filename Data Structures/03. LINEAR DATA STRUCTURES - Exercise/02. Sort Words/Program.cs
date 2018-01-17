@@ -12,7 +12,7 @@
                 .Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries)
                 .ToList();
 
-            Console.WriteLine(string.Join(" ", list.OrderBy(x => x).ToString()));
+            Console.WriteLine(string.Join(" ", list.OrderBy(x => x)));
         }
     }
 }
