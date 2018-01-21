@@ -41,8 +41,13 @@ public class ArrayStack<T>
     public T[] ToArray()
     {
         T[] array = new T[this.Count];
+        var arrayCounter = 0;
 
-        Array.Copy(this.data, array, this.Count);
+        for (int i = this.Count - 1; i >= 0; i--)
+        {
+            array[arrayCounter] = this.data[i];
+            arrayCounter++;
+        }
 
         return array;
     }

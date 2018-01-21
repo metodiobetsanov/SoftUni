@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basic Trees", "Basic Trees", "{13B13525-599C-4E4C-B20B-75738233E62C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Binary Search Trees", "Binary Search Trees", "{71BEB0F1-9304-4F20-9466-AEF9D35885DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basic Tree", "Basic Tree\Basic Tree.csproj", "{433E0F4F-7B97-4B99-BC26-9B0B3039DB24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{433E0F4F-7B97-4B99-BC26-9B0B3039DB24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{433E0F4F-7B97-4B99-BC26-9B0B3039DB24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{433E0F4F-7B97-4B99-BC26-9B0B3039DB24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{433E0F4F-7B97-4B99-BC26-9B0B3039DB24}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{433E0F4F-7B97-4B99-BC26-9B0B3039DB24} = {13B13525-599C-4E4C-B20B-75738233E62C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00138EBB-17D9-45BE-84F8-96C08EE02DD3}
+	EndGlobalSection
+EndGlobal
