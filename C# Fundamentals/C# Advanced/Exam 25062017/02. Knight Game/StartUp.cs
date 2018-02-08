@@ -27,13 +27,15 @@ class StartUp
                 removed++;
             }
 
+            var attacks = 0;
+
             for (int row = 0; row < boardSize; row++)
             {
                 for (int col = 0; col < boardSize; col++)
                 {
                     if (board[row][col] == 'K')
                     {
-                        var attacks = AttackCounter(row, col, board);
+                        attacks = AttackCounter(row, col, board);
 
                         if (attacks > maxAttacks)
                         {
@@ -74,6 +76,6 @@ class StartUp
 
     static bool IsOnBoard(int row, int col, int boardSize)
     {
-        return row > 0 && row < boardSize && col > 0 && col < boardSize;
+        return row >= 0 && row < boardSize && col >= 0 && col < boardSize;
     }
 }
