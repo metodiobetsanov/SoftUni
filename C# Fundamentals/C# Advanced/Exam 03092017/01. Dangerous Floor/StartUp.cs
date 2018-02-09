@@ -3,283 +3,116 @@ using System.Linq;
 
 public class StartUp
 {
+    static char[][] board;
+
     public static void Main()
     {
-        var board = new char[8, 8];
+        board = new char[8][];
 
-        for (var i = 0; i < 8; i++)
+        for (int row = 0; row < 8; row++)
         {
-            var row = Console.ReadLine()
-                .Split(new[] {","}, StringSplitOptions.RemoveEmptyEntries)
+            board[row] = Console.ReadLine()
+                .Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
                 .Select(char.Parse)
                 .ToArray();
-            for (var j = 0; j < 8; j++) board[i, j] = row[j];
         }
 
-        string moves;
+        string command = string.Empty;
 
-        while ((moves = Console.ReadLine()) != "END")
+        while ((command = Console.ReadLine()) != "END")
         {
-            var piece = moves[0];
-            var currentRow = int.Parse(moves[1].ToString());
-            var currentCol = int.Parse(moves[2].ToString());
-            var destRow = int.Parse(moves[4].ToString());
-            var destCol = int.Parse(moves[5].ToString());
-
-            if (board[currentRow, currentCol] != piece)
+            char figure = command[0];
+            int startRow = int.Parse(command[1].ToString());
+            int startCol = int.Parse(command[2].ToString());
+            int targetRow = int.Parse(command[4].ToString());
+            int targetCol = int.Parse(command[5].ToString());
+            
+            if (!FiureExiste(figure, startRow, startCol))
             {
                 Console.WriteLine("There is no such a piece!");
+                continue;
             }
-            else if (destRow > 7 || destCol > 7)
+
+            if (!IsMoveValid(figure, startRow, startCol, targetRow, targetCol))
+            { 
+                Console.WriteLine("Invalid move!");
+                continue;
+            }
+
+            if (!IsOutOfBoard(targetRow, targetCol))
             {
                 Console.WriteLine("Move go out of board!");
+                continue;
             }
-            else if (!ValidateMoves(board, piece, currentRow, currentCol, destRow, destCol))
-            {
-                Console.WriteLine("Invalid move!");
-            }
+
+            board[targetRow][targetCol] = figure;
+            board[startRow][startCol] = 'x';
             
-            else
-            {
-                board[destRow, destCol] = board[currentRow, currentCol];
-                board[currentRow, currentCol] = 'x';
-            }
         }
     }
 
-    private static bool ValidateMoves(char[,] board, char piece, int currentRow, int currentCol, int destRow,
-        int destCol)
+    private static bool IsOutOfBoard(int targetRow, int targetCol)
     {
-        var moveIsValid = true;
+        bool validRow = targetRow >= 0 && targetRow < 8;
+        bool validCol = targetCol >= 0 && targetCol < 8;
 
-        switch (piece)
-        {
-            case 'K':
-                if (!(destRow - currentRow == 1 || destRow - currentRow == -1) 
-                    && !(destCol - currentCol == 1 || destCol - currentCol == -1))
-                {
-                    return moveIsValid = false;
-                }
-                break;
-
-            case 'R':
-                if (destRow == currentRow)
-                {
-                    if (destCol > currentCol)
-                    {
-                        for (var i = currentCol + 1; i <= destCol; i++)
-                        {
-                            if (board[currentRow, i] != 'x')
-                            {
-                                return moveIsValid = false;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        for (var i = currentCol - 1; i >= destCol; i--)
-                        {
-                            if (board[currentRow, i] != 'x')
-                            {
-                                return moveIsValid = false;
-                            }
-                        }
-                    }
-                }
-                else if (destCol == currentCol)
-                {
-                    if (destRow > currentRow)
-                    {
-                        for (var i = currentRow + 1; i <= destRow; i++)
-                        {
-                            if (board[i, currentCol] != 'x')
-                            {
-                                return moveIsValid = false;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        for (var i = currentRow - 1; i >= destRow; i--)
-                        {
-                            if (board[i, currentCol] != 'x')
-                            {
-                                return moveIsValid = false;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    return moveIsValid = false;
-                }
-                break;
-
-            case 'B':
-                if (destRow < currentRow && destCol < currentCol)
-                {
-                    for (var i = currentRow - 1; i >= destRow; i--)
-                    {
-                        for (var j = currentCol - 1; j >= destCol; j--)
-                        {
-                            if (board[currentRow, i] != 'x')
-                            {
-                                return moveIsValid = false;
-                            }
-                        }
-                    }
-                }
-                else if (destRow < currentRow && destCol > currentCol)
-                {
-                    for (var i = currentRow; i <= destRow; i++)
-                    {
-                        for (var j = currentCol; j >= destCol; j--)
-                        {
-                            if (board[currentRow, i] != 'x')
-                            {
-                                return moveIsValid = false;
-                            }
-                        }
-                    }
-                }
-                else if (destRow > currentRow && destCol > currentCol)
-                {
-                    for (var i = currentRow; i <= destRow; i++)
-                    {
-                        for (var j = currentCol; j <= destCol; j++)
-                        {
-                            if (board[currentRow, i] != 'x')
-                            {
-                                return moveIsValid = false;
-                            }
-                        }
-                    }
-                }
-                else if (destRow > currentRow && destCol < currentCol)
-                {
-                    for (var i = currentRow; i <= destRow; i++)
-                    {
-                        for (var j = currentCol; j >= destCol; j--)
-                        {
-                            if (board[currentRow, i] != 'x')
-                            {
-                                return moveIsValid = false;
-                            }
-                        }
-                    }
-                }
-                break;
-
-            case 'Q':
-                if (destRow == currentRow)
-                {
-                    if (destCol > currentCol)
-                    {
-                        {
-                            for (var i = currentCol + 1; i <= destCol; i++)
-                            {
-                                if (board[currentRow, i] != 'x')
-                                {
-                                    return moveIsValid = false;
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        for (var i = currentCol + 1; i >= destCol; i--)
-                        {
-                            if (board[currentRow, i] != 'x')
-                            {
-                                return moveIsValid = false;
-                            }
-                        }
-                    }
-                }
-                else if (destCol == currentCol)
-                {
-                    if (destRow > currentRow)
-                    {
-                        for (var i = currentRow + 1; i <= destRow; i++)
-                        {
-                            if (board[currentRow, i] != 'x')
-                            {
-                                return moveIsValid = false;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        for (var i = currentRow - 1; i >= destRow; i--)
-                        {
-                            if (board[currentRow, i] != 'x')
-                            {
-                                return moveIsValid = false;
-                            }
-                        }
-                    }
-                }
-                else if (destRow < currentRow && destCol < currentCol)
-                {
-                    for (var i = currentRow - 1; i >= destRow; i--)
-                    {
-                        for (var j = currentCol - 1; j >= destCol; j--)
-                        {
-                            if (board[i, j] != 'x')
-                            {
-                                return moveIsValid = false;
-                            }
-                        }
-                    }
-                }
-                else if (destRow < currentRow && destCol > currentCol)
-                {
-                    for (var i = currentRow + 1; i <= destRow; i++)
-                    {
-                        for (var j = currentCol + 1; j >= destCol; j--)
-                        {
-                            if (board[i, j] != 'x')
-                            {
-                                return moveIsValid = false;
-                            }
-                        }
-                    }
-                }
-                else if (destRow > currentRow && destCol > currentCol)
-                {
-                    for (var i = currentRow + 1; i <= destRow; i++)
-                    {
-                        for (var j = currentCol + 1; j <= destCol; j++)
-                        {
-                            if (board[i, j] != 'x')
-                            {
-                                return moveIsValid = false;
-                            }
-                        }
-                    }
-                }
-                else if (destRow > currentRow && destCol < currentCol)
-                {
-                    for (var i = currentRow + 1; i <= destRow; i++)
-                    {
-                        for (var j = currentCol - 1; j >= destCol; j--)
-                        {
-                            if (board[i, j] != 'x')
-                            {
-                                return moveIsValid = false;
-                            }
-                        }
-                    }
-                }
-                break;
-
-            case 'P':
-                if (destRow > currentRow || destCol != currentCol)
-                    moveIsValid = false;
-                break;
-        }
-
-        return moveIsValid;
+        return validRow && validCol;
     }
-   
+
+    private static bool IsMoveValid(char figure, int startRow, int startCol, int targetRow, int targetCol)
+    {
+        switch (figure)
+        {
+            case 'P':
+                return ValidPawnMove(startRow, startCol, targetRow, targetCol);
+                break;
+            case 'R':
+                return ValidStraightMove(startRow, startCol, targetRow, targetCol);
+                break;
+            case 'B':
+                return ValidDiagonalMove(startRow, startCol, targetRow, targetCol);
+                break;
+            case 'Q':
+                return ValidStraightMove(startRow, startCol, targetRow, targetCol) ||ValidDiagonalMove(startRow, startCol, targetRow, targetCol);
+                break;
+            case 'K':
+                return ValidKingMove(startRow, startCol, targetRow, targetCol);
+                break;
+            default: throw new Exception();
+        }
+    }
+
+    private static bool ValidKingMove(int startRow, int startCol, int targetRow, int targetCol)
+    {
+        bool validRow = Math.Abs(startRow - targetRow) == 1 || Math.Abs(startRow - targetRow) == 0;
+        bool validCol = Math.Abs(startCol - targetCol) == 1 || Math.Abs(startCol - targetCol) == 0;
+
+        return validRow && validCol;
+    }
+
+    private static bool ValidDiagonalMove(int startRow, int startCol, int targetRow, int targetCol)
+    {
+        return Math.Abs(startRow - targetRow) == Math.Abs(startCol - targetCol);
+    }
+
+    private static bool ValidStraightMove(int startRow, int startCol, int targetRow, int targetCol)
+    {
+        bool sameRow = startRow == targetRow;
+        bool sameCol = startCol == targetCol;
+
+        return sameRow || sameCol;
+    }
+
+    private static bool ValidPawnMove(int startRow, int startCol, int targetRow, int targetCol)
+    {
+        bool validRow = startRow - 1 == targetRow;
+        bool validCol = startCol == targetCol;
+
+        return validRow && validCol;
+    }
+
+    private static bool FiureExiste(char figure, int row, int col)
+    {
+        return board[row][col] == figure;
+    }
 }

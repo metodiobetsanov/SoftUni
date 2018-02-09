@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Dangerous Floor", "01. 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Crypto Master", "02. Crypto Master\02. Crypto Master.csproj", "{8EC64CD7-7A37-4B32-8A87-EECB98F31905}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Greedy Times", "03. Greedy Times\03. Greedy Times.csproj", "{A79FC5A7-DA2D-401A-BEC7-054A9FDD92FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. Greedy Times", "03. Greedy Times\03. Greedy Times.csproj", "{A79FC5A7-DA2D-401A-BEC7-054A9FDD92FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. Treasure Map", "04. Treasure Map\04. Treasure Map.csproj", "{414D5FB5-D2A3-4E2F-9971-CE9A43C8B16B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{A79FC5A7-DA2D-401A-BEC7-054A9FDD92FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A79FC5A7-DA2D-401A-BEC7-054A9FDD92FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A79FC5A7-DA2D-401A-BEC7-054A9FDD92FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{414D5FB5-D2A3-4E2F-9971-CE9A43C8B16B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{414D5FB5-D2A3-4E2F-9971-CE9A43C8B16B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{414D5FB5-D2A3-4E2F-9971-CE9A43C8B16B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{414D5FB5-D2A3-4E2F-9971-CE9A43C8B16B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
