@@ -2,11 +2,11 @@
 
 namespace BashSoft
 {
-    class Launcher
+    public class Launcher
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
