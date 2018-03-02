@@ -4,13 +4,13 @@
 
     public class Mine : IMine
     {
-        public Mine(int id, Player playerName, int xCoordinate, int delay, int damage)
+        public Mine(int id, Player player, int xCoordinate, int delay, int damage)
         {
             this.Id = id;
             this.Delay = delay;
             this.Damage = damage;
             this.XCoordinate = xCoordinate;
-            this.Player = playerName;
+            this.Player = player;
         }
 
         public int CompareTo(Mine other)

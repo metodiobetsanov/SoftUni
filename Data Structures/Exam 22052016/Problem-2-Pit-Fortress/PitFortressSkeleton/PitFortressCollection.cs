@@ -12,22 +12,22 @@ public class PitFortressCollection : IPitFortress
 
     private Dictionary<string, Player> players;
     private SortedSet<Player> playerScores;
-    private OrderedDictionary<int, OrderedBag<Minion>> minions;
+    private OrderedDictionary<int, SortedSet<Minion>> minions;
     private SortedSet<Mine> mines;
 
     public PitFortressCollection()
     {
         this.players = new Dictionary<string, Player>();
         this.playerScores = new SortedSet<Player>();
-        this.minions = new OrderedDictionary<int, OrderedBag<Minion>>();
+        this.minions = new OrderedDictionary<int, SortedSet<Minion>>();
         this.mines = new SortedSet<Mine>();
     }
 
-    public int PlayersCount { get { return this.players.Count;  } }
+    public int PlayersCount => this.players.Count;
 
-    public int MinionsCount { get { return this.minions.Sum(x => x.Value.Count); } }
+    public int MinionsCount => this.minions.Sum(x => x.Value.Count);
      
-    public int MinesCount { get { return this.mines.Count; } }
+    public int MinesCount => this.mines.Count;
 
     public void AddPlayer(string name, int mineRadius)
     {
@@ -57,7 +57,7 @@ public class PitFortressCollection : IPitFortress
 
         if (!this.minions.ContainsKey(xCoordinate))
         {
-            this.minions.Add(xCoordinate, new OrderedBag<Minion>());
+            this.minions.Add(xCoordinate, new SortedSet<Minion>());
         }
 
         this.minions[xCoordinate].Add(minion);
@@ -87,6 +87,7 @@ public class PitFortressCollection : IPitFortress
 
         var player = this.players[playerName];
         Mine mine = new Mine(mineId++, player, xCoordinate, delay, damage);
+        this.mines.Add(mine);
     }
 
     public IEnumerable<Minion> ReportMinions()
@@ -158,7 +159,7 @@ public class PitFortressCollection : IPitFortress
                     this.playerScores.Remove(player);
                     player.Score++;                    
                     this.playerScores.Add(player);
-                    this.minions[mine.XCoordinate].Remove(minion);
+                    this.minions[minion.XCoordinate].Remove(minion);
                 }
             }
         }
