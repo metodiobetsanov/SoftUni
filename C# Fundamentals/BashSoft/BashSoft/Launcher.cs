@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace BashSoft
 {
@@ -6,7 +7,7 @@ namespace BashSoft
     {
         static void Main()
         {
-            
+            IOManager.TraverseDirectory(20);
         }
     }
 }
