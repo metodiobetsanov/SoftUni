@@ -4,7 +4,8 @@ public class Invader : IInvader
 {
     public Invader(int damage, int distance)
     {
-        throw new NotImplementedException();
+        this.Damage = damage;
+        this.Distance = distance;
     }
     
     public int Damage { get; set; }
@@ -12,6 +13,13 @@ public class Invader : IInvader
 
     public int CompareTo(IInvader other)
     {
-        throw new NotImplementedException();
+        int cmp = this.Distance.CompareTo(other.Distance);
+
+        if (cmp == 0)
+        {
+            cmp = this.Damage.CompareTo(other.Damage);
+        }
+
+        return cmp;
     }
 }
