@@ -49,7 +49,6 @@ public class Computer : IComputer
 
     private void SkipTurn()
     {
-        invadersByPriority.Clear();
         var currentInvader = invadersByInsert.First;
 
         while (currentInvader != null)
@@ -61,10 +60,10 @@ public class Computer : IComputer
                 var tmp = currentInvader;
                 currentInvader = currentInvader.Next;
                 invadersByInsert.Remove(tmp);
+                invadersByPriority.Remove(tmp.Value);
             }
             else
             {
-                invadersByPriority.Add(currentInvader.Value);
                 currentInvader = currentInvader.Next;
             }
         }
@@ -78,10 +77,15 @@ public class Computer : IComputer
 
     public void DestroyHighestPriorityTargets(int count)
     {
+        if (invadersByPriority.Count == 0)
+        {
+            return;
+        }
+
         var counter = 0;
         while (counter < count)
         {
-            var currentInvaser = invadersByPriority.RemoveFirst();
+            Invader currentInvaser = invadersByPriority.RemoveFirst();
             invadersByInsert.Remove(currentInvaser);
             counter++;
         }
