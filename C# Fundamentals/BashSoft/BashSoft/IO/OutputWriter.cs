@@ -1,6 +1,6 @@
 ﻿
-using System;
-using System.Collections.Generic;
+    using System;
+    using System.Collections.Generic;
 
 public static class OutputWriter
 {
@@ -32,4 +32,3 @@ public static class OutputWriter
         OutputWriter.WriteMessageOnNewLine(string.Format($"{student.Key} - {string.Join(", ", student.Value)}"));
     }
 }
-

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 
 public static class Tester
@@ -22,7 +21,7 @@ public static class Tester
             PrintOutput(mismatches, hasMismatch, mismatchPath);
             OutputWriter.WriteMessageOnNewLine("Files read!");
         }
-        catch(FileNotFoundException)
+        catch (FileNotFoundException)
         {
             OutputWriter.WriteMessageOnNewLine(ExceptionMessages.invalidPath);
         }
@@ -100,4 +99,3 @@ public static class Tester
         return finalPath;
     }
 }
-
