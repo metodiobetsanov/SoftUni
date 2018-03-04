@@ -1,4 +1,7 @@
-﻿public class Submission
+﻿using System;
+using System.CodeDom;
+
+public class Submission : IComparable
 {
     public int Id { get; set; }
 
@@ -17,5 +20,12 @@
         this.Type = type;
         this.ContestId = contestId;
         this.UserId = userId;
+    }
+
+    public int CompareTo(object obj)
+    {
+        Submission other = (Submission) obj;
+
+        return this.Id.CompareTo(other.Id);
     }
 }
