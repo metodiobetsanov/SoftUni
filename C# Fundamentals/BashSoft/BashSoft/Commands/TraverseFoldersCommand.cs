@@ -1,28 +1,26 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OpenFileCommand.cs" company="MetodiObetsanov@SoftUni">
+// <copyright file="TraverseFoldersCommand.cs" company="MetodiObetsanov@SoftUni">
 //   Copyright (c) MetodiObetsanov@SoftUni. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the OpenFileCommand type.
+//   Defines the TraverseFoldersCommand type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace BashSoft.Commands
 {
-    using System.Diagnostics;
     using Exceptions;
     using IO;
     using Judge;
     using Repository;
-    using Static;
 
     /// <summary>
-    /// The open file command.
+    /// The traverse folders command.
     /// </summary>
-    public class OpenFileCommand : Command
+    public class TraverseFoldersCommand : Command
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpenFileCommand"/> class.
+        /// Initializes a new instance of the <see cref="TraverseFoldersCommand"/> class.
         /// </summary>
         /// <param name="input">
         /// The input.
@@ -39,8 +37,7 @@ namespace BashSoft.Commands
         /// <param name="inputOutputManager">
         /// The input output manager.
         /// </param>
-        public OpenFileCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) 
-            : base(input, data,judge, repository, inputOutputManager)
+        public TraverseFoldersCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
         {
         }
 
@@ -55,17 +52,32 @@ namespace BashSoft.Commands
         /// <summary>
         /// The command execution.
         /// </summary>
+        /// <exception cref="UnableToParseNumberException">Throws an exception if the item can't be parsed to int
+        /// </exception>
         /// <exception cref="InvalidCommandException">Throws an exception if there is no such command
         /// </exception>
         private void CommandExecution()
         {
-            if (this.Data.Length != 2)
+            if (this.Data.Length == 1)
+            {
+                this.InputOutputManager.TraverseDirectory(0);
+            }
+            else if (this.Data.Length == 2)
+            {
+                int depth;
+                if (int.TryParse(this.Data[1], out depth))
+                {
+                    this.InputOutputManager.TraverseDirectory(depth);
+                }
+                else
+                {
+                    throw new UnableToParseNumberException(this.Input);
+                }
+            }
+            else
             {
                 throw new InvalidCommandException(this.Input);
             }
-
-            string fileName = this.Data[1];
-            Process.Start(SessionData.CurrentPath + "\\" + fileName);
         }
     }
 }

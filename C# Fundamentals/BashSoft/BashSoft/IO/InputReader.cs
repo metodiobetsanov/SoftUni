@@ -1,30 +1,61 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="InputReader.cs" company="MetodiObetsanov@SoftUni">
+//   Copyright (c) MetodiObetsanov@SoftUni. All rights reserved.
+// </copyright>
+// <summary>
+//   Defines the InputReader type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
-public  class InputReader
+namespace BashSoft.IO
 {
-    private const string endCommand = "quit";
-    private CommandInterpreter interpreter;
+    using System;
+    using Static;
 
-    public InputReader(CommandInterpreter commandInterpreter)
+    /// <summary>
+    /// InputReader Class
+    /// </summary>
+    public class InputReader
     {
-        this.interpreter = commandInterpreter;
-    }
+        /// <summary>
+        /// Termination command.
+        /// </summary>
+        private const string EndCommand = "quit";
 
-    public  void StartReadingCommands()
-    {     
-        while (true)
+        /// <summary>
+        /// CommandInterpreter instance.
+        /// </summary>
+        private CommandInterpreter interpreter;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InputReader"/> class.
+        /// </summary>
+        /// <param name="commandInterpreter">
+        /// The command interpreter.
+        /// </param>
+        public InputReader(CommandInterpreter commandInterpreter)
         {
-            OutputWriter.WriteMessage($"{SessionData.currentPath}>");
-            string input = Console.ReadLine();
-            input = input.Trim();
+            this.interpreter = commandInterpreter;
+        }
 
-            if (input == endCommand)
+        /// <summary>
+        /// Start reading commands and pass it to the command interpreter.
+        /// </summary>
+        public void StartReadingCommands()
+        {     
+            while (true)
             {
-                break;
+                OutputWriter.WriteMessage($"{SessionData.CurrentPath}>");
+                string input = Console.ReadLine();
+                input = input.Trim();
+
+                if (input == EndCommand)
+                {
+                    break;
+                }
+
+                this.interpreter.InterpredCommand(input);
             }
-
-            this.interpreter.InterpredCommand(input);
-
         }
     }
 }

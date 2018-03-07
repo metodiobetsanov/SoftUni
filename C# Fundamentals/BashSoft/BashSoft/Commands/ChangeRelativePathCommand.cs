@@ -1,28 +1,26 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OpenFileCommand.cs" company="MetodiObetsanov@SoftUni">
+// <copyright file="ChangeRelativePathCommand.cs" company="MetodiObetsanov@SoftUni">
 //   Copyright (c) MetodiObetsanov@SoftUni. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the OpenFileCommand type.
+//   Defines the ChangeRelativePathCommand type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace BashSoft.Commands
 {
-    using System.Diagnostics;
     using Exceptions;
     using IO;
     using Judge;
     using Repository;
-    using Static;
 
     /// <summary>
-    /// The open file command.
+    /// The change relative path command.
     /// </summary>
-    public class OpenFileCommand : Command
+    public class ChangeRelativePathCommand : Command
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpenFileCommand"/> class.
+        /// Initializes a new instance of the <see cref="ChangeRelativePathCommand"/> class.
         /// </summary>
         /// <param name="input">
         /// The input.
@@ -39,8 +37,7 @@ namespace BashSoft.Commands
         /// <param name="inputOutputManager">
         /// The input output manager.
         /// </param>
-        public OpenFileCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) 
-            : base(input, data,judge, repository, inputOutputManager)
+        public ChangeRelativePathCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
         {
         }
 
@@ -64,8 +61,8 @@ namespace BashSoft.Commands
                 throw new InvalidCommandException(this.Input);
             }
 
-            string fileName = this.Data[1];
-            Process.Start(SessionData.CurrentPath + "\\" + fileName);
+            string relPath = this.Data[1];
+            this.InputOutputManager.ChangeCurrentDirectoryRelative(relPath);
         }
     }
 }

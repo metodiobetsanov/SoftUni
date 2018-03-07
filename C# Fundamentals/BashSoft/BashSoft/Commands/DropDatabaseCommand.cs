@@ -1,28 +1,26 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OpenFileCommand.cs" company="MetodiObetsanov@SoftUni">
+// <copyright file="DropDatabaseCommand.cs" company="MetodiObetsanov@SoftUni">
 //   Copyright (c) MetodiObetsanov@SoftUni. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the OpenFileCommand type.
+//   Defines the DropDatabaseCommand type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace BashSoft.Commands
 {
-    using System.Diagnostics;
     using Exceptions;
     using IO;
     using Judge;
     using Repository;
-    using Static;
 
     /// <summary>
-    /// The open file command.
+    /// The drop database command.
     /// </summary>
-    public class OpenFileCommand : Command
+    public class DropDatabaseCommand : Command
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpenFileCommand"/> class.
+        /// Initializes a new instance of the <see cref="DropDatabaseCommand"/> class.
         /// </summary>
         /// <param name="input">
         /// The input.
@@ -39,8 +37,7 @@ namespace BashSoft.Commands
         /// <param name="inputOutputManager">
         /// The input output manager.
         /// </param>
-        public OpenFileCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) 
-            : base(input, data,judge, repository, inputOutputManager)
+        public DropDatabaseCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
         {
         }
 
@@ -49,7 +46,7 @@ namespace BashSoft.Commands
         /// </summary>
         public override void Execute()
         {
-            this.CommandExecution();
+            CommandExecution();
         }
 
         /// <summary>
@@ -59,13 +56,13 @@ namespace BashSoft.Commands
         /// </exception>
         private void CommandExecution()
         {
-            if (this.Data.Length != 2)
+            if (this.Data.Length != 1)
             {
                 throw new InvalidCommandException(this.Input);
             }
 
-            string fileName = this.Data[1];
-            Process.Start(SessionData.CurrentPath + "\\" + fileName);
+            this.Repository.UnloadData();
+            OutputWriter.WriteMessageOnNewLine("Database dropped!");
         }
     }
 }

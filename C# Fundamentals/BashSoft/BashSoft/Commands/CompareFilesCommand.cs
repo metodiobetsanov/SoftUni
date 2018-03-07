@@ -1,28 +1,26 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OpenFileCommand.cs" company="MetodiObetsanov@SoftUni">
+// <copyright file="CompareFilesCommand.cs" company="MetodiObetsanov@SoftUni">
 //   Copyright (c) MetodiObetsanov@SoftUni. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the OpenFileCommand type.
+//   The compare files command.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace BashSoft.Commands
 {
-    using System.Diagnostics;
     using Exceptions;
     using IO;
     using Judge;
     using Repository;
-    using Static;
 
     /// <summary>
-    /// The open file command.
+    /// The compare files command.
     /// </summary>
-    public class OpenFileCommand : Command
+    public class CompareFilesCommand : Command
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpenFileCommand"/> class.
+        /// Initializes a new instance of the <see cref="CompareFilesCommand"/> class.
         /// </summary>
         /// <param name="input">
         /// The input.
@@ -39,8 +37,7 @@ namespace BashSoft.Commands
         /// <param name="inputOutputManager">
         /// The input output manager.
         /// </param>
-        public OpenFileCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) 
-            : base(input, data,judge, repository, inputOutputManager)
+        public CompareFilesCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
         {
         }
 
@@ -55,17 +52,19 @@ namespace BashSoft.Commands
         /// <summary>
         /// The command execution.
         /// </summary>
-        /// <exception cref="InvalidCommandException">Throws an exception if there is no such command
+        /// <exception cref="InvalidCommandException">
         /// </exception>
         private void CommandExecution()
         {
-            if (this.Data.Length != 2)
+            if (this.Data.Length != 3)
             {
                 throw new InvalidCommandException(this.Input);
             }
 
-            string fileName = this.Data[1];
-            Process.Start(SessionData.CurrentPath + "\\" + fileName);
+            string firstPath = this.Data[1];
+            string secondPath = this.Data[2];
+
+            this.Judge.CompareContent(firstPath, secondPath);
         }
     }
 }

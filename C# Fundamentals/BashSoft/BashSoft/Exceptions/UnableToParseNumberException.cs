@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="InvalidFileNameException.cs" company="MetodiObetsanov@SoftUni">
+// <copyright file="UnableToParseNumberException.cs" company="MetodiObetsanov@SoftUni">
 //   Copyright (c) MetodiObetsanov@SoftUni. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the InvalidFileNameException type.
+//   Defines the UnableToParseNumberException type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -12,30 +12,30 @@ namespace BashSoft.Exceptions
     using System;
 
     /// <summary>
-    /// The invalid file name exception.
+    /// The unable to parse number exception.
     /// </summary>
-    public class InvalidFileNameException : Exception
+    public class UnableToParseNumberException : Exception
     {
         /// <summary>
         /// Exception message.
         /// </summary>
-        private const string ForbiddenSymbolsContainedInName = "The given name contains symbols that are not allowed to be used in names of files and folders.";
+        private const string UnableToParseNumber = "The sequence you've written is not a valid number.";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InvalidFileNameException"/> class.
+        /// Initializes a new instance of the <see cref="UnableToParseNumberException"/> class.
         /// </summary>
-        public InvalidFileNameException()
-            : base(ForbiddenSymbolsContainedInName)
+        public UnableToParseNumberException()
+            : base(UnableToParseNumber)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InvalidFileNameException"/> class.
+        /// Initializes a new instance of the <see cref="UnableToParseNumberException"/> class.
         /// </summary>
         /// <param name="message">
         /// The message.
         /// </param>
-        public InvalidFileNameException(string message)
+        public UnableToParseNumberException(string message)
             : base(message)
         {
         }

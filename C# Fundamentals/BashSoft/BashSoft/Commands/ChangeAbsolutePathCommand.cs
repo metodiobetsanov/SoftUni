@@ -1,28 +1,26 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OpenFileCommand.cs" company="MetodiObetsanov@SoftUni">
+// <copyright file="ChangeAbsolutePathCommand.cs" company="MetodiObetsanov@SoftUni">
 //   Copyright (c) MetodiObetsanov@SoftUni. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines the OpenFileCommand type.
+//   Defines the ChangeAbsolutePathCommand type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace BashSoft.Commands
 {
-    using System.Diagnostics;
     using Exceptions;
     using IO;
     using Judge;
     using Repository;
-    using Static;
 
     /// <summary>
-    /// The open file command.
+    /// The change absolute path command.
     /// </summary>
-    public class OpenFileCommand : Command
+    public class ChangeAbsolutePathCommand : Command
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpenFileCommand"/> class.
+        /// Initializes a new instance of the <see cref="ChangeAbsolutePathCommand"/> class.
         /// </summary>
         /// <param name="input">
         /// The input.
@@ -39,13 +37,12 @@ namespace BashSoft.Commands
         /// <param name="inputOutputManager">
         /// The input output manager.
         /// </param>
-        public OpenFileCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) 
-            : base(input, data,judge, repository, inputOutputManager)
+        public ChangeAbsolutePathCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
         {
         }
 
         /// <summary>
-        /// The execute.
+        /// Execute method.
         /// </summary>
         public override void Execute()
         {
@@ -55,7 +52,7 @@ namespace BashSoft.Commands
         /// <summary>
         /// The command execution.
         /// </summary>
-        /// <exception cref="InvalidCommandException">Throws an exception if there is no such command
+        /// <exception cref="InvalidCommandException">Throws an exception if the command is not valid
         /// </exception>
         private void CommandExecution()
         {
@@ -64,8 +61,8 @@ namespace BashSoft.Commands
                 throw new InvalidCommandException(this.Input);
             }
 
-            string fileName = this.Data[1];
-            Process.Start(SessionData.CurrentPath + "\\" + fileName);
+            string absPath = this.Data[1];
+            this.InputOutputManager.ChangeCurrentDirectoryAbsolute(absPath);
         }
     }
 }
