@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 
-public static class Tester
+public class Tester
 {
-    public static void CompareContent(string userOutputPath, string expectedOutputPath)
+    public void CompareContent(string userOutputPath, string expectedOutputPath)
     {
         OutputWriter.WriteMessageOnNewLine("Reading files...");
 
@@ -21,13 +21,13 @@ public static class Tester
             PrintOutput(mismatches, hasMismatch, mismatchPath);
             OutputWriter.WriteMessageOnNewLine("Files read!");
         }
-        catch (FileNotFoundException)
+        catch (IOException ioe)
         {
-            OutputWriter.WriteMessageOnNewLine(ExceptionMessages.invalidPath);
+            OutputWriter.DisplayException(ioe.Message);
         }
     }
 
-    private static string[] GetLineWithPossibleMismatches(string[] actualOutputLines, string[] expectedOutputLines, out bool hasMismatch)
+    private string[] GetLineWithPossibleMismatches(string[] actualOutputLines, string[] expectedOutputLines, out bool hasMismatch)
     {
         hasMismatch = false;
         string output = string.Empty;
@@ -66,7 +66,7 @@ public static class Tester
         return mismatches;
     }
 
-    private static void PrintOutput(string[] mismatches, bool hasMismatch, string mismatchPath)
+    private void PrintOutput(string[] mismatches, bool hasMismatch, string mismatchPath)
     {
         if (hasMismatch)
         {
@@ -75,14 +75,13 @@ public static class Tester
                 OutputWriter.WriteMessageOnNewLine(line);
             }
 
-            try
+            if (!Directory.Exists(mismatchPath))
             {
-                File.WriteAllLines(mismatchPath, mismatches);
+                throw new DirectoryNotFoundException(ExceptionMessages.invalidPath);
             }
-            catch (DirectoryNotFoundException)
-            {
-                OutputWriter.DisplayException(ExceptionMessages.invalidPath);
-            }
+            
+            File.WriteAllLines(mismatchPath, mismatches);
+            
             return;
         }
         else
@@ -91,7 +90,7 @@ public static class Tester
         }
     }
 
-    private static string GetMismatchPath(string expectedOutputPath)
+    private string GetMismatchPath(string expectedOutputPath)
     {
         int indexOf = expectedOutputPath.LastIndexOf('\\');
         string directoryPath = expectedOutputPath.Substring(0, indexOf);

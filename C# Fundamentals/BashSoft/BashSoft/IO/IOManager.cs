@@ -3,9 +3,9 @@ using System.IO;
 using System.Collections.Generic;
 using System;
 
-public static class IOManager
+public class IOManager
 {
-    public static void TraverseDirectory(int depth)
+    public void TraverseDirectory(int depth)
     {
         OutputWriter.WriteEmptyLine();
         int initialIdentation = SessionData.currentPath.Split('\\').Length;
@@ -44,7 +44,7 @@ public static class IOManager
         }
     }
 
-    public static void ChangeCurrentDirectoryRelative(string relativePath)
+    public void ChangeCurrentDirectoryRelative(string relativePath)
     {
         if (relativePath == "..")
         {
@@ -57,7 +57,7 @@ public static class IOManager
             }
             catch (ArgumentOutOfRangeException)
             {
-                OutputWriter.DisplayException(ExceptionMessages.UnableToGoHigherInPartitionHierarchy);
+                throw new ArgumentOutOfRangeException("IndexOfLastSlash", ExceptionMessages.InvalidDestination);
             }
         }
         else
@@ -68,18 +68,17 @@ public static class IOManager
         }
     }
 
-    public static void ChangeCurrentDirectoryAbsolute(string currentPath)
+    public void ChangeCurrentDirectoryAbsolute(string currentPath)
     {
         if (!Directory.Exists(currentPath))
         {
-            OutputWriter.DisplayException(ExceptionMessages.invalidPath);
-            return;
+            throw new InvalidPathException();
         }
 
         SessionData.currentPath = currentPath;
     }
 
-    public static void CreateDirectoryInCurrentFolder(string name)
+    public void CreateDirectoryInCurrentFolder(string name)
     {
         string path = $"{SessionData.currentPath}\\{name}";
 
@@ -89,7 +88,7 @@ public static class IOManager
         }
         catch (ArgumentException)
         {
-            OutputWriter.WriteMessageOnNewLine(ExceptionMessages.ForbiddenSymbolsContainedInName);
+            throw new InvalidFileNameException();
         }
     }
 

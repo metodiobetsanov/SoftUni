@@ -1,10 +1,16 @@
 ﻿using System;
 
-public static class InputReader
+public  class InputReader
 {
     private const string endCommand = "quit";
+    private CommandInterpreter interpreter;
 
-    public static void StartReadingCommands()
+    public InputReader(CommandInterpreter commandInterpreter)
+    {
+        this.interpreter = commandInterpreter;
+    }
+
+    public  void StartReadingCommands()
     {     
         while (true)
         {
@@ -17,7 +23,7 @@ public static class InputReader
                 break;
             }
 
-            CommandInterpreter.InterpredCommand(input);
+            this.interpreter.InterpredCommand(input);
 
         }
     }
