@@ -1,22 +1,11 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="Launcher.cs" company="MetodiObetsanov@SoftUni">
-// Copyright (c) MetodiObetsanov@SoftUni. All rights reserved.
-// </copyright>
-//-----------------------------------------------------------------------
-namespace BashSoft
+﻿namespace BashSoft
 {
     using IO;
     using Judge;
     using Repository;
 
-    /// <summary>
-    /// StartUp class of BashSoft
-    /// </summary>
     public class Launcher
     {
-        /// <summary>
-        /// Main method of BashSoft, initializing the structure
-        /// </summary>
         public static void Main()
         {
             var tester = new Tester();

@@ -17,7 +17,7 @@ public class Invader : IInvader
 
         if (cmp == 0)
         {
-            cmp = this.Damage.CompareTo(other.Damage);
+            cmp = other.Damage.CompareTo(this.Damage);
         }
 
         return cmp;

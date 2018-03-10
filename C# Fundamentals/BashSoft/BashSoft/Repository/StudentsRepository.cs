@@ -1,75 +1,32 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="StudentsRepository.cs" company="MetodiObetsanov@SoftUni">
-//   Copyright (c) MetodiObetsanov@SoftUni. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines the StudentsRepository type.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-namespace BashSoft.Repository
+﻿namespace BashSoft.Repository
 {
+    using BashSoft.IO;
+    using BashSoft.Models;
+    using BashSoft.Static;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Text.RegularExpressions;
-    using BashSoft.IO;
-    using BashSoft.Models;
-    using BashSoft.Static;
 
-    /// <summary>
-    /// The students repository.
-    /// </summary>
     public class StudentsRepository
     {
-        /// <summary>
-        /// Bool variable, used to check if data has been loaded.
-        /// </summary>
         private bool isDataInitialized;
 
-        /// <summary>
-        /// The courses collection.
-        /// </summary>
         private Dictionary<string, Course> courses;
 
-        /// <summary>
-        /// The students collection.
-        /// </summary>
         private Dictionary<string, Student> students;
 
-        /// <summary>
-        /// Instance of the filter class.
-        /// </summary>
         private RepositoryFilter filter;
 
-        /// <summary>
-        /// Instance of the sorter class.
-        /// </summary>
         private RepositorySorter sorter;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="StudentsRepository"/> class.
-        /// </summary>
-        /// <param name="repositoryFilter">
-        /// Initializes a instance of the filter.
-        /// </param>
-        /// <param name="repositorySorter">
-        /// Initializes a instance of the sorter.
-        /// </param>
         public StudentsRepository(RepositoryFilter repositoryFilter, RepositorySorter repositorySorter)
         {
             this.filter = repositoryFilter;
             this.sorter = repositorySorter;
         }
 
-        /// <summary>
-        /// Initializes a new instances of courses and students and calls for the ReadData method
-        /// </summary>
-        /// <param name="fileName">
-        /// Gives the path to the file to be read. 
-        /// </param>
-        /// <exception cref="ArgumentException">Throws and exception if the data has been read.
-        /// </exception>
         public void LoadData(string fileName)
         {
             if (this.isDataInitialized)
@@ -84,9 +41,6 @@ namespace BashSoft.Repository
             this.ReadData(fileName);
         }
 
-        /// <summary>
-        /// Set the collections to null
-        /// </summary>
         public void UnloadData()
         {
             if (!this.isDataInitialized)
@@ -101,16 +55,6 @@ namespace BashSoft.Repository
             this.isDataInitialized = false;
         }
 
-
-        /// <summary>
-        /// Get students scores from course.
-        /// </summary>
-        /// <param name="courseName">
-        /// The course name.
-        /// </param>
-        /// <param name="username">
-        /// The username.
-        /// </param>
         public void GetStudentsScoresFromCourse(string courseName, string username)
         {
             if (this.IsQueryForStudentPossiblе(courseName, username))
@@ -119,12 +63,6 @@ namespace BashSoft.Repository
             }
         }
 
-        /// <summary>
-        /// Get all students from course.
-        /// </summary>
-        /// <param name="courseName">
-        /// The course name.
-        /// </param>
         public void GetAllStudentsFromCourse(string courseName)
         {
             if (this.IsQueryForCoursePossible(courseName))
@@ -137,18 +75,6 @@ namespace BashSoft.Repository
             }
         }
 
-        /// <summary>
-        /// Filter method
-        /// </summary>
-        /// <param name="courseName">
-        /// The course name.
-        /// </param>
-        /// <param name="givenFilter">
-        /// The given filter.
-        /// </param>
-        /// <param name="studentsToTake">
-        /// The students to take.
-        /// </param>
         public void FilterAndTake(string courseName, string givenFilter, int? studentsToTake = null)
         {
             if (this.IsQueryForCoursePossible(courseName))
@@ -166,18 +92,6 @@ namespace BashSoft.Repository
             }
         }
 
-        /// <summary>
-        /// Sort method.
-        /// </summary>
-        /// <param name="courseName">
-        /// The course name.
-        /// </param>
-        /// <param name="comparison">
-        /// The comparison.
-        /// </param>
-        /// <param name="studentsToTake">
-        /// The students to take.
-        /// </param>
         public void OrderAndTake(string courseName, string comparison, int? studentsToTake = null)
         {
             if (this.IsQueryForCoursePossible(courseName))
@@ -195,13 +109,6 @@ namespace BashSoft.Repository
             }
         }
 
-        /// <summary>
-        /// This method reads the data, from the file, match it to a RegEx pattern and if mathced
-        /// fill the collections.
-        /// </summary>
-        /// <param name="fileName">
-        /// Gives the path to the file to be read.
-        /// </param>
         private void ReadData(string fileName)
         {
             string pattern = @"([A-Z][a-zA-Z#\++]*_[A-Z][a-z]{2}_\d{4})\s+([A-Za-z]+\d{2}_\d{2,4})\s([\s0-9]+)";
@@ -226,7 +133,6 @@ namespace BashSoft.Repository
                             int[] scores = scoresStr.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                                 .Select(int.Parse)
                                 .ToArray();
-
 
                             if (scores.Any(x => x > 100 || x < 0))
                             {
@@ -274,15 +180,6 @@ namespace BashSoft.Repository
             }
         }
 
-        /// <summary>
-        /// Check if the query for course is possible.
-        /// </summary>
-        /// <param name="courseName">
-        /// The course name.
-        /// </param>
-        /// <returns>
-        /// <see cref="bool"/>
-        /// </returns>
         private bool IsQueryForCoursePossible(string courseName)
         {
             if (this.isDataInitialized)
@@ -304,18 +201,6 @@ namespace BashSoft.Repository
             return false;
         }
 
-        /// <summary>
-        /// Check if the query for student is possible.
-        /// </summary>
-        /// <param name="courseName">
-        /// The course name.
-        /// </param>
-        /// <param name="studentUserName">
-        /// The student user name.
-        /// </param>
-        /// <returns>
-        /// Returns true/false<see cref="bool"/>.
-        /// </returns>
         private bool IsQueryForStudentPossiblе(string courseName, string studentUserName)
         {
             if (this.IsQueryForCoursePossible(courseName) && this.courses[courseName].StudentsByName.ContainsKey(studentUserName))
@@ -331,4 +216,3 @@ namespace BashSoft.Repository
         }
     }
 }
-

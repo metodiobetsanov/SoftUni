@@ -1,33 +1,12 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Tester.cs" company="MetodiObetsanov@SoftUni">
-//   Copyright (c) MetodiObetsanov@SoftUni. All rights reserved.
-// </copyright>
-// <summary>
-//   Tester class, used to compare two files
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace BashSoft.Judge
+﻿namespace BashSoft.Judge
 {
-    using System;
-    using System.IO;
     using IO;
     using Static;
+    using System;
+    using System.IO;
 
-    /// <summary>
-    /// Tester class, used to compare two files
-    /// </summary>
     public class Tester
     {
-        /// <summary>
-        /// Compare two files, and prints mismatches
-        /// </summary>
-        /// <param name="userOutputPath">
-        /// The user output path.
-        /// </param>
-        /// <param name="expectedOutputPath">
-        /// The expected output path.
-        /// </param>
         public void CompareContent(string userOutputPath, string expectedOutputPath)
         {
             OutputWriter.WriteMessageOnNewLine("Reading files...");
@@ -50,23 +29,6 @@ namespace BashSoft.Judge
             }
         }
 
-        /// <summary>
-        /// The get line with possible mismatches.
-        /// </summary>
-        /// <param name="actualOutputLines">
-        /// The actual output lines.
-        /// </param>
-        /// <param name="expectedOutputLines">
-        /// The expected output lines.
-        /// </param>
-        /// <param name="hasMismatch">
-        /// The has mismatch.
-        /// </param>
-        /// <returns>
-        /// Return array of possible mismatches<see>
-        ///         <cref>string[]</cref>
-        ///     </see>
-        /// </returns>
         private string[] GetLineWithPossibleMismatches(string[] actualOutputLines, string[] expectedOutputLines, out bool hasMismatch)
         {
             hasMismatch = false;
@@ -106,20 +68,6 @@ namespace BashSoft.Judge
             return mismatches;
         }
 
-        /// <summary>
-        /// The print output.
-        /// </summary>
-        /// <param name="mismatches">
-        /// The mismatches.
-        /// </param>
-        /// <param name="hasMismatch">
-        /// The has mismatch.
-        /// </param>
-        /// <param name="mismatchPath">
-        /// The mismatch path.
-        /// </param>
-        /// <exception cref="DirectoryNotFoundException">Throw an exception if there is no such directory
-        /// </exception>
         private void PrintOutput(string[] mismatches, bool hasMismatch, string mismatchPath)
         {
             if (hasMismatch)
@@ -133,9 +81,9 @@ namespace BashSoft.Judge
                 {
                     throw new DirectoryNotFoundException(ExceptionMessages.InvalidPath);
                 }
-            
+
                 File.WriteAllLines(mismatchPath, mismatches);
-            
+
                 return;
             }
             else
@@ -144,15 +92,6 @@ namespace BashSoft.Judge
             }
         }
 
-        /// <summary>
-        /// The get mismatch path.
-        /// </summary>
-        /// <param name="expectedOutputPath">
-        /// The expected output path.
-        /// </param>
-        /// <returns>
-        /// Returns the full path of the file<see cref="string"/>.
-        /// </returns>
         private string GetMismatchPath(string expectedOutputPath)
         {
             int indexOf = expectedOutputPath.LastIndexOf('\\');

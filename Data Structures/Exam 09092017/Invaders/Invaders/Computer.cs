@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using Wintellect.PowerCollections;
+using System.Linq;
 
 public class Computer : IComputer
 {
     private int energy;
-    private LinkedList<Invader> invadersByInsert;
-    private OrderedBag<Invader> invadersByPriority;
+
+    private int steps;
+
+    private LinkedList<Invader> byInsertion;
+    private Dictionary<int, List<LinkedListNode<Invader>>> byDistance;
 
     public Computer(int energy)
     {
+        this.steps = 0;
         this.Energy = energy;
-        this.invadersByInsert = new LinkedList<Invader>();
-        this.invadersByPriority = new OrderedBag<Invader>();
+        this.byInsertion = new LinkedList<Invader>();
+        this.byDistance = new Dictionary<int, List<LinkedListNode<Invader>>>();
     }
 
     public int Energy
@@ -41,79 +45,78 @@ public class Computer : IComputer
 
     public void Skip(int turns)
     {
-        for (int i = 0; i < turns; i++)
-        {
-            SkipTurn();
-        }
-    }
+        steps += turns;
 
-    private void SkipTurn()
-    {
-        var currentInvader = invadersByInsert.First;
-
-        while (currentInvader != null)
+        this.byDistance = this.byDistance.Where((x) =>
         {
-            currentInvader.Value.Distance -= 1;
-            if (currentInvader.Value.Distance == 0)
+
+            int remDistance = x.Key - this.steps;
+
+            if (remDistance <= 0)
             {
-                energy -= currentInvader.Value.Damage;
-                var tmp = currentInvader;
-                currentInvader = currentInvader.Next;
-                invadersByInsert.Remove(tmp);
-                invadersByPriority.Remove(tmp.Value);
+                this.energy -= x.Value.Sum(y => y.Value.Damage);
+                x.Value.ForEach(y => this.byInsertion.Remove(y));
             }
-            else
-            {
-                currentInvader = currentInvader.Next;
-            }
-        }
+
+            return remDistance > 0;
+        }).ToDictionary(x => x.Key, y => y.Value);
+
     }
 
     public void AddInvader(Invader invader)
     {
-        this.invadersByInsert.AddLast(invader);
-        this.invadersByPriority.Add(invader);
+
+        LinkedListNode<Invader> node =
+            new LinkedListNode<Invader>(invader);
+        if (!this.byDistance.ContainsKey(invader.Distance))
+        {
+            this.byDistance.Add(invader.Distance, new List<LinkedListNode<Invader>>());
+        }
+        this.byInsertion.AddLast(node);
+        this.byDistance[invader.Distance].Add(node);
     }
 
     public void DestroyHighestPriorityTargets(int count)
     {
-        if (invadersByPriority.Count == 0)
+        foreach (var linkedListNode in this.byDistance.SelectMany(x => x.Value)
+            .OrderBy(x => x.Value)
+            .Take(count))
         {
-            return;
+            this.byInsertion.Remove(linkedListNode);
         }
+        var newDict = this.byDistance.SelectMany(x => x.Value)
+            .OrderBy(x => x.Value)
+            .Skip(count);
 
-        var counter = 0;
-        while (counter < count)
+        this.byDistance = new Dictionary<int, List<LinkedListNode<Invader>>>();
+        foreach (var item in newDict)
         {
-            Invader currentInvaser = invadersByPriority.RemoveFirst();
-            invadersByInsert.Remove(currentInvaser);
-            counter++;
+            if (!this.byDistance.ContainsKey(item.Value.Distance))
+            {
+                this.byDistance.Add(item.Value.Distance, new List<LinkedListNode<Invader>>());
+            }
+            this.byDistance[item.Value.Distance].Add(item);
         }
     }
 
     public void DestroyTargetsInRadius(int radius)
     {
-        this.invadersByPriority.Clear();
-        var currentInvader = invadersByInsert.First;
+        this.byDistance = this.byDistance
+            .Where(x =>
+            {
+                bool result = x.Key - this.steps > radius;
 
-        while (currentInvader != null)
-        {
-            if (currentInvader.Value.Distance <= radius)
-            {
-                var tmp = currentInvader;
-                currentInvader = currentInvader.Next;
-                invadersByInsert.Remove(tmp);
-            }
-            else
-            {
-                invadersByPriority.Add(currentInvader.Value);
-                currentInvader = currentInvader.Next;
-            }
-        }
+                if (!result)
+                {
+                    x.Value.ForEach(y => this.byInsertion.Remove(y));
+                }
+                return result;
+            })
+            .ToDictionary(x => x.Key, y => y.Value);
     }
 
     public IEnumerable<Invader> Invaders()
     {
-        return invadersByInsert;
+        return this.byInsertion;
     }
 }

@@ -1,31 +1,13 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IOManager.cs" company="MetodiObetsanov@SoftUni">
-//   Copyright (c) MetodiObetsanov@SoftUni. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines the IOManager type.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace BashSoft.IO
+﻿namespace BashSoft.IO
 {
+    using Exceptions;
+    using Static;
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using Exceptions;
-    using Static;
 
-    /// <summary>
-    /// The Input/Output Manager class
-    /// </summary>
     public class IOManager
     {
-        /// <summary>
-        /// Traverse directory using DFS.
-        /// </summary>
-        /// <param name="depth">
-        /// The depth of the traverse.
-        /// </param>
         public void TraverseDirectory(int depth)
         {
             OutputWriter.WriteEmptyLine();
@@ -65,14 +47,6 @@ namespace BashSoft.IO
             }
         }
 
-        /// <summary>
-        /// Change current directory relative to the current one.
-        /// </summary>
-        /// <param name="relativePath">
-        /// The relative path.
-        /// </param>
-        /// <exception cref="ArgumentOutOfRangeException">Throws an exception if the destination does not exists.
-        /// </exception>
         public void ChangeCurrentDirectoryRelative(string relativePath)
         {
             if (relativePath == "..")
@@ -97,14 +71,6 @@ namespace BashSoft.IO
             }
         }
 
-        /// <summary>
-        /// Change current directory absolute.
-        /// </summary>
-        /// <param name="currentPath">
-        /// The current path.
-        /// </param>
-        /// <exception cref="InvalidPathException">Throws an exception if the destination does not exists.
-        /// </exception>
         public void ChangeCurrentDirectoryAbsolute(string currentPath)
         {
             if (!Directory.Exists(currentPath))
@@ -115,14 +81,6 @@ namespace BashSoft.IO
             SessionData.CurrentPath = currentPath;
         }
 
-        /// <summary>
-        /// Create directory in current folder.
-        /// </summary>
-        /// <param name="name">
-        /// The new directory name.
-        /// </param>
-        /// <exception cref="InvalidFileNameException">Throws an exception if the name is not valid
-        /// </exception>
         public void CreateDirectoryInCurrentFolder(string name)
         {
             string path = $"{SessionData.CurrentPath}\\{name}";
@@ -136,6 +94,5 @@ namespace BashSoft.IO
                 throw new InvalidFileNameException();
             }
         }
-
     }
 }
