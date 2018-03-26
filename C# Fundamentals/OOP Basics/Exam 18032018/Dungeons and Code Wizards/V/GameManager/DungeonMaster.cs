@@ -147,7 +147,7 @@ namespace DungeonsAndCodeWizards.GameManager
                 sb.AppendLine($"{character.Name} - HP: {character.Health}/{character.BaseHealth}, AP: {character.Armor}/{character.BaseArmor}, Status: {deathOrAlive}");
             }
 
-            return sb.ToString();
+            return sb.ToString().Trim();
         }
 
         public string Attack(string[] args)
@@ -183,7 +183,7 @@ namespace DungeonsAndCodeWizards.GameManager
                 sb.AppendLine($"{receiver.Name} is dead!");
             }
 
-            return sb.ToString();
+            return sb.ToString().Trim();
         }
 
         public string Heal(string[] args)
@@ -215,7 +215,7 @@ namespace DungeonsAndCodeWizards.GameManager
             return $"{healer.Name} heals {receiver.Name} for {healer.AbilityPoints}! {receiver.Name} has {receiver.Health} health now!";
         }
 
-        public string EndTurn()
+        public string EndTurn(string[] args)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -231,7 +231,7 @@ namespace DungeonsAndCodeWizards.GameManager
                 lastSurRound++;
             }
 
-            return sb.ToString();
+            return sb.ToString().Trim();
         }
 
         public bool IsGameOver()

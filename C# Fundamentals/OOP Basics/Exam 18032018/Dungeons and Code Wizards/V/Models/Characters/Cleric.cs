@@ -21,9 +21,9 @@ namespace DungeonsAndCodeWizards.Models.Characters
                 throw new InvalidOperationException(Output.MustBeAlive);
             }
 
-            if (Faction != character.Faction)
+            if (this.Faction != character.Faction)
             {
-                throw new ArgumentException(Output.CannotHealEnemy);
+                throw new InvalidOperationException(Output.CannotHealEnemy);
             }
 
             character.Health += AbilityPoints;

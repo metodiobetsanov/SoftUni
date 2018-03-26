@@ -62,7 +62,7 @@ namespace DungeonsAndCodeWizards.GameManager
                             break;
 
                         case "EndTurn":
-                            Console.Write(dm.EndTurn());
+                            Console.Write(dm.EndTurn(args));
                             break;
 
                         case "IsGameOver":

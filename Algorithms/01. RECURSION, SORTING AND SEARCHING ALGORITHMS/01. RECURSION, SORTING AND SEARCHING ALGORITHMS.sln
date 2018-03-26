@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. 8 Queens Puzzle", "06. 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07. Paths in Labyrinth", "07. Paths in Labyrinth\07. Paths in Labyrinth.csproj", "{ABF850F7-9805-4E19-998D-EBE4FEE0178D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08. Merge Sort", "08. Merge Sort\08. Merge Sort.csproj", "{F40FA52E-A943-4085-96F4-9D14413D319B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{ABF850F7-9805-4E19-998D-EBE4FEE0178D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABF850F7-9805-4E19-998D-EBE4FEE0178D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABF850F7-9805-4E19-998D-EBE4FEE0178D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F40FA52E-A943-4085-96F4-9D14413D319B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F40FA52E-A943-4085-96F4-9D14413D319B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F40FA52E-A943-4085-96F4-9D14413D319B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F40FA52E-A943-4085-96F4-9D14413D319B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
