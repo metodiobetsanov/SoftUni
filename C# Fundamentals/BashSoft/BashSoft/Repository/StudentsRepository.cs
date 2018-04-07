@@ -1,30 +1,31 @@
 ﻿namespace BashSoft.Repository
 {
-    using BashSoft.IO;
-    using BashSoft.Models;
-    using BashSoft.Static;
+    using Interfaces;
+    using IO;
+    using Models;
+    using Static;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Text.RegularExpressions;
 
-    public class StudentsRepository
+    public class StudentsRepository : IDatabase
     {
         private bool isDataInitialized;
 
-        private Dictionary<string, Course> courses;
+        private Dictionary<string, ICourse> courses;
 
-        private Dictionary<string, Student> students;
+        private Dictionary<string, IStudent> students;
 
-        private RepositoryFilter filter;
+        private IDataFilter filter;
 
-        private RepositorySorter sorter;
+        private IDataSorter sorter;
 
-        public StudentsRepository(RepositoryFilter repositoryFilter, RepositorySorter repositorySorter)
+        public StudentsRepository(IDataFilter dataFilter, IDataSorter dataSorter)
         {
-            this.filter = repositoryFilter;
-            this.sorter = repositorySorter;
+            this.filter = dataFilter;
+            this.sorter = dataSorter;
         }
 
         public void LoadData(string fileName)
@@ -34,8 +35,8 @@
                 throw new ArgumentException(ExceptionMessages.DataAlreadyInitializedException);
             }
 
-            this.courses = new Dictionary<string, Course>();
-            this.students = new Dictionary<string, Student>();
+            this.courses = new Dictionary<string, ICourse>();
+            this.students = new Dictionary<string, IStudent>();
 
             OutputWriter.WriteMessageOnNewLine("Reading data...");
             this.ReadData(fileName);
@@ -155,8 +156,8 @@
                                 this.courses.Add(courseName, new Course(courseName));
                             }
 
-                            Course course = this.courses[courseName];
-                            Student student = this.students[userName];
+                            ICourse course = this.courses[courseName];
+                            IStudent student = this.students[userName];
 
                             course.EnrollStudent(student);
 
@@ -213,6 +214,20 @@
             }
 
             return false;
+        }
+
+        public ISimpleOrderedBag<ICourse> GetAllCoursesSorted(IComparer<ICourse> cmp)
+        {
+            SimpleSortedList<ICourse> sortedCourses = new SimpleSortedList<ICourse>(cmp);
+            sortedCourses.AddAll(this.courses.Values);
+            return sortedCourses;
+        }
+
+        public ISimpleOrderedBag<IStudent> GetAllStudentsSorted(IComparer<IStudent> cmp)
+        {
+            SimpleSortedList<IStudent> sortedStudents = new SimpleSortedList<IStudent>(cmp);
+            sortedStudents.AddAll(this.students.Values);
+            return sortedStudents;
         }
     }
 }

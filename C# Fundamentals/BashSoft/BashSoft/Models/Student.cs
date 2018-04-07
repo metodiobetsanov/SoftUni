@@ -1,23 +1,24 @@
 ﻿namespace BashSoft.Models
 {
-    using BashSoft.Exceptions;
-    using BashSoft.Static;
+    using Exceptions;
+    using Interfaces;
+    using Static;
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
-    public class Student
+    public class Student : IStudent
     {
         private string userName;
 
-        private Dictionary<string, Course> enrolledCourses;
+        private Dictionary<string, ICourse> enrolledCourses;
 
         private Dictionary<string, double> marksByCourseName;
 
         public Student(string name)
         {
             this.UserName = name;
-            this.enrolledCourses = new Dictionary<string, Course>();
+            this.enrolledCourses = new Dictionary<string, ICourse>();
             this.marksByCourseName = new Dictionary<string, double>();
         }
 
@@ -36,11 +37,13 @@
             }
         }
 
-        public IReadOnlyDictionary<string, Course> EnrolledCourses => this.enrolledCourses;
+        public IReadOnlyDictionary<string, ICourse> EnrolledCourses => this.enrolledCourses;
 
         public IReadOnlyDictionary<string, double> MarksByCourseName => this.marksByCourseName;
 
-        public void EnrollInCourse(Course course)
+        public int CompareTo(IStudent other) => this.UserName.CompareTo(other.UserName);
+
+        public void EnrollInCourse(ICourse course)
         {
             if (this.enrolledCourses.ContainsKey(course.Name))
             {
@@ -71,5 +74,7 @@
             double mark = (percentageOfSolvedExam * 4) + 2;
             return mark;
         }
+
+        public override string ToString() => this.UserName;
     }
 }

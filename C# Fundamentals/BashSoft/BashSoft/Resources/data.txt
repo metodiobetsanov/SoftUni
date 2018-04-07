@@ -337,21 +337,3 @@ Algorithms_Apr_2016 LouiseSutton31_2403 64 13 1 95 0
 PHP_Jan_2014 BrendanReynolds59_3970 73 23 72 27 21
 Networking_Mar_2016 MadelineMitchell49_1079 20 8 16 95 80
 Java_May_2015 JaimeAbbott17_6080 58 27 56 52 95
-Drupal_Jan_2016 LauraLowe81_9840 43 8 87 54 25
-C#_Feb_2015 DanaLawson81_8119 63 80 21 47 26
-JSApps_Dec_2014 AbrahamRamos81_9825 60 56 45 94 60
-C#_Jul_2016 CharlesDuncan12_6857 86 13 55 33 69
-WebFundamentals_Oct_2015 CarltonLloyd65_2135 32 0 30 58 11
-DataStructures_Apr_2016 VeraKeller87_7491 35 28 34 87 97
-Unity_Jan_2016 DallasRuiz81_8103 61 74 96 94 44
-Networking_Dec_2016 WinifredRice25_3953 32 22 49 94 80
-Java_Oct_2015 JuneBarrett42_3615 87 94 0 93 35
-C++_Dec_2016 BeverlyFrench43_6482 17 38 6 16 57
-Algorithms_Sep_2015 SadieRodriquez35_9352 87 95 38 2 33
-Drupal_Aug_2015 DoylePerkins57_787 9 91 99 89 9 74
-PHP_Aug_2016 KevinCummings25_1103 37 0 40 3 37 65
-Arduino_Feb_2016 EricaMartinez21_8399 97 62 12 50 97 94
-C_Nov_2015 ShelleyOliver16_5273 4 48 34 61 4 25
-Arduino_Mar_2016 RonnieSimmons49_578 43 1 55 27 43 20
-Algorithms_Apr_2016 DouglasMorgan15_8544 65 83 95 64 65 80
-PHP_Jan_2014 GeraldMurphy21_5194 70 83 71 11 70 46

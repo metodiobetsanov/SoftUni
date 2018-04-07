@@ -1,11 +1,12 @@
 ﻿namespace BashSoft.Judge
 {
+    using Interfaces;
     using IO;
     using Static;
     using System;
     using System.IO;
 
-    public class Tester
+    public class Tester : IContentComparer
     {
         public void CompareContent(string userOutputPath, string expectedOutputPath)
         {

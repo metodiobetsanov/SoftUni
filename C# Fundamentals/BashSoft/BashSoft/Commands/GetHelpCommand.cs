@@ -1,13 +1,14 @@
 ﻿namespace BashSoft.Commands
 {
+    using Attributes;
     using Exceptions;
     using IO;
-    using Judge;
-    using Repository;
 
+    [Alias("help")]
     public class GetHelpCommand : Command
     {
-        public GetHelpCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
+        public GetHelpCommand(string input, string[] data)
+            : base(input, data)
         {
         }
 

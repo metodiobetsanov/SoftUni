@@ -1,14 +1,19 @@
 ﻿namespace BashSoft.Commands
 {
+    using Attributes;
     using Exceptions;
+    using Interfaces;
     using IO;
-    using Judge;
-    using Repository;
     using Static;
 
+    [Alias("filter")]
     public class PrintFilteredStudentsCommand : Command
     {
-        public PrintFilteredStudentsCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
+        [Inject]
+        private IDatabase repository;
+
+        public PrintFilteredStudentsCommand(string input, string[] data)
+            : base(input, data)
         {
         }
 
@@ -38,7 +43,7 @@
             {
                 if (takeQuantity == "all")
                 {
-                    this.Repository.FilterAndTake(courseName, filter);
+                    this.repository.FilterAndTake(courseName, filter);
                 }
                 else
                 {
@@ -47,7 +52,7 @@
 
                     if (hasParsed)
                     {
-                        this.Repository.FilterAndTake(courseName, filter, studentsToTake);
+                        this.repository.FilterAndTake(courseName, filter, studentsToTake);
                     }
                     else
                     {

@@ -1,13 +1,17 @@
 ﻿namespace BashSoft.Commands
 {
+    using Attributes;
     using Exceptions;
-    using IO;
-    using Judge;
-    using Repository;
+    using Interfaces;
 
+    [Alias("is")]
     public class TraverseFoldersCommand : Command
     {
-        public TraverseFoldersCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
+        [Inject]
+        private IDirectoryManager inputOutputManager;
+
+        public TraverseFoldersCommand(string input, string[] data)
+            : base(input, data)
         {
         }
 
@@ -20,14 +24,14 @@
         {
             if (this.Data.Length == 1)
             {
-                this.InputOutputManager.TraverseDirectory(0);
+                this.inputOutputManager.TraverseDirectory(0);
             }
             else if (this.Data.Length == 2)
             {
                 int depth;
                 if (int.TryParse(this.Data[1], out depth))
                 {
-                    this.InputOutputManager.TraverseDirectory(depth);
+                    this.inputOutputManager.TraverseDirectory(depth);
                 }
                 else
                 {

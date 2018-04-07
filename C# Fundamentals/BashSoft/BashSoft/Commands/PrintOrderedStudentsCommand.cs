@@ -1,14 +1,19 @@
 ﻿namespace BashSoft.Commands
 {
+    using Attributes;
     using Exceptions;
+    using Interfaces;
     using IO;
-    using Judge;
-    using Repository;
     using Static;
 
+    [Alias("order")]
     public class PrintOrderedStudentsCommand : Command
     {
-        public PrintOrderedStudentsCommand(string input, string[] data, Tester judge, StudentsRepository repository, IOManager inputOutputManager) : base(input, data, judge, repository, inputOutputManager)
+        [Inject]
+        private IDatabase repository;
+
+        public PrintOrderedStudentsCommand(string input, string[] data)
+            : base(input, data)
         {
         }
 
@@ -38,7 +43,7 @@
             {
                 if (takeQuantity == "all")
                 {
-                    this.Repository.OrderAndTake(courseName, comparison);
+                    this.repository.OrderAndTake(courseName, comparison);
                 }
                 else
                 {
@@ -47,7 +52,7 @@
 
                     if (hasParsed)
                     {
-                        this.Repository.OrderAndTake(courseName, comparison, studentsToTake);
+                        this.repository.OrderAndTake(courseName, comparison, studentsToTake);
                     }
                     else
                     {

@@ -1,9 +1,10 @@
 ﻿namespace BashSoft.Models
 {
     using Exceptions;
+    using Interfaces;
     using System.Collections.Generic;
 
-    public class Course
+    public class Course : ICourse
     {
         public const int NumberOfTasksOnExam = 5;
 
@@ -11,12 +12,12 @@
 
         private string name;
 
-        private Dictionary<string, Student> studentsByName;
+        private Dictionary<string, IStudent> studentsByName;
 
         public Course(string courseName)
         {
             this.Name = courseName;
-            this.studentsByName = new Dictionary<string, Student>();
+            this.studentsByName = new Dictionary<string, IStudent>();
         }
 
         public string Name
@@ -34,9 +35,11 @@
             }
         }
 
-        public IReadOnlyDictionary<string, Student> StudentsByName => this.studentsByName;
+        public IReadOnlyDictionary<string, IStudent> StudentsByName => this.studentsByName;
 
-        public void EnrollStudent(Student student)
+        public int CompareTo(ICourse other) => this.Name.CompareTo(other.Name);
+
+        public void EnrollStudent(IStudent student)
         {
             if (this.studentsByName.ContainsKey(student.UserName))
             {
@@ -45,5 +48,7 @@
 
             this.studentsByName.Add(student.UserName, student);
         }
+
+        public override string ToString() => this.Name;
     }
 }

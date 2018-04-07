@@ -1,11 +1,12 @@
 ﻿namespace BashSoft.Repository
 {
-    using BashSoft.IO;
-    using BashSoft.Static;
+    using Interfaces;
+    using IO;
+    using Static;
     using System;
     using System.Collections.Generic;
 
-    public class RepositoryFilter
+    public class RepositoryFilter : IDataFilter
     {
         public void FilterAndTake(Dictionary<string, double> studentsWithMarks, string wantedFilter, int studentsToTake)
         {
