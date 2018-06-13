@@ -20,8 +20,6 @@
 
         private readonly TcpListener tcpListener;
 
-        private bool isRunning;
-
         public WebServer(string ipAddress, int port, IAppRouteConfig appRouteConfig)
         {
             this.port = port;
@@ -35,23 +33,18 @@
         {
             this.tcpListener.Start();
 
-            this.isRunning = true;
-
             Console.WriteLine($"Server started. Listening to TCP clients at {this.ipAddress}:{this.port}");
 
-            Task task = Task.Run(this.ListenLoop);
-
-            task.Wait();
+            Task.Run(this.ListenLoop).Wait();
         }
 
         private async Task ListenLoop()
         {
-            while (this.isRunning)
+            while (true)
             {
                 Socket client = await this.tcpListener.AcceptSocketAsync();
                 ConnectionHandler connectionHandler = new ConnectionHandler(client, this.serverRouteConfig);
-                Task connection = connectionHandler.ProcessRequestAsync();
-                connection.Wait();
+                await connectionHandler.ProcessRequestAsync();
             }
         }
     }

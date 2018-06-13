@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
     using System.Text.RegularExpressions;
+    using global::WebServer.Server.HTTP.Response;
     using Handlers.Contracts;
     using HTTP.Contracts;
     using Routing.Contracts;
@@ -38,7 +39,7 @@
                 return kvp.Value.RequestHandler.Handle(httpContext);
             }
 
-            return null;
+            return new NotFoundResponse();
         }
     }
 }

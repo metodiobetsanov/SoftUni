@@ -1,15 +1,16 @@
-﻿namespace WebServer.Server.HTTP
+﻿namespace HTTPServer.Server.Http
 {
+    using Common;
     using Contracts;
-    using Request;
 
     public class HttpContext : IHttpContext
     {
         private readonly IHttpRequest request;
 
         public HttpContext(IHttpRequest request)
-
         {
+            CoreValidator.ThrowIfNull(request, nameof(request));
+
             this.request = request;
         }
 

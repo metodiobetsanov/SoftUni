@@ -1,9 +1,9 @@
-﻿namespace WebServer.Server
+﻿namespace HTTPServer.Server
 {
-    using global::WebServer.Server.HTTP.Request;
+    using Common;
     using Handlers;
-    using HTTP;
-    using HTTP.Contracts;
+    using Http;
+    using Http.Contracts;
     using Routing.Contracts;
     using System;
     using System.Net.Sockets;
@@ -18,6 +18,9 @@
 
         public ConnectionHandler(Socket client, IServerRouteConfig serverRouteConfig)
         {
+            CoreValidator.ThrowIfNull(client, nameof(client));
+            CoreValidator.ThrowIfNull(serverRouteConfig, nameof(serverRouteConfig));
+
             this.client = client;
             this.serverRouteConfig = serverRouteConfig;
         }
@@ -27,7 +30,6 @@
             var httpRequest = await this.ReadRequest();
 
             if (httpRequest != null)
-
             {
                 var httpContext = new HttpContext(httpRequest);
 
@@ -40,33 +42,26 @@
                 await this.client.SendAsync(byteSegments, SocketFlags.None);
 
                 Console.WriteLine($"-----REQUEST-----");
-
                 Console.WriteLine(httpRequest);
-
                 Console.WriteLine($"-----RESPONSE-----");
-
                 Console.WriteLine(httpResponse);
-
                 Console.WriteLine();
             }
-
+            
             this.client.Shutdown(SocketShutdown.Both);
         }
 
         private async Task<IHttpRequest> ReadRequest()
-
         {
             var result = new StringBuilder();
-
+            
             var data = new ArraySegment<byte>(new byte[1024]);
-
+            
             while (true)
-
             {
-                int numberOfBytesRead = await this.client.ReceiveAsync(data.Array, SocketFlags.None);
+                int numberOfBytesRead = await this.client.ReceiveAsync(data, SocketFlags.None);
 
                 if (numberOfBytesRead == 0)
-
                 {
                     break;
                 }
@@ -75,19 +70,17 @@
 
                 result.Append(bytesAsString);
 
-                if (numberOfBytesRead < 1023)
-
+                if (numberOfBytesRead < 1024)
                 {
                     break;
                 }
             }
 
             if (result.Length == 0)
-
             {
                 return null;
             }
-
+            
             return new HttpRequest(result.ToString());
         }
     }
