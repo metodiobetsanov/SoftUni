@@ -15,7 +15,7 @@
                 .Name
                 .Replace(Context.Get.ControllersSuffix, string.Empty);
 
-            string fullQualifiedName = string.Format(
+            string fullyQualifiedName = string.Format(
                 "{0}.{1}.{2}.{3}, {0}",
                 Context.Get.AssemblyName,
                 Context.Get.ViewsFolder,
@@ -23,7 +23,7 @@
                 caller
                 );
 
-            return new ActionResult(fullQualifiedName);
+            return new ActionResult(fullyQualifiedName);
         }
 
         protected IActionResult<T> View<T>(T model, [CallerMemberName] string caller = "")
@@ -32,7 +32,7 @@
                 .Name
                 .Replace(Context.Get.ControllersSuffix, string.Empty);
 
-            string fullQualifiedName = string.Format(
+            string fullyQualifiedName = string.Format(
                 "{0}.{1}.{2}.{3}, {0}",
                 Context.Get.AssemblyName,
                 Context.Get.ViewsFolder,
@@ -40,12 +40,12 @@
                 caller
                 );
 
-            return new ActionResult<T>(fullQualifiedName, model);
+            return new ActionResult<T>(fullyQualifiedName, model);
         }
 
         protected IActionResult View(string controller, string action)
         {
-            string fullQualifiedName = string.Format(
+            string fullyQualifiedName = string.Format(
                 "{0}.{1}.{2}.{3}, {0}",
                 Context.Get.AssemblyName,
                 Context.Get.ViewsFolder,
@@ -53,12 +53,12 @@
                 action
                 );
 
-            return new ActionResult(fullQualifiedName);
+            return new ActionResult(fullyQualifiedName);
         }
 
         protected IActionResult<T> View<T>(T model, string controller, string action)
         {
-            string fullQualifiedName = string.Format(
+            string fullyQualifiedName = string.Format(
                 "{0}.{1}.{2}.{3}, {0}",
                 Context.Get.AssemblyName,
                 Context.Get.ViewsFolder,
@@ -66,7 +66,7 @@
                 action
                 );
 
-            return new ActionResult<T>(fullQualifiedName, model);
+            return new ActionResult<T>(fullyQualifiedName, model);
         }
     }
 }

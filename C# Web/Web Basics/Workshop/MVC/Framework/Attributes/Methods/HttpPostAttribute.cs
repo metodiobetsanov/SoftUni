@@ -6,11 +6,7 @@
     {
         public override bool IsValid(string requestMethod)
         {
-            if (requestMethod.ToUpper() == "POST")
-            {
-                return true;
-            }
-            else return false;
+            return requestMethod.ToUpper() == "POST";
         }
     }
 }

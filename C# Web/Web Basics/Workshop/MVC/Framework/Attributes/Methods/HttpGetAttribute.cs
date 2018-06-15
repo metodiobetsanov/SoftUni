@@ -6,12 +6,7 @@
     {
         public override bool IsValid(string requestMethod)
         {
-            if (requestMethod.ToUpper() == "GET")
-            {
-                return true;
-            }
-
-            return false;
+            return requestMethod.ToUpper() == "GET";
         }
     }
 }

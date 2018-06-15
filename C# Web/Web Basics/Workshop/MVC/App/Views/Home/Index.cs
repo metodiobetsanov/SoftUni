@@ -1,6 +1,6 @@
-﻿namespace Framework.Views.Home
+﻿namespace App.Views.Home
 {
-    using Interfaces;
+    using Framework.Interfaces;
 
     public class Index : IRenderable
     {

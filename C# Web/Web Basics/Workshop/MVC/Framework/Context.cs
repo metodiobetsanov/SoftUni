@@ -2,13 +2,31 @@
 {
     public class Context
     {
-        private static Context Instance;
+        private static Context instance;
+
+        private static readonly object instanceLock = new object();
 
         private Context()
         {
         }
 
-        public static Context Get => Instance == null ? (Instance = new Context()) : Instance;
+        public static Context Get {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (instanceLock)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new Context();
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
 
         public string AssemblyName { get; set; }
 

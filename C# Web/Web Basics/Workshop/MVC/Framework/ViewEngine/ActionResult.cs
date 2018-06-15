@@ -5,9 +5,10 @@
 
     public class ActionResult : IActionResult
     {
-        public ActionResult(string viewFullQualifedName)
+        public ActionResult(string fullyQualifedViewName)
         {
-            this.Action = (IRenderable)Activator.CreateInstance(Type.GetType(viewFullQualifedName));
+            this.Action = (IRenderable)Activator
+                                .CreateInstance(Type.GetType(fullyQualifedViewName));
         }
 
         public IRenderable Action { get; set; }

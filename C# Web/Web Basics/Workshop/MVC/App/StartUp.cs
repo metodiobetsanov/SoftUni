@@ -6,9 +6,9 @@
 
     public class StartUp
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            var server = new WebServer(8000, new ControllerRouter());
+            var server = new WebServer(12345, new ControllerRouter());
 
             Engine.Run(server);
         }
