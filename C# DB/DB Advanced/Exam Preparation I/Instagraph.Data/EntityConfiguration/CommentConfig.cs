@@ -23,6 +23,8 @@
                 .WithMany(u => u.Comments)
                 .HasForeignKey(e => e.PostId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+           
         }
     }
 }
