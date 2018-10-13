@@ -1,13 +1,11 @@
 ﻿namespace SIS.HTTP.Contracts
 {
-    using Headers;
-
     public interface IHttpHeaderCollection
     {
-        void Add(HttpHeader httpHeader);
+        void Add(IHttpHeader httpHeader);
 
         bool ContainsHeader(string key);
 
-        HttpHeader GetHeader(string key);
+        IHttpHeader GetHeader(string key);
     }
 }
