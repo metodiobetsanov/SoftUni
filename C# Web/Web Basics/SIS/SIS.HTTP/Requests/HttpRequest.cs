@@ -2,6 +2,7 @@
 {
     using SIS.HTTP.Common;
     using SIS.HTTP.Contracts;
+    using SIS.HTTP.Cookies;
     using SIS.HTTP.Enums;
     using SIS.HTTP.Exceptions;
     using SIS.HTTP.Headers;
@@ -18,6 +19,7 @@
             this.FormData = new Dictionary<string, object>();
             this.QueryData = new Dictionary<string, object>();
             this.Headers = new HttpHeaderCollection();
+            this.Cookies = new HttpCookieCollection();
 
             CoreValidator.ThrowIfNullOrEmpty(requestString, nameof(requestString));
 
@@ -33,6 +35,10 @@
         public Dictionary<string, object> QueryData { get; }
 
         public IHttpHeaderCollection Headers { get; }
+
+        public IHttpCookieCollection Cookies { get; }
+
+        public IHttpSession Session { get; set; }
 
         public HttpRequestMethod RequestMethod { get; private set; }
 
@@ -94,6 +100,40 @@
             if (!this.Headers.ContainsHeader(HttpHeader.Host))
             {
                 throw new BadRequestException("No Host Header");
+            }
+        }
+
+        private void ParseCookies()
+        {
+            if (this.Headers.ContainsHeader(HttpHeader.Cookie))
+            {
+                var cookies = this.Headers.GetHeader(HttpHeader.Cookie);
+
+                if (!cookies.Value.Contains('='))
+                {
+                    return;
+                }
+
+                string[] cookieParts = cookies
+                    .Value
+                    .Split(new[] { "; " }, StringSplitOptions.RemoveEmptyEntries)
+                    .ToArray();
+
+                if (!cookieParts.Any())
+                {
+                    return;
+                }
+
+                foreach (var cookiePart in cookieParts)
+                {
+                    string[] cookieKeyValuePair = cookiePart
+                        .Split(new[] { '=' }, 2);
+
+                    var key = cookieKeyValuePair[0].Trim();
+                    var value = cookieKeyValuePair[1].Trim();
+
+                    this.Cookies.Add(new HttpCookie(key, value, false));
+                }
             }
         }
 
@@ -187,6 +227,7 @@
             this.ParseRequestPath();
 
             this.ParseHeaders(splitRequestContent.Skip(1).ToArray());
+            this.ParseCookies();
             this.ParseRequestParameters(splitRequestContent[splitRequestContent.Length - 1]);
         }
     }

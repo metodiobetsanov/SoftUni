@@ -1,23 +1,23 @@
-﻿
-
-namespace SIS.HTTP.Cookies
+﻿namespace SIS.HTTP.Cookies
 {
     using SIS.HTTP.Common;
     using SIS.HTTP.Contracts;
+
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
+
     public class HttpCookieCollection : IHttpCookieCollection
     {
-        private readonly IDictionary<string, HttpCookie> data;
+        private readonly IDictionary<string, IHttpCookie> data;
 
         public HttpCookieCollection()
         {
-            this.data = new Dictionary<string, HttpCookie>();
+            this.data = new Dictionary<string, IHttpCookie>();
         }
 
-        public void Add(HttpCookie cookie)
+        public void Add(IHttpCookie cookie)
         {
             CoreValidator.ThrowIfNull(cookie, nameof(cookie));
 
@@ -31,7 +31,7 @@ namespace SIS.HTTP.Cookies
             return this.data.ContainsKey(key);
         }
 
-        public HttpCookie GetCookie(string key)
+        public IHttpCookie GetCookie(string key)
         {
             CoreValidator.ThrowIfNullOrEmpty(key, nameof(key));
 
@@ -50,7 +50,18 @@ namespace SIS.HTTP.Cookies
 
         public override string ToString()
         {
-            return string.Join( ";", this.data.Values);
+            return string.Join("; ", this.data.Values);
         }
+
+        HttpCookie IHttpCookieCollection.GetCookie(string key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerator<IHttpCookie> GetEnumerator()
+            => this.data.Values.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator()
+            => this.data.Values.GetEnumerator();
     }
 }

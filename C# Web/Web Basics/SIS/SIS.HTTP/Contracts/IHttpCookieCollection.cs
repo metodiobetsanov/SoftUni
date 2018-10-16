@@ -1,14 +1,12 @@
-﻿
-
-namespace SIS.HTTP.Contracts
+﻿namespace SIS.HTTP.Contracts
 {
     using SIS.HTTP.Cookies;
-    using System;
+
     using System.Collections.Generic;
-    using System.Text;
-    public interface IHttpCookieCollection
+
+    public interface IHttpCookieCollection : IEnumerable<IHttpCookie>
     {
-        void Add(HttpCookie cookie);
+        void Add(IHttpCookie cookie);
 
         bool ContainsCookies(string key);
 

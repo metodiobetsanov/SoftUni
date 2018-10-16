@@ -8,9 +8,13 @@
 
         IHttpHeaderCollection Headers { get; }
 
+        IHttpCookieCollection Cookies { get; }
+
         byte[] Content { get; set; }
 
         void AddHeader(IHttpHeader httpHeader);
+
+        void AddCookie(IHttpCookie httpCookie);
 
         byte[] GetBytes();
     }

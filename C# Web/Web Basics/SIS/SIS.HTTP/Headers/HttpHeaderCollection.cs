@@ -5,6 +5,7 @@
     using SIS.HTTP.Common;
 
     using System;
+    using System.Collections;
     using System.Collections.Generic;
 
     public class HttpHeaderCollection : IHttpHeaderCollection
@@ -51,5 +52,11 @@
         {
             return string.Join(Environment.NewLine, this.data.Values.ToString());
         }
+
+        IEnumerator<IHttpHeader> IEnumerable<IHttpHeader>.GetEnumerator()
+            => this.data.Values.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator()
+            => this.data.Values.GetEnumerator();
     }
 }

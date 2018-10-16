@@ -1,18 +1,13 @@
-﻿
-
-namespace SIS.HTTP.Cookies
+﻿namespace SIS.HTTP.Cookies
 {
-    using SIS.HTTP.Common;
+    using SIS.HTTP.Contracts;
+
     using System;
-    using System.Collections.Generic;
-    using System.Text;
-    public class HttpCookie
+
+    public class HttpCookie : IHttpCookie
     {
         public HttpCookie(string key, string value, int expires = 3)
         {
-            CoreValidator.ThrowIfNullOrEmpty(key, nameof(key));
-            CoreValidator.ThrowIfNullOrEmpty(value, nameof(value));
-
             this.Key = key;
             this.Value = value;
             this.IsNew = true;
@@ -34,7 +29,6 @@ namespace SIS.HTTP.Cookies
         public bool IsNew { get; private set; } = true;
 
         public override string ToString()
-            => $"{this.Key}={this.Value}; Expires={this.Expires.ToLongTimeString()}";
+            => $"{this.Key}={this.Value}";
     }
 }
-

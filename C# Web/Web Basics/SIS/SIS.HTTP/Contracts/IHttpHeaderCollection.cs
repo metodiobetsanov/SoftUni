@@ -1,6 +1,8 @@
-﻿namespace SIS.HTTP.Contracts
+﻿using System.Collections.Generic;
+
+namespace SIS.HTTP.Contracts
 {
-    public interface IHttpHeaderCollection
+    public interface IHttpHeaderCollection : IEnumerable<IHttpHeader>
     {
         void Add(IHttpHeader httpHeader);
 

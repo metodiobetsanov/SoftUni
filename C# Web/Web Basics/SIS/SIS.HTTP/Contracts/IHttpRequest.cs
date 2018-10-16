@@ -16,6 +16,10 @@
 
         IHttpHeaderCollection Headers { get; }
 
+        IHttpCookieCollection Cookies { get; }
+
+        IHttpSession Session { get; set; }
+
         HttpRequestMethod RequestMethod { get; }
     }
 }
