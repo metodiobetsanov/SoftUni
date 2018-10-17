@@ -50,7 +50,7 @@
 
         public override string ToString()
         {
-            return string.Join(Environment.NewLine, this.data.Values.ToString());
+            return string.Join(Environment.NewLine, this.data.Values);
         }
 
         IEnumerator<IHttpHeader> IEnumerable<IHttpHeader>.GetEnumerator()

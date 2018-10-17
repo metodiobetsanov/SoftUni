@@ -2,8 +2,6 @@
 {
     using SIS.HTTP.Common;
     using SIS.HTTP.Contracts;
-
-    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -51,11 +49,6 @@
         public override string ToString()
         {
             return string.Join("; ", this.data.Values);
-        }
-
-        HttpCookie IHttpCookieCollection.GetCookie(string key)
-        {
-            throw new NotImplementedException();
         }
 
         public IEnumerator<IHttpCookie> GetEnumerator()

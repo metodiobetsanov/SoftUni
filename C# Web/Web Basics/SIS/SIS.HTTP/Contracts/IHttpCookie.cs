@@ -11,5 +11,7 @@ namespace SIS.HTTP.Contracts
         DateTime Expires { get; }
 
         bool IsNew { get; }
+
+        void Delete();
     }
 }

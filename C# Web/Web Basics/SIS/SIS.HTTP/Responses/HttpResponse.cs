@@ -16,52 +16,60 @@
         {
         }
 
-        public HttpResponse(HttpStatusCode responseCode)
+        public HttpResponse(HttpStatusCode statusCode)
         {
+            CoreValidator.ThrowIfNull(statusCode, nameof(statusCode));
+
             this.Headers = new HttpHeaderCollection();
             this.Cookies = new HttpCookieCollection();
             this.Content = new byte[0];
-            this.StatusCode = responseCode;
+            this.StatusCode = statusCode;
         }
 
         public HttpStatusCode StatusCode { get; set; }
 
-        public IHttpHeaderCollection Headers { get; private set; }
+        public IHttpHeaderCollection Headers { get; }
 
-        public IHttpCookieCollection Cookies { get; private set; }
+        public IHttpCookieCollection Cookies { get; }
 
         public byte[] Content { get; set; }
+
+        public void AddHeader(IHttpHeader header)
+        {
+            CoreValidator.ThrowIfNull(header, nameof(header));
+            this.Headers.Add(header);
+        }
+
+        public void AddCookie(IHttpCookie cookie)
+        {
+            CoreValidator.ThrowIfNull(cookie, nameof(cookie));
+            this.Cookies.Add(cookie);
+        }
 
         public byte[] GetBytes()
         {
             return Encoding.UTF8.GetBytes(this.ToString()).Concat(this.Content).ToArray();
         }
 
-        public void AddHeader(IHttpHeader httpHeader)
-        {
-            this.Headers.Add(httpHeader);
-        }
-
-        public void AddCookie(IHttpCookie httpCookie)
-        {
-            this.Cookies.Add(httpCookie);
-        }
-
         public override string ToString()
         {
-            var response = new StringBuilder();
+            StringBuilder result = new StringBuilder();
 
-            response.AppendLine($"{GlobalConstants.HttpOneProtocolFragment} {this.StatusCode.GetResponseLine()}");
-            response.AppendLine(this.Headers.ToString());
+            result
+                .AppendLine($"{GlobalConstants.HttpOneProtocolFragment} {this.StatusCode.GetResponseLine()}")
+                .AppendLine(this.Headers.ToString());
 
             if (this.Cookies.HasCookies())
             {
-                response.AppendLine($"{GlobalConstants.SetCookies}: {this.Cookies}");
+                foreach (var httpCookie in this.Cookies)
+                {
+                    result.AppendLine($"Set-Cookie: {httpCookie}");
+                }
             }
 
-            response.AppendLine();
+            result.AppendLine();
 
-            return response.ToString();
+            return result.ToString();
         }
     }
 }

@@ -3,10 +3,9 @@
     using SIS.HTTP.Common;
     using SIS.HTTP.Contracts;
     using SIS.HTTP.Cookies;
-    using SIS.HTTP.Enums;
     using SIS.HTTP.Requests;
-    using SIS.HTTP.Responses;
     using SIS.HTTP.Sessions;
+    using SIS.WEBSERVER.Api;
     using SIS.WEBSERVER.Routing;
 
     using System;
@@ -20,6 +19,8 @@
 
         private readonly ServerRoutingTable serverRoutingTable;
 
+        private readonly IHandleable httpHandler;
+
         public ConnectionHandler(Socket client, ServerRoutingTable serverRoutingTable)
         {
             CoreValidator.ThrowIfNull(client, nameof(client));
@@ -27,6 +28,15 @@
 
             this.client = client;
             this.serverRoutingTable = serverRoutingTable;
+        }
+
+        public ConnectionHandler(Socket client, IHandleable httpHandler)
+        {
+            CoreValidator.ThrowIfNull(client, nameof(client));
+            CoreValidator.ThrowIfNull(httpHandler, nameof(httpHandler));
+
+            this.client = client;
+            this.httpHandler = httpHandler;
         }
 
         public async Task ProcessRequestAsync()
@@ -45,11 +55,11 @@
 
                 Console.WriteLine($"-----REQUEST-----");
 
-                Console.WriteLine(httpRequest);
+                Console.WriteLine(httpRequest.ToString());
 
                 Console.WriteLine($"-----RESPONSE-----");
 
-                Console.WriteLine(httpResponse);
+                Console.WriteLine(httpResponse.ToString());
 
                 Console.WriteLine();
             }
@@ -59,12 +69,12 @@
 
         private void SetResponseSession(IHttpResponse httpResponse, string sessionId)
         {
-            if (sessionId !=null)
+            if (sessionId != null)
             {
                 httpResponse.AddCookie(
                     new HttpCookie(
                         HttpSessionStorage.SessionCookieKey,
-                        $"{sessionId};HttpOnly=true"
+                        $"{sessionId}; HttpOnly"
                     ));
             }
         }
@@ -97,13 +107,9 @@
 
         private IHttpResponse HttpRequestHandler(IHttpRequest httpRequest)
         {
-            if (!this.serverRoutingTable.Routes.ContainsKey(httpRequest.RequestMethod)
-                || !this.serverRoutingTable.Routes[httpRequest.RequestMethod].ContainsKey(httpRequest.Path))
-            {
-                return new HttpResponse(HttpStatusCode.NotFound);
-            }
+            IHttpResponse responce = this.httpHandler.Handle(httpRequest);
 
-            return this.serverRoutingTable.Routes[httpRequest.RequestMethod][httpRequest.Path].Invoke(httpRequest);
+            return responce;
         }
 
         private async Task<IHttpRequest> ReadRequest()

@@ -28,7 +28,12 @@
 
         public bool IsNew { get; private set; } = true;
 
+        public void Delete()
+        {
+            Expires = DateTime.UtcNow.AddDays(-1);
+        }
+
         public override string ToString()
-            => $"{this.Key}={this.Value}";
+            => $"{this.Key}={this.Value}; Expires={this.Expires.ToString("R")}";
     }
 }

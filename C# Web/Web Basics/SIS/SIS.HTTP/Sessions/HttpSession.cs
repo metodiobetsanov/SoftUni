@@ -1,12 +1,8 @@
-﻿
-
-namespace SIS.HTTP.Sessions
+﻿namespace SIS.HTTP.Sessions
 {
     using SIS.HTTP.Common;
     using SIS.HTTP.Contracts;
-    using System;
     using System.Collections.Generic;
-    using System.Text;
 
     public class HttpSession : IHttpSession
     {

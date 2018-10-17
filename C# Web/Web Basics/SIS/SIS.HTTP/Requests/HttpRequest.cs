@@ -11,6 +11,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
+    using System.Text;
 
     public class HttpRequest : IHttpRequest
     {
@@ -127,7 +128,7 @@
                 foreach (var cookiePart in cookieParts)
                 {
                     string[] cookieKeyValuePair = cookiePart
-                        .Split(new[] { '=' }, 2);
+                        .Split(new[] { '=' }, 2, StringSplitOptions.RemoveEmptyEntries);
 
                     var key = cookieKeyValuePair[0].Trim();
                     var value = cookieKeyValuePair[1].Trim();
@@ -147,6 +148,10 @@
             var query = this.Url
                 .Split(new[] { '?' }, StringSplitOptions.RemoveEmptyEntries)
                 .Last();
+            if (string.IsNullOrEmpty(query))
+            {
+                return;
+            }
 
             var queryPairs = query.Split(new[] { '&' });
 
@@ -198,14 +203,8 @@
 
         private void ParseRequestParameters(string requestParameters)
         {
-            if (this.RequestMethod == HttpRequestMethod.GET)
-            {
-                this.ParseQueryParameters();
-            }
-            else
-            {
-                this.ParseFormDataParameters(requestParameters);
-            }
+            this.ParseQueryParameters();
+            this.ParseFormDataParameters(requestParameters);
         }
 
         private void ParseRequest(string requestString)
@@ -229,6 +228,27 @@
             this.ParseHeaders(splitRequestContent.Skip(1).ToArray());
             this.ParseCookies();
             this.ParseRequestParameters(splitRequestContent[splitRequestContent.Length - 1]);
+        }
+
+        public override string ToString()
+        {
+            StringBuilder result = new StringBuilder();
+
+            result
+                .AppendLine($"{GlobalConstants.HttpOneProtocolFragment} {this.RequestMethod}")
+                .AppendLine(this.Headers.ToString());
+
+            if (this.Cookies.HasCookies())
+            {
+                foreach (var httpCookie in this.Cookies)
+                {
+                    result.AppendLine($"Set-Cookie: {httpCookie}");
+                }
+            }
+
+            result.AppendLine();
+
+            return result.ToString();
         }
     }
 }

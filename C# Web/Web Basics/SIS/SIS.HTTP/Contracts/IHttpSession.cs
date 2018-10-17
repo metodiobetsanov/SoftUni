@@ -1,10 +1,5 @@
-﻿
-
-namespace SIS.HTTP.Contracts
+﻿namespace SIS.HTTP.Contracts
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     public interface IHttpSession
     {
         string Id { get; }
@@ -16,6 +11,5 @@ namespace SIS.HTTP.Contracts
         void Add(string key, object value);
 
         void Clear();
-
     }
 }

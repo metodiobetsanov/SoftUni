@@ -1,7 +1,5 @@
 ﻿namespace SIS.HTTP.Contracts
 {
-    using SIS.HTTP.Cookies;
-
     using System.Collections.Generic;
 
     public interface IHttpCookieCollection : IEnumerable<IHttpCookie>
@@ -12,6 +10,6 @@
 
         bool HasCookies();
 
-        HttpCookie GetCookie(string key);
+        IHttpCookie GetCookie(string key);
     }
 }

@@ -1,14 +1,15 @@
-﻿namespace SimpleMvc.Framework
-{
-    using System;
-    using System.Reflection;
-    using SimpleMvc.WebServer;
+﻿
 
-    public static class Engine
+namespace SIS.FRAMEWORK
+{
+    using SIS.WEBSERVER;
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    public class Engine
     {
         public static void Run(WebServer server)
         {
-            
             try
             {
                 server.Run();
