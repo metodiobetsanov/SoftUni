@@ -1,14 +1,11 @@
-﻿
-
-namespace SIS.FRAMEWORK
+﻿namespace SIS.FRAMEWORK
 {
     using SIS.WEBSERVER;
     using System;
-    using System.Collections.Generic;
-    using System.Text;
+
     public class Engine
     {
-        public static void Run(WebServer server)
+        public void Run(WebServer server)
         {
             try
             {

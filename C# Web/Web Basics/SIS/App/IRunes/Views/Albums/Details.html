@@ -1,0 +1,27 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-5 text-center">
+            <div><img src="@albumCover" width="250" height="250" /></div>
+            <div>Album Name: @albumName</div>
+            <div>Album Price: $@albumPrice</div>
+            <div class="row">
+                <div class="col-md-6 col-xs-12" style="margin-bottom:5px;">
+                    <a href="../tracks/create?albumId=@albumId" class="btn btn-success ">Create Track</a>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <a href="/albums/all" class="btn btn-success ">Back To All</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div style="display:@noTracks">Tracks</div>
+        <div class="col-md-6" style="display:@anyTracks">
+            <ul style="list-style-type:none;">
+                <li>
+                    Tracks
+                    <ul>@allTracks</ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

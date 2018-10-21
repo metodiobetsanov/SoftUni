@@ -18,8 +18,10 @@
         public void Add(IHttpCookie cookie)
         {
             CoreValidator.ThrowIfNull(cookie, nameof(cookie));
-
-            this.data[cookie.Key] = cookie;
+            if (!this.ContainsCookies(cookie.Key))
+            {
+                this.data.Add(cookie.Key, cookie);
+            }
         }
 
         public bool ContainsCookies(string key)
@@ -46,15 +48,27 @@
             return this.data.Any();
         }
 
+        public void Clear()
+        {
+            this.data.Clear();
+        }
+
         public override string ToString()
         {
             return string.Join("; ", this.data.Values);
         }
 
         public IEnumerator<IHttpCookie> GetEnumerator()
-            => this.data.Values.GetEnumerator();
+        {
+            foreach (var cookie in this.data)
+            {
+                yield return cookie.Value;
+            }
+        }
 
         IEnumerator IEnumerable.GetEnumerator()
-            => this.data.Values.GetEnumerator();
+        {
+            return GetEnumerator();
+        }
     }
 }

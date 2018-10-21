@@ -6,7 +6,7 @@
 
     public class HttpSession : IHttpSession
     {
-        private readonly IDictionary<string, object> data;
+        private IDictionary<string, object> data;
 
         public HttpSession(string id)
         {
@@ -18,7 +18,7 @@
 
         public string Id { get; private set; }
 
-        public void Add(string key, object value)
+        public void AddParameter(string key, object value)
         {
             CoreValidator.ThrowIfNullOrEmpty(key, nameof(key));
             CoreValidator.ThrowIfNull(value, nameof(value));
@@ -27,6 +27,13 @@
         }
 
         public void Clear() => this.data.Clear();
+
+        public bool ContainsParameter(string key)
+        {
+            CoreValidator.ThrowIfNull(key, nameof(key));
+
+            return this.data.ContainsKey(key);
+        }
 
         public object Get(string key)
         {

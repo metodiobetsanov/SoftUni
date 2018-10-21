@@ -10,6 +10,8 @@
 
         bool HasCookies();
 
+        void Clear();
+
         IHttpCookie GetCookie(string key);
     }
 }

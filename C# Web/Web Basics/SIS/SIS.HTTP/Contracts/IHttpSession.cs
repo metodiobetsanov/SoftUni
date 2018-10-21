@@ -8,7 +8,9 @@
 
         T Get<T>(string key);
 
-        void Add(string key, object value);
+        bool ContainsParameter(string key);
+
+        void AddParameter(string key, object value);
 
         void Clear();
     }

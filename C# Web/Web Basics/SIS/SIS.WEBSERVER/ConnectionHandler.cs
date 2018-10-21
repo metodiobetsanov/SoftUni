@@ -3,11 +3,12 @@
     using SIS.HTTP.Common;
     using SIS.HTTP.Contracts;
     using SIS.HTTP.Cookies;
+    using SIS.HTTP.Enums;
+    using SIS.HTTP.Exceptions;
     using SIS.HTTP.Requests;
     using SIS.HTTP.Sessions;
     using SIS.WEBSERVER.Api;
-    using SIS.WEBSERVER.Routing;
-
+    using SIS.WEBSERVER.Results;
     using System;
     using System.Net.Sockets;
     using System.Text;
@@ -17,51 +18,48 @@
     {
         private readonly Socket client;
 
-        private readonly ServerRoutingTable serverRoutingTable;
+        private readonly IHandleable httpRequestHandler;
 
-        private readonly IHandleable httpHandler;
+        private readonly IHandleable resourceHandler;
 
-        public ConnectionHandler(Socket client, ServerRoutingTable serverRoutingTable)
+        public ConnectionHandler(
+            Socket client,
+            IHandleable httpRequestHandler,
+            IHandleable resourceHandler)
         {
             CoreValidator.ThrowIfNull(client, nameof(client));
-            CoreValidator.ThrowIfNull(serverRoutingTable, nameof(serverRoutingTable));
+            CoreValidator.ThrowIfNull(httpRequestHandler, nameof(httpRequestHandler));
+            CoreValidator.ThrowIfNull(resourceHandler, nameof(resourceHandler));
 
             this.client = client;
-            this.serverRoutingTable = serverRoutingTable;
-        }
-
-        public ConnectionHandler(Socket client, IHandleable httpHandler)
-        {
-            CoreValidator.ThrowIfNull(client, nameof(client));
-            CoreValidator.ThrowIfNull(httpHandler, nameof(httpHandler));
-
-            this.client = client;
-            this.httpHandler = httpHandler;
+            this.httpRequestHandler = httpRequestHandler;
+            this.resourceHandler = resourceHandler;
         }
 
         public async Task ProcessRequestAsync()
         {
-            var httpRequest = await this.ReadRequest();
-
-            if (httpRequest != null)
+            try
             {
-                string sessionId = this.SetRequestSession(httpRequest);
+                IHttpRequest httpRequest = await this.ReadRequest();
 
-                var httpResponse = this.HttpRequestHandler(httpRequest);
+                if (httpRequest != null)
+                {
+                    string sessionId = this.SetRequestSession(httpRequest);
 
-                this.SetResponseSession(httpResponse, sessionId);
+                    IHttpResponse httpResponse = this.HttpRequestHandler(httpRequest);
 
-                await this.PrepareResponse(httpResponse);
+                    this.SetResponseSession(httpResponse, sessionId);
 
-                Console.WriteLine($"-----REQUEST-----");
-
-                Console.WriteLine(httpRequest.ToString());
-
-                Console.WriteLine($"-----RESPONSE-----");
-
-                Console.WriteLine(httpResponse.ToString());
-
-                Console.WriteLine();
+                    await this.PrepareResponse(httpResponse);
+                }
+            }
+            catch (BadRequestException e)
+            {
+                await this.PrepareResponse(new TextResult(e.Message, HttpStatusCode.Badrequest));
+            }
+            catch (Exception e)
+            {
+                await this.PrepareResponse(new TextResult(e.Message, HttpStatusCode.InternalServerError));
             }
 
             this.client.Shutdown(SocketShutdown.Both);
@@ -74,7 +72,7 @@
                 httpResponse.AddCookie(
                     new HttpCookie(
                         HttpSessionStorage.SessionCookieKey,
-                        $"{sessionId}; HttpOnly"
+                        $"{sessionId}; HttpOnly=true"
                     ));
             }
         }
@@ -107,9 +105,14 @@
 
         private IHttpResponse HttpRequestHandler(IHttpRequest httpRequest)
         {
-            IHttpResponse responce = this.httpHandler.Handle(httpRequest);
-
-            return responce;
+            if (httpRequest.Path.Contains("."))
+            {
+                return this.resourceHandler.Handle(httpRequest);
+            }
+            else
+            {
+                return this.httpRequestHandler.Handle(httpRequest);
+            }
         }
 
         private async Task<IHttpRequest> ReadRequest()

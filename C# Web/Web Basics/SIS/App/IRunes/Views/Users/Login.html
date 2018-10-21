@@ -1,0 +1,21 @@
+﻿<div class="alert alert-danger alert-dismissible" style="display:@showError">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error!</strong>  @errorMessage
+</div>
+<div class="container w-50">
+    <h1 class="display-4 text-success font-weight-bold" style="text-align:center">Login</h1>
+    <hr class="my-1" style="border-color: #228B22; padding-bottom: 4px; border-top-width: 2px;">
+    <form method="post" action="/users/login">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Username / Email</label>
+            <input type="text" name="username" class="form-control" id="exampleFormControlInput1" required
+               minlength="4" placeholder="Username / Email...">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" name="password" required class="form-control" required
+               minlength="3" id="exampleInputPassword1" placeholder="Password...">
+        </div>
+        <center><button type="submit" class="btn btn-success mb-2">Login</button></center>
+    </form>
+</div>

@@ -1,6 +1,4 @@
-﻿
-
-namespace SIS.FRAMEWORK
+﻿namespace SIS.FRAMEWORK
 {
     using System.Reflection;
 
@@ -42,5 +40,7 @@ namespace SIS.FRAMEWORK
         public string ViewsFolder { get; set; } = "Views";
 
         public string ModelsFolder { get; set; } = "Models";
+
+        public string ResourcesFolder { get; set; } = "Resources";
     }
 }

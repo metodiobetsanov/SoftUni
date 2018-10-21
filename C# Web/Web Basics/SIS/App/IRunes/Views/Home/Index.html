@@ -1,0 +1,11 @@
+﻿<div class="jumbotron bg-success">
+    <h3 class="display-5 text-light">Welcome to IRunes</h3>
+    <hr class="my-1" style="border-color:white; margin-bottom: 6px; border-top-width: 2px; padding-bottom:4px;" />
+    <div style="display:@IsNotAuthenticated">
+        <p><a href="/users/login" class="text-warning font-weight-bold">Login</a><span class="text-white font-weight-bold"> if you have an account.</span></p>
+        <p><a href="/users/register" class="text-warning font-weight-bold">Register</a><span class="text-white font-weight-bold"> if you don't.</span></p>
+    </div>
+    <div style="display:@IsAuthenticated">
+        <h2 class="display-7 text-light">Welcome, @username</h2>
+    </div>
+</div>

@@ -29,7 +29,6 @@ namespace SimpleMvc.Framework.Routers
             }
             catch (Exception)
             {
-
                 return new NotFoundResponse();
             }
 
