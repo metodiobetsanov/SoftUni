@@ -6,6 +6,8 @@ namespace IRunes.Controllers
     using SIS.FRAMEWORK.Attributes.Methods;
     using SIS.FRAMEWORK.Services.Contracts;
     using IRunes.Common;
+    using IRunes.ViewModels;
+
     public class HomeController : BaseController
     {
         public HomeController(IUserCookieService userCookieService)
@@ -16,12 +18,7 @@ namespace IRunes.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            this.SettingViewsBasedOnAccess();
-            if (IsAuthenticated())
-            {
-                this.ViewModel.Data[Common.formUsername] =
-                    this.Request.Session.Get(Common.formUsername).ToString();
-            }
+            this.Check();
             return this.View();
         }
     }

@@ -5,7 +5,7 @@
         <p><a href="/users/login" class="text-warning font-weight-bold">Login</a><span class="text-white font-weight-bold"> if you have an account.</span></p>
         <p><a href="/users/register" class="text-warning font-weight-bold">Register</a><span class="text-white font-weight-bold"> if you don't.</span></p>
     </div>
-    <div style="display:@IsAuthenticated">
-        <h2 class="display-7 text-light">Welcome, @username</h2>
+    <div style="display:@Model.IsAuthenticated">
+        @Model.IndexViewModel
     </div>
 </div>

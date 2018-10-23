@@ -5,9 +5,9 @@
 
     public interface IUserService
     {
-        User GetUser(Login model);
+        User GetUser(LoginViewModel model);
 
-        bool RegisterUser(Register model);
+        bool RegisterUser(RegisterViewModel model);
 
         bool CheckUserExist(User user);
     }

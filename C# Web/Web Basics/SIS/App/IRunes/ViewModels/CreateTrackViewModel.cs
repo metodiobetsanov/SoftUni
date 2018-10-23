@@ -1,6 +1,7 @@
-﻿namespace IRunes.ViewModels
+﻿
+namespace IRunes.ViewModels
 {
-    public class TrackCreate
+    public class CreateTrackViewModel
     {
         public string Name { get; set; }
 

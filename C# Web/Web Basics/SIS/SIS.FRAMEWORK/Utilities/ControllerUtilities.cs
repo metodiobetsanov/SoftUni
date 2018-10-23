@@ -12,9 +12,5 @@
                 FrameworkContext.Get.ViewsFolder,
                 controller,
                 action);
-
-        public static string GetLayoutFullyQualifiedName()
-            => string.Format("../../../{0}/_Layout.html",
-                FrameworkContext.Get.ViewsFolder);
     }
 }

@@ -1,85 +1,94 @@
-﻿namespace IRunes.Controllers
+﻿
+
+namespace IRunes.Controllers
 {
-    using IRunes.Services.Contracts;
-    using IRunes.Common;
-    using SIS.FRAMEWORK.ActionResults.Contacts;
-    using SIS.FRAMEWORK.Attributes.Methods;
-    using SIS.FRAMEWORK.Services.Contracts;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
+    using IRunes.Models;
     using IRunes.ViewModels;
+    using Microsoft.EntityFrameworkCore;
+    using SIS.FRAMEWORK.ActionResults.Contacts;
+    using SIS.FRAMEWORK.Attributes.Action;
+    using SIS.FRAMEWORK.Attributes.Methods;
+    using SIS.FRAMEWORK.Services.Contracts;
 
     public class AlbumsController : BaseController
     {
-        protected IAlbumService AlbumService { get; }
-
-        public AlbumsController(IUserCookieService userCookieService, IAlbumService albumService)
+        public AlbumsController(IUserCookieService userCookieService)
             : base(userCookieService)
         {
-            this.AlbumService = albumService;
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult All()
         {
-            var albums = this.AlbumService.GetAllAlbums().ToList();
-            var albumsAsString = this.AlbumService.GetAlbumsAsString(albums);
-            this.ViewModel.Data[Common.AlbumAllPlaceholder] = albumsAsString;
-            this.SettingViewsBasedOnAccess();
+            this.Check();
+            IEnumerable<AllAlbumsViewModel> allAlbumsViewModel = this.Context
+                                                            .Albums
+                                                            .Select(a => 
+                                                                new AllAlbumsViewModel {
+                                                                    Id = a.Id,
+                                                                    Name = a.Name})
+                                                            .ToList();
+
+            this.Model.Data["AllAlbumsViewModel"] = allAlbumsViewModel;
+
             return this.View();
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
+            this.Check();
             return this.View();
         }
 
         [HttpPost]
-        public IActionResult Create(AlbumCreate model)
+        [Authorize]
+        public IActionResult Create(CreateAlbumViewModel model)
         {
-            this.AlbumService.CreateAlbum(model);
-            return this.All();
+           if(this.Context.Albums.Any(x => x.Name == model.Name))
+           {
+                return this.Create();
+           }
+
+            Album album = new Album() {
+                Name = model.Name,
+                Cover = model.Cover
+            };
+
+            this.Context.Albums.Add(album);
+            this.Context.SaveChangesAsync();
+
+            return this.RedirectToAction("/albums/all");
         }
 
         [HttpGet]
-        public IActionResult Details(AlbumDetails model)
+        [Authorize]
+        public IActionResult Details()
         {
-            if (model.Id == null)
-            {
-                var result = this.AlbumService.CreateAlbumDetails(this.Request
-                    .QueryData[Common.AlbumIdFromTrackCreateFormThroughRequestQeury].ToString());
+            var id = this.Request.QueryData["id"].ToString();
 
-                SetttingViewDataForAlbumDetails(result);
-                return this.View();
-            }
-            var albumDetails = this.AlbumService.GetAlbumDetails(model.Id);
+            var album = this.Context
+                .Albums
+                .Include(i => i.Tracks)
+                .FirstOrDefault(a => a.Id == id);
 
-            SetttingViewDataForAlbumDetails(albumDetails);
+            DetailsAlbumViewModel detailsAlbumViewModel = new DetailsAlbumViewModel {
+                Id = album.Id,
+                Name = album.Name,
+                Cover = album.Cover,
+                Price = album.Price,
+                Tracks = album.Tracks.Select(at => at.Track).ToList()
+            };
+
+            this.Model.Data["DetailsAlbumViewModel"] = detailsAlbumViewModel;
 
             return this.View();
-        }
-
-        private void SetttingViewDataForAlbumDetails(IDictionary<string, string> data)
-        {
-            if (data[Common.AlbumDetailsViewTracksHolder] == Common.NoTracksCurrently)
-            {
-                this.ViewModel.Data[Common.DisplayInAlbumDetails] = "none";
-
-                this.ViewModel.Data[Common.DisplayAnyTracks] = "none";
-            }
-            else
-            {
-                this.ViewModel.Data[Common.DisplayInAlbumDetails] = "inline";
-
-                this.ViewModel.Data[Common.DisplayAnyTracks] = "inline";
-            }
-
-            foreach (var d in data)
-            {
-                this.ViewModel.Data[d.Key] = d.Value;
-            }
-            this.SettingViewsBasedOnAccess();
         }
     }
 }

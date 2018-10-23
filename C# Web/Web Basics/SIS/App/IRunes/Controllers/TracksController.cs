@@ -1,64 +1,73 @@
-﻿namespace IRunes.Controllers
+﻿
+
+namespace IRunes.Controllers
 {
-    using IRunes.Services.Contracts;
-    using IRunes.Common;
-    using SIS.FRAMEWORK.ActionResults.Contacts;
-    using SIS.FRAMEWORK.Attributes.Methods;
-    using SIS.FRAMEWORK.Services.Contracts;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
     using IRunes.Models;
     using IRunes.ViewModels;
+    using Microsoft.EntityFrameworkCore;
+    using SIS.FRAMEWORK.ActionResults.Contacts;
+    using SIS.FRAMEWORK.Attributes.Action;
+    using SIS.FRAMEWORK.Attributes.Methods;
+    using SIS.FRAMEWORK.Services.Contracts;
 
     public class TracksController : BaseController
     {
-        public ITrackService TrackService { get; }
-
-        public TracksController(ITrackService trackService, IUserCookieService userCookieService) : base(userCookieService)
+        public TracksController(IUserCookieService userCookieService)
+            : base(userCookieService)
         {
-            this.TrackService = trackService;
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
-            this.ViewModel.Data[Common.AlbumPlaceHolderTrackCreateForm] =
-                this.Request.QueryData[Common.AlbumIdFromTrackCreateFormThroughRequestQeury];
+            this.Check();
+            this.Model.Data["AlbumId"] = this.Request.QueryData["albumId"];
             return this.View();
         }
 
         [HttpPost]
-        public IActionResult Create(TrackCreate model)
+        [Authorize]
+        public IActionResult Create(CreateTrackViewModel model)
         {
+            
+            string albumId = this.Request.QueryData["albumId"].ToString();
 
-            string albumId = this.Request.QueryData[Common.AlbumIdFromTrackCreateFormThroughRequestQeury].ToString();
-
-            var trackId = this.TrackService.CreateTrack(model, albumId);
-
-            var trackDetails = new TrackDetails
+            if(this.Context.Tracks.Any(x => x.Name == model.Name))
             {
-                TrackId = trackId,
-                AlbumId = albumId
+                return this.RedirectToAction($"/tracks/create?albumId={albumId}");
+            }
+
+            Track track = new Track()
+            {
+                Name = model.Name,
+                Link = model.Link,
+                Price = model.Price,
             };
 
-            return this.Details(trackDetails);
-        }
+            this.Context.Tracks.Add(track);
+            this.Context.SaveChangesAsync();
 
-        [HttpGet]
-        public IActionResult Details(TrackDetails model)
-        {
-            var track = this.TrackService.Details(model.TrackId);
-            SetttingViewDataForTrackDetails(track, model.AlbumId);
-            this.SettingViewsBasedOnAccess();
-            return this.View();
-        }
+            var trackId = this.Context.Tracks.First(x => x.Name == track.Name).Id;
 
-        private void SetttingViewDataForTrackDetails(Track track, string albumId)
-        {
-            this.ViewModel.Data[Common.TrackDetailsViewTrackNameHolder] = track.Name;
-            this.ViewModel.Data[Common.TrackDetailsViewTrackUrlHolder] = track.Link.Replace("watch?v=", "embed/");
-            this.ViewModel.Data[Common.TrackDetailsViewTrackPriceHolder] = track.Price;
-            this.ViewModel.Data[Common.TrackDetailsViewAlbumPathHolder] = albumId;
+            var trackAlbum = new TracksAlbums
+            {
+                AlbumId = albumId,
+                TrackId = trackId
+            };
 
-            this.SettingViewsBasedOnAccess();
+
+
+
+                this.Context.Add(trackAlbum);
+                this.Context.SaveChangesAsync();
+   
+
+            return this.RedirectToAction($"/tracks/details?albumId={albumId}&trackId={trackId}");
         }
     }
 }

@@ -19,8 +19,6 @@
             dependencyContainer.RegisterDependency<IHashService, HashService>();
             dependencyContainer.RegisterDependency<IUserService, UserService>();
             dependencyContainer.RegisterDependency<IUserCookieService, UserCookieService>();
-            dependencyContainer.RegisterDependency<IAlbumService, AlbumService>();
-            dependencyContainer.RegisterDependency<ITrackService, TrackService>();
 
             WebServer server = new WebServer(80, new ControllerRouter(dependencyContainer), new ResourceRouter());
             Engine engine = new Engine();

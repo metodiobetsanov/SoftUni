@@ -1,6 +1,7 @@
 ﻿namespace IRunes.Controllers
 {
     using IRunes.Services.Contracts;
+    using SIS.FRAMEWORK.Security;
     using IRunes.ViewModels;
     using SIS.FRAMEWORK.ActionResults;
     using SIS.FRAMEWORK.ActionResults.Contacts;
@@ -9,64 +10,60 @@
 
     public class UsersController : BaseController
     {
-        public UsersController(IUserService userService, IUserCookieService userCookieService) : base(userCookieService)
+        private IUserService UserService { get; }
+
+        public UsersController(IUserService userService, IUserCookieService userCookieService)
+            : base(userCookieService)
         {
             this.UserService = userService;
         }
 
-        protected IUserService UserService { get; }
-
-        [HttpGet]
-        public IActionResult Register()
-        {
-            this.SettingViewsBasedOnAccess();
-            return this.View();
-        }
-        
-        [HttpPost]
-        public IActionResult Register(Register model)
-        {
-            var success = this.UserService.RegisterUser(model);
-            if (success)
-            {
-                string username = model.Username;
-                var result = new RedirectResult("/");
-                this.SignInUSer(username, this.Request);
-                return result;
-            }
-
-            return this.Register();
-        }
         
         [HttpGet]
         public IActionResult Login()
         {
-            this.SettingViewsBasedOnAccess();
+            this.Check();
             return this.View();
         }
         
         [HttpPost]
-        public IActionResult Login(Login model)
+        public IActionResult Login(LoginViewModel model)
         {
-            var userFromDb = this.UserService.GetUser(model);
-            if (userFromDb != null)
+            var user = this.UserService.GetUser(model);
+            if (user != null)
             {
-                this.SignInUSer(userFromDb.Username, this.Request);
+                this.SignIn(new IdentityUser() { Username = model.Username, Password = model.Password});
                 return this.RedirectToAction("/");
             }
 
-            this.Error = "User credentials are not correct!";
-
-            this.SettingViewsBasedOnAccess();
             return this.Login();
         }
 
         [HttpGet]
         public IActionResult Logout()
         {
-            this.Request.Session.Clear();
+            this.SignOut();
 
-            return this.RedirectToAction("/");
+            return new RedirectResult("/");
+        }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            this.Check();
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult Register(RegisterViewModel model)
+        {
+            var success = this.UserService.RegisterUser(model);
+            if (success)
+            {
+                return this.RedirectToAction("/");
+            }
+
+            return this.Register();
         }
     }
 }

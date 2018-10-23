@@ -1,0 +1,15 @@
+﻿<div><img src="@Model.Cover" width="250" height="250" /></div>
+<div>Album Name: @Model.Name</div>
+<div>Album Price: $@Model.Price</div>
+<div class="row">
+    <div class="col-md-6 col-xs-12" style="margin-bottom:5px;">
+        <a href="../tracks/create?albumId=@Model.Id" class="btn btn-success ">Create Track</a>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <a href="/albums/all" class="btn btn-success ">Back To All</a>
+    </div>
+</div>
+<ul>
+    @Model.Collection.Tracks(<li>@Item</li>)
+</ul>
+

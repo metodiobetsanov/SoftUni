@@ -3,20 +3,20 @@
         <h1 class="display-4 text-success font-weight-bold">Create Track</h1>
     </center>
     <hr class="my-3" style="border-color: #228B22; padding-bottom: 4px; border-top-width: 2px;">
-    <form method="post" action="/tracks/create?albumId=@albumId">
+    <form method="post" action="/tracks/create?albumId=@Model.AlbumId">
         <div class="form-group">
-            <label for="exampleFormControlInput1">Name</label>
-            <input type="text" name="trackName" class="form-control" id="exampleFormControlInput1" placeholder="Name...">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" placeholder="Name...">
         </div>
         <div class="row form-group" style="margin-bottom:60px;">
             <div class="col-md-5 col-sm-12">
-                <label for="exampleFormControlInput1">Link</label>
-                <input type="url" class="form-control" name="trackLink" aria-describedby="link" placeholder="Link">
+                <label>Link</label>
+                <input type="text" class="form-control" name="link" placeholder="Link">
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-5">
-                <label for="exampleFormControlInput1">Price</label>
-                <input type="number" min="1" step="0.5" class="form-control" name="trackPrice" aria-describedby="price" placeholder="Price">
+                <label>Price</label>
+                <input type="number" min="1" step="0.5" class="form-control" name="price" placeholder="Price">
             </div>
         </div>
         <hr class="my-3" style="border-color: #228B22; padding-bottom: 4px; border-top-width: 2px;">
@@ -25,7 +25,7 @@
                 <div><button type="submit" class="btn btn-success">Create</button></div>
             </div>
             <div class="col-sm-12 col-md-6">
-                <a href="/albums/details?albumId=@albumId" class="btn btn-success btn-center">Back to Album</a>
+                <a href="/albums/details?albumId=@Model.AlbumId" class="btn btn-success btn-center">Back to Album</a>
             </div>
         </div>
     </form>

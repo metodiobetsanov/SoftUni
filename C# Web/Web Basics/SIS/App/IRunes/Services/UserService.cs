@@ -23,7 +23,7 @@
             this.Context = new IRunesDbContext();
         }
 
-        public User GetUser(Login model)
+        public User GetUser(LoginViewModel model)
         {
             string passwordHashed = this.HashService.Hash(model.Password);
             User user = null;
@@ -36,7 +36,7 @@
             return user;
         }
 
-        public bool RegisterUser(Register model)
+        public bool RegisterUser(RegisterViewModel model)
         {
             string password = this.HashService.Hash(model.Password);
             string confirmPassword = this.HashService.Hash(model.ConfirmPassword);
