@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace IRunes.ViewModels
+﻿namespace IRunes.ViewModels
 {
-    class IndexViewModel
+    internal class IndexViewModel
     {
         public string Username { get; set; }
     }

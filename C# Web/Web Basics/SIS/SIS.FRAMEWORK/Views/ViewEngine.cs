@@ -1,13 +1,9 @@
-﻿
-
-namespace SIS.FRAMEWORK.Views
+﻿namespace SIS.FRAMEWORK.Views
 {
-    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Text;
     using System.Text.RegularExpressions;
 
     public class ViewEngine
@@ -27,10 +23,10 @@ namespace SIS.FRAMEWORK.Views
         private string ViewsFolderPath
             => $@"{ViewPathPrefix}\{FrameworkContext.Get.ViewsFolder}\";
 
-        private string ViewsSharedFolderPath 
+        private string ViewsSharedFolderPath
             => $@"{this.ViewsFolderPath}Shared\";
 
-        private string ViewDisplayTemplateFolderPath 
+        private string ViewDisplayTemplateFolderPath
             => $@"{this.ViewsSharedFolderPath}\DisplayTemplate\";
 
         private string FormatLayoutViewPath()
@@ -91,7 +87,7 @@ namespace SIS.FRAMEWORK.Views
 
         private string RenderViewData(string template, object viewObject, string viewObjectName = null)
         {
-            if (viewObject != null 
+            if (viewObject != null
                 && viewObject.GetType() != typeof(string)
                 && viewObject is IEnumerable enumerable
                 && Regex.IsMatch(template, ModelCollectionViewParametersPattern))
@@ -118,7 +114,7 @@ namespace SIS.FRAMEWORK.Views
             {
                 if (File.Exists(this.FormatDisplayTemplatePath(viewObject.GetType().Name)))
                 {
-                    string renderedObject = this.RenderObject(viewObject, 
+                    string renderedObject = this.RenderObject(viewObject,
                         File.ReadAllText(this.FormatDisplayTemplatePath(viewObject.GetType().Name)));
 
                     return viewObjectName != null

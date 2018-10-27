@@ -10,9 +10,9 @@
     {
         private readonly IDictionary<Type, Type> dependencyMap;
 
-        public DependencyContainer(IDictionary<Type, Type> dependencyMap)
+        public DependencyContainer()
         {
-            this.dependencyMap = dependencyMap;
+            this.dependencyMap = new Dictionary<Type, Type>();
         }
 
         private Type this[Type key] =>

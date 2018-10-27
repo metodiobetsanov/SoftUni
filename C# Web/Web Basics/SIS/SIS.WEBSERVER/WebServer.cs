@@ -9,7 +9,7 @@
 
     public class WebServer
     {
-        private const string localHostIpAddress = "127.1.1.1";
+        private const string localHostIpAddress = "127.0.0.1";
 
         private readonly int port;
 

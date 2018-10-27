@@ -1,11 +1,8 @@
 ﻿namespace IRunes.Controllers
 {
     using IRunes.Data;
-    using IRunes.Common;
     using SIS.FRAMEWORK.Controllers;
     using SIS.FRAMEWORK.Services.Contracts;
-    using SIS.HTTP.Contracts;
-    using SIS.HTTP.Cookies;
 
     public abstract class BaseController : Controller
     {

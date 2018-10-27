@@ -1,8 +1,6 @@
-﻿
-
-namespace IRunes.ViewModels
+﻿namespace IRunes.ViewModels
 {
-     public class RegisterViewModel
+    public class RegisterViewModel
     {
         public string Username { get; set; }
 

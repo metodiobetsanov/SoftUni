@@ -1,19 +1,15 @@
-﻿
-
-namespace SIS.FRAMEWORK.Attributes.Action
+﻿namespace SIS.FRAMEWORK.Attributes.Action
 {
     using SIS.FRAMEWORK.Security.Contracts;
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
+
     public class AuthorizeAttribute : Attribute
     {
         private readonly string[] roles;
 
         public AuthorizeAttribute()
         {
-
         }
 
         public AuthorizeAttribute(params string[] roles)

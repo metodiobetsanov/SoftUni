@@ -1,9 +1,6 @@
 ﻿namespace SIS.FRAMEWORK.Views
 {
     using SIS.FRAMEWORK.ActionResults.Contacts;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
 
     public class View : IRenderable
     {

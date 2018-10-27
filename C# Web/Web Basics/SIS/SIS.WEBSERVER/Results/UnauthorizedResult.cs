@@ -3,7 +3,6 @@
     using SIS.HTTP.Enums;
     using SIS.HTTP.Headers;
     using SIS.HTTP.Responses;
-    using System;
     using System.Text;
 
     public class UnauthorizedResult : HttpResponse

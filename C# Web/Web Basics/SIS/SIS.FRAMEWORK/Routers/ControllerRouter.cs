@@ -1,9 +1,9 @@
 ﻿namespace SIS.FRAMEWORK.Routers
 {
     using SIS.FRAMEWORK.ActionResults.Contacts;
+    using SIS.FRAMEWORK.Attributes.Action;
     using SIS.FRAMEWORK.Attributes.Methods;
     using SIS.FRAMEWORK.Attributes.Property;
-    using SIS.FRAMEWORK.Attributes.Action;
     using SIS.FRAMEWORK.Controllers;
     using SIS.FRAMEWORK.Services.Contracts;
     using SIS.FRAMEWORK.Utilities;
@@ -72,7 +72,7 @@
             if (action.GetCustomAttributes()
                 .Where(a => a is AuthorizeAttribute)
                 .Cast<AuthorizeAttribute>()
-                .Any(a => !a.IsAuthorized(controller.Identity())))
+                .Any(a => !a.IsAuthorized(controller.Identity)))
             {
                 return false;
             }

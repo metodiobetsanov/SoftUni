@@ -1,11 +1,11 @@
 ﻿namespace IRunes.Controllers
 {
     using IRunes.Services.Contracts;
-    using SIS.FRAMEWORK.Security;
     using IRunes.ViewModels;
     using SIS.FRAMEWORK.ActionResults;
     using SIS.FRAMEWORK.ActionResults.Contacts;
     using SIS.FRAMEWORK.Attributes.Methods;
+    using SIS.FRAMEWORK.Security;
     using SIS.FRAMEWORK.Services.Contracts;
 
     public class UsersController : BaseController
@@ -18,21 +18,20 @@
             this.UserService = userService;
         }
 
-        
         [HttpGet]
         public IActionResult Login()
         {
             this.Check();
             return this.View();
         }
-        
+
         [HttpPost]
         public IActionResult Login(LoginViewModel model)
         {
             var user = this.UserService.GetUser(model);
             if (user != null)
             {
-                this.SignIn(new IdentityUser() { Username = model.Username, Password = model.Password});
+                this.SignIn(new IdentityUser() { Username = model.Username, Password = model.Password });
                 return this.RedirectToAction("/");
             }
 

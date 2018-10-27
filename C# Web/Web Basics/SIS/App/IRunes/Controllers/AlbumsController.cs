@@ -1,11 +1,5 @@
-﻿
-
-namespace IRunes.Controllers
+﻿namespace IRunes.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using IRunes.Models;
     using IRunes.ViewModels;
     using Microsoft.EntityFrameworkCore;
@@ -13,6 +7,8 @@ namespace IRunes.Controllers
     using SIS.FRAMEWORK.Attributes.Action;
     using SIS.FRAMEWORK.Attributes.Methods;
     using SIS.FRAMEWORK.Services.Contracts;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class AlbumsController : BaseController
     {
@@ -28,10 +24,12 @@ namespace IRunes.Controllers
             this.Check();
             IEnumerable<AllAlbumsViewModel> allAlbumsViewModel = this.Context
                                                             .Albums
-                                                            .Select(a => 
-                                                                new AllAlbumsViewModel {
+                                                            .Select(a =>
+                                                                new AllAlbumsViewModel
+                                                                {
                                                                     Id = a.Id,
-                                                                    Name = a.Name})
+                                                                    Name = a.Name
+                                                                })
                                                             .ToList();
 
             this.Model.Data["AllAlbumsViewModel"] = allAlbumsViewModel;
@@ -51,12 +49,13 @@ namespace IRunes.Controllers
         [Authorize]
         public IActionResult Create(CreateAlbumViewModel model)
         {
-           if(this.Context.Albums.Any(x => x.Name == model.Name))
-           {
+            if (this.Context.Albums.Any(x => x.Name == model.Name))
+            {
                 return this.Create();
-           }
+            }
 
-            Album album = new Album() {
+            Album album = new Album()
+            {
                 Name = model.Name,
                 Cover = model.Cover
             };
@@ -78,7 +77,8 @@ namespace IRunes.Controllers
                 .Include(i => i.Tracks)
                 .FirstOrDefault(a => a.Id == id);
 
-            DetailsAlbumViewModel detailsAlbumViewModel = new DetailsAlbumViewModel {
+            DetailsAlbumViewModel detailsAlbumViewModel = new DetailsAlbumViewModel
+            {
                 Id = album.Id,
                 Name = album.Name,
                 Cover = album.Cover,

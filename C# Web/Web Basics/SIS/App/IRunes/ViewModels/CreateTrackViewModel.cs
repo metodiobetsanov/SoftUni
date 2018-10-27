@@ -1,5 +1,4 @@
-﻿
-namespace IRunes.ViewModels
+﻿namespace IRunes.ViewModels
 {
     public class CreateTrackViewModel
     {

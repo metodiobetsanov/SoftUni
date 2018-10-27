@@ -1,7 +1,5 @@
 ﻿using IRunes.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace IRunes.ViewModels
 {
@@ -16,6 +14,5 @@ namespace IRunes.ViewModels
         public decimal Price { get; set; }
 
         public IEnumerable<Track> Tracks { get; set; }
-
     }
 }

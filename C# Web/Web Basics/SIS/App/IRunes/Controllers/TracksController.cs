@@ -1,18 +1,12 @@
-﻿
-
-namespace IRunes.Controllers
+﻿namespace IRunes.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using IRunes.Models;
     using IRunes.ViewModels;
-    using Microsoft.EntityFrameworkCore;
     using SIS.FRAMEWORK.ActionResults.Contacts;
     using SIS.FRAMEWORK.Attributes.Action;
     using SIS.FRAMEWORK.Attributes.Methods;
     using SIS.FRAMEWORK.Services.Contracts;
+    using System.Linq;
 
     public class TracksController : BaseController
     {
@@ -34,10 +28,9 @@ namespace IRunes.Controllers
         [Authorize]
         public IActionResult Create(CreateTrackViewModel model)
         {
-            
             string albumId = this.Request.QueryData["albumId"].ToString();
 
-            if(this.Context.Tracks.Any(x => x.Name == model.Name))
+            if (this.Context.Tracks.Any(x => x.Name == model.Name))
             {
                 return this.RedirectToAction($"/tracks/create?albumId={albumId}");
             }
@@ -60,12 +53,8 @@ namespace IRunes.Controllers
                 TrackId = trackId
             };
 
-
-
-
-                this.Context.Add(trackAlbum);
-                this.Context.SaveChangesAsync();
-   
+            this.Context.Add(trackAlbum);
+            this.Context.SaveChangesAsync();
 
             return this.RedirectToAction($"/tracks/details?albumId={albumId}&trackId={trackId}");
         }

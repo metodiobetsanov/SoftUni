@@ -12,7 +12,7 @@
 
     public abstract class Controller
     {
-        private ViewEngine ViewEngine { get; } 
+        private ViewEngine ViewEngine { get; }
 
         protected Controller()
         {
@@ -28,7 +28,12 @@
 
         public ViewModel Model { get; set; }
 
-        protected IViewable View([CallerMemberName] string actionName = "")
+        public IIdentity Identity
+            => this.Request.Session.ContainsParameter("auth")
+                ? (IIdentity)this.Request.Session.Get("auth")
+                : null;
+
+        protected virtual IViewable View([CallerMemberName] string actionName = "")
         {
             var controllerName = ControllerUtilities.GetControllerName(this);
 
@@ -61,14 +66,6 @@
             this.Request.Session.Clear();
         }
 
-        public IIdentity Identity()
-        {
-            if (this.Request.Session.ContainsParameter("auth"))
-            {
-                return (IIdentity)this.Request.Session.Get("auth");
-            }
-            return null;
-        }
-
+        
     }
 }
