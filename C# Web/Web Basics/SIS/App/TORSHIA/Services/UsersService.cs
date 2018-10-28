@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using TORSHIA.Data;
 using TORSHIA.Models;
 using TORSHIA.Models.Enums;
@@ -18,6 +15,7 @@ namespace TORSHIA.Services
         {
             this.context = context;
         }
+
         public User LoginUser(LoginViewModel model)
         {
             return this.context.Users.FirstOrDefault(u => u.Username == model.Username && u.Password == model.Password);
@@ -25,20 +23,20 @@ namespace TORSHIA.Services
 
         public User RegisterUser(RegisterViewModel model)
         {
-                Role role = this.context.Users.Any() ? Role.User : Role.Admin;
+            Role role = this.context.Users.Any() ? Role.User : Role.Admin;
 
-                User user = new User()
-                {
-                    Username = model.Username,
-                    Password = model.Password,
-                    Email = model.Email,
-                    Role = role
-                };
+            User user = new User()
+            {
+                Username = model.Username,
+                Password = model.Password,
+                Email = model.Email,
+                Role = role
+            };
 
-                context.Users.Add(user);
-                context.SaveChangesAsync();
+            context.Users.Add(user);
+            context.SaveChangesAsync();
 
-                return user;
+            return user;
         }
     }
 }

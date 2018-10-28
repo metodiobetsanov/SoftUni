@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TORSHIA.ViewModels
+﻿namespace TORSHIA.ViewModels
 {
     public class LoginViewModel
     {

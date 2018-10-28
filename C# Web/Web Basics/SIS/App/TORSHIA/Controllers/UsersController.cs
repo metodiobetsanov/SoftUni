@@ -1,6 +1,4 @@
-﻿
-
-namespace TORSHIA.Controllers
+﻿namespace TORSHIA.Controllers
 {
     using SIS.FRAMEWORK.ActionResults.Contacts;
     using SIS.FRAMEWORK.Attributes.Methods;
@@ -21,7 +19,6 @@ namespace TORSHIA.Controllers
 
         [HttpGet]
         public IActionResult Login() => this.View();
-
 
         [HttpPost]
         public IActionResult Login(LoginViewModel model)
@@ -47,7 +44,6 @@ namespace TORSHIA.Controllers
         [HttpGet]
         public IActionResult Register() => this.View();
 
-
         [HttpPost]
         public IActionResult Register(RegisterViewModel model)
         {
@@ -58,10 +54,12 @@ namespace TORSHIA.Controllers
                 return this.Register();
             }
 
-            this.SignIn(new IdentityUser {
+            this.SignIn(new IdentityUser
+            {
                 Id = user.Id.ToString(),
                 Username = user.Username,
-                Email = user.Email  
+                Email = user.Email,
+                Roles = new List<string>() { user.Role.ToString() }
             });
 
             return this.RedirectToAction("/");

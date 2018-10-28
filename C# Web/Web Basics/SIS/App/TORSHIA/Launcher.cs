@@ -1,9 +1,6 @@
 ﻿namespace TORSHIA
 {
     using SIS.FRAMEWORK;
-    using System;
-    using TORSHIA.Data;
-    using TORSHIA.Models;
 
     public class Launcher
     {

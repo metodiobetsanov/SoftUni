@@ -1,7 +1,6 @@
 ﻿namespace TORSHIA
 {
     using SIS.FRAMEWORK.API;
-    using SIS.FRAMEWORK.Services;
     using SIS.FRAMEWORK.Services.Contracts;
     using TORSHIA.Services;
     using TORSHIA.Services.Contracts;
@@ -12,6 +11,7 @@
         {
             dependencyContainer.RegisterDependency<IUsersService, UsersService>();
             dependencyContainer.RegisterDependency<ITasksService, TasksService>();
+            dependencyContainer.RegisterDependency<IReportsService, ReportsService>();
         }
     }
 }

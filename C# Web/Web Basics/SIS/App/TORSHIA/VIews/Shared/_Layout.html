@@ -9,7 +9,6 @@
     <link href="../../Resources/css/reset-css.css" rel="stylesheet" />
     <link href="../../Resources/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../../Resources/css/style.css" rel="stylesheet" />
-
 </head>
 <body>
     <div class="container-fluid">
@@ -38,10 +37,10 @@
                             <li class="nav-item">
                                 <a class="nav-link nav-link-white active" href="/">Home</a>
                             </li>
-                            <li class="nav-item" style="display: @Model.Admin">
+                            <li class="nav-item" style="display: @Model.AdminLoggedIn">
                                 <a class="nav-link nav-link-white active" href="/tasks/create">Create Task</a>
                             </li>
-                            <li class="nav-item" style="display: @Model.Admin">
+                            <li class="nav-item" style="display: @Model.AdminLoggedIn">
                                 <a class="nav-link nav-link-white active" href="/reports/all">Reports</a>
                             </li>
                             <li class="nav-item">
@@ -54,7 +53,6 @@
         </header>
 
             @RenderBody()
-
 
         <footer>
             <div class="container-fluid bg-torshia">

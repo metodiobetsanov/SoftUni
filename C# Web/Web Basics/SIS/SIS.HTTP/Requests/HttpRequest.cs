@@ -130,10 +130,13 @@
                     string[] cookieKeyValuePair = cookiePart
                         .Split(new[] { '=' }, 2, StringSplitOptions.RemoveEmptyEntries);
 
-                    var key = cookieKeyValuePair[0].Trim();
-                    var value = cookieKeyValuePair[1].Trim();
+                    if (cookieKeyValuePair.Length == 2)
+                    {
+                        var key = cookieKeyValuePair[0].Trim();
+                        var value = cookieKeyValuePair[1].Trim();
 
-                    this.Cookies.Add(new HttpCookie(key, value, false));
+                        this.Cookies.Add(new HttpCookie(key, value, false));
+                    }
                 }
             }
         }
@@ -178,6 +181,7 @@
 
         private void ParseFormDataParameters(string formData)
         {
+
             if (!formData.Contains('='))
             {
                 return;

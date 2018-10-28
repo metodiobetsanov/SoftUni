@@ -1,12 +1,7 @@
-﻿
-
-namespace TORSHIA.Controllers
+﻿namespace TORSHIA.Controllers
 {
     using SIS.FRAMEWORK.ActionResults.Contacts;
-    using SIS.FRAMEWORK.Attributes.Methods;
-    using System;
     using System.Collections.Generic;
-    using System.Text;
     using TORSHIA.Services.Contracts;
     using TORSHIA.ViewModels;
 
@@ -23,7 +18,7 @@ namespace TORSHIA.Controllers
         {
             if (this.Identity == null)
             {
-                return this.View();
+                return this.View("Index");
             }
 
             var tasks = this.tasksService.All();
@@ -36,12 +31,12 @@ namespace TORSHIA.Controllers
                     Id = task.Id,
                     Title = task.Title,
                     Level = task.AffectedSectors.Count
-                 });
+                });
             }
 
             this.Model.Data["TaskViewModel"] = taskViewModels;
 
-            return this.View();
+            return this.View("IndexLoggedIn");
         }
     }
 }
